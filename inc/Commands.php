@@ -1,6 +1,6 @@
 <?php
 
-namespace OrdersAlgoliaSearch;
+namespace AlgoliaOrdersSearch;
 
 use WP_CLI, WP_CLI_Command;
 
@@ -14,9 +14,11 @@ class Commands extends WP_CLI_Command {
 	 *
 	 * @when before_wp_load
 	 */
-	public function seed( $args, $assoc_args ) {
+	public function reIndex( $args, $assoc_args ) {
 		WP_CLI::line( 'About to re-index all orders in Algolia. Please be patient...' );
+		$index = new OrdersIndex();
+		$index->getRecords(1, 10);
 	}
 }
 
-WP_CLI::add_command( 'orders', 'OrdersAlgoliaSearch\Commands' );
+WP_CLI::add_command( 'orders', 'AlgoliaOrdersSearch\Commands' );

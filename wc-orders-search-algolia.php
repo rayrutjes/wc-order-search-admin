@@ -13,12 +13,11 @@ add_action( 'plugins_loaded', function() {
 		require_once( 'vendor/autoload.php' );
 
 		// Resources
-		require_once( 'inc/helpers.php' );
-		require_once( 'inc/generate.php' );
+		require_once( 'inc/OrdersIndex.php' );
 
 		// WP CLI commands
 		if ( defined('WP_CLI') && WP_CLI ) {
-			require_once( 'inc/commands.php');
+			require_once( 'inc/Commands.php');
 		}
 	}
 } );
