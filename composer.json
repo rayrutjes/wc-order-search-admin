@@ -1,0 +1,20 @@
+{
+    "name": "rayrutjes/wc-orders-search-algolia",
+    "description": "Adds a dropdown to the orders admin screen to find orders as you type.",
+    "keywords": [],
+    "license": "MIT",
+    "require": {
+        "rayrutjes/algolia-php-integration": "dev-master",
+        "algolia/algoliasearch-client-php": "^1.14"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:rayrutjes/algolia-php-integration.git"
+        }
+    ],
+    "config": {
+        "preferred-install": "source",
+        "sort-packages": true
+    }
+}
