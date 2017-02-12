@@ -48,12 +48,13 @@ class Commands extends WP_CLI_Command
         $start = microtime(true);
 
         $perPage = $this->options->getOrdersToIndexPerBatchCount();
-        $totalPages = $this->index->getTotalPagesCount();
+        $totalPages = $this->index->getTotalPagesCount($perPage);
 
         $progress = WP_CLI\Utils\make_progress_bar('Indexing orders', $totalPages);
 
+        $totalRecordsCount = 0;
         for ($page = 1; $page <= $totalPages; ++$page) {
-            $this->index->pushRecords($page, $perPage);
+            $totalRecordsCount += $this->index->pushRecords($page, $perPage);
             $progress->tick();
         }
         $progress->finish();

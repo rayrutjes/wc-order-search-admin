@@ -22,7 +22,7 @@ add_action( 'plugins_loaded', function() {
 		// WP CLI commands
 		if ( defined('WP_CLI') && WP_CLI ) {
 			require_once( 'inc/Commands.php');
-			$commands = new \AlgoliaOrdersSearch\Commands($plugin->getBus(), $plugin->getOrdersIndex(), $plugin->getOptions());
+			$commands = new \AlgoliaOrdersSearch\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
             WP_CLI::add_command( 'orders', $commands );
 		}
 	}

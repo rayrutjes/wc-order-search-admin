@@ -73,11 +73,13 @@ class OrdersIndex extends Index implements RecordsProvider {
     }
 
     /**
+     * @param int $perPage
+     *
      * @return int
      */
-    public function getTotalPagesCount()
+    public function getTotalPagesCount($perPage)
     {
-        $results = $this->newQuery();
+        $results = $this->newQuery(['posts_per_page' => (int)$perPage]);
 
         return (int) $results->max_num_pages;
     }
