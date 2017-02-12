@@ -14,10 +14,16 @@ add_action( 'plugins_loaded', function() {
 
 		// Resources
 		require_once( 'inc/OrdersIndex.php' );
+		require_once( 'inc/Options.php' );
+		require_once( 'inc/Plugin.php' );
+
+		$plugin = \AlgoliaOrdersSearch\Plugin::initialize(new \AlgoliaOrdersSearch\Options());
 
 		// WP CLI commands
 		if ( defined('WP_CLI') && WP_CLI ) {
 			require_once( 'inc/Commands.php');
+			$commands = new \AlgoliaOrdersSearch\Commands($plugin->getBus(), $plugin->getOrdersIndex(), $plugin->getOptions());
+            WP_CLI::add_command( 'orders', $commands );
 		}
 	}
 } );

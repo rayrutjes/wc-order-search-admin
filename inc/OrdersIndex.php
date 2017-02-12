@@ -2,24 +2,45 @@
 
 namespace AlgoliaOrdersSearch;
 
+use AlgoliaSearch\Client;
 use RayRutjes\AlgoliaIntegration\Index\Index;
 use RayRutjes\AlgoliaIntegration\Index\IndexSettings;
 use RayRutjes\AlgoliaIntegration\Index\RecordsProvider;
 
-class OrdersIndex implements Index, RecordsProvider {
+class OrdersIndex extends Index implements RecordsProvider {
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var Client
+     */
+    private $client;
+
+    /**
+     * @param string $name
+     * @param Client $client
+     */
+    public function __construct($name, Client $client)
+    {
+        $this->name = $name;
+        $this->client = $client;
+    }
 
     /**
      * @return string
      */
     public function getName()
     {
-        return 'wc_orders';
+        return $this->name;
     }
 
     /**
      * @return RecordsProvider
      */
-    public function getRecordsProvider()
+    protected function getRecordsProvider()
     {
         return $this;
     }
@@ -27,19 +48,38 @@ class OrdersIndex implements Index, RecordsProvider {
     /**
      * @return IndexSettings
      */
-    public function getSettings()
+    protected function getSettings()
     {
-        return new IndexSettings([]);
+        return new IndexSettings([
+            'searchableAttributes' => [
+                'id',
+                'customer.display_name',
+                'customer.email',
+                'items.sku',
+            ],
+            'disableTypoToleranceOnAttributes' => [
+                'id',
+                'items.sku',
+            ],
+            'customRanking' => [
+                'desc(date_timestamp)'
+            ],
+            'attributesForFaceting' => [
+                'customer.display_name',
+                'type',
+                'items.sku',
+            ],
+        ]);
     }
 
     /**
      * @return int
      */
-    public function getTotalRecordsCount()
+    public function getTotalPagesCount()
     {
         $results = $this->newQuery();
 
-        return (int) $results->found_posts;
+        return (int) $results->max_num_pages;
     }
 
     /**
@@ -62,40 +102,45 @@ class OrdersIndex implements Index, RecordsProvider {
             $order = $factory->get_order($post);
 
             $record = [
-                'objectID' => $order->id,
-                'id' => $order->id,
-                'order_type' => $order->order_type,
-                'post_status' => $order->post_status,
-                'order_date' => $order->order_date,
+                'objectID' => (int) $order->id,
+                'id' => (int) $order->id,
+                'type' => $order->order_type,
+                'status_name' => wc_get_order_status_name( $order->get_status() ),
+                'date_timestamp' => strtotime( $order->order_date ),
+                'date_formatted' => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
+                'formatted_order_total' => $order->get_formatted_order_total(),
             ];
 
             // Add user info.
             $user = $order->get_user();
             if($user) {
                 $record['customer'] = [
-                    'ID' => $user->ID,
+                    'id' => (int) $user->ID,
                     'display_name' => $user->display_name,
-                    'user_email' => $user->user_email,
+                    'email' => $user->user_email,
                 ];
             }
 
             // Add items.
-            // $items = $order->get_items('string');
-            $record['item_count'] = $order->get_item_count();
-            $record['edit_order_url'] = 'post.php?post=' . $order->post->ID . '&action=edit';
+            $record['items'] = [];
+            foreach ($order->get_items() as $itemId => $item) {
+                $product = $order->get_product_from_item( $item );
+                $record['items'][] = [
+                    'id' => (int) $itemId,
+                    'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
+                    'qty' => (int) $item['qty'],
+                    'sku' => $product->get_sku()
+                ];
 
-
+            }
 
             $records[] = $record;
-
         }
 
-        var_dump($records);
-
-        exit('test');
+        return $records;
     }
 
-    private function newQuery($args)
+    private function newQuery(array $args = [])
     {
         $defaultArgs = [
             'post_type'   => wc_get_order_types(),
@@ -106,5 +151,13 @@ class OrdersIndex implements Index, RecordsProvider {
         $query = new \WP_Query($args);
 
         return $query;
+    }
+
+    /**
+     * @return Client
+     */
+    protected function getAlgoliaClient()
+    {
+        return $this->client;
     }
 }
