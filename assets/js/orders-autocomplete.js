@@ -1,25 +1,27 @@
-var searchInput = document.getElementById('post-search-input');
-console.log(searchInput);
-
-
 var client = algoliasearch(aosOptions.appId, aosOptions.searchApiKey);
 var index = client.initIndex(aosOptions.ordersIndexName);
-autocomplete('#post-search-input', { hint: false, debug:true }, [
+autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: true }, [
   {
-    source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+    source: autocomplete.sources.hits(index, { hitsPerPage: 7 }),
     displayKey: 'number',
     templates: {
       suggestion: function(suggestion) {
-        return getNumberLine(suggestion)
+        return getStatusMark(suggestion)
+          + getNumberLine(suggestion)
           + getCustomerLine(suggestion)
           + getTotalsLine(suggestion);
       }
     }
   }
 ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-    console.log(suggestion, dataset);
     window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
+
+function getStatusMark(suggestion) {
+  return '<span class="aos-order__status"><mark class="' + suggestion.status + '">'
+    + suggestion._highlightResult.status_name.value
+    + '</mark></span>';
+}
 
 function getNumberLine(suggestion) {
   return '<div class="aos-order__line">'

@@ -57,6 +57,7 @@ class OrdersIndex extends Index implements RecordsProvider {
                 'customer.display_name',
                 'customer.email',
                 'items.sku',
+                'status_name',
             ],
             'disableTypoToleranceOnAttributes' => [
                 'id',
@@ -110,6 +111,7 @@ class OrdersIndex extends Index implements RecordsProvider {
                 'id' => (int) $order->id,
                 'type' => $order->order_type,
                 'number' => $order->get_order_number(),
+                'status' => $order->get_status(),
                 'status_name' => wc_get_order_status_name( $order->get_status() ),
                 'date_timestamp' => strtotime( $order->order_date ),
                 'date_formatted' => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
