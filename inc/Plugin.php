@@ -9,8 +9,6 @@
 namespace AlgoliaOrdersSearch;
 
 use AlgoliaSearch\Client;
-use RayRutjes\AlgoliaIntegration\Bus\SimpleBus;
-use RayRutjes\AlgoliaIntegration\Bus\SuffixHandlerNameResolver;
 use RayRutjes\AlgoliaIntegration\Command\PushRecordsToIndex;
 use RayRutjes\AlgoliaIntegration\Command\PushRecordsToIndexHandler;
 use RayRutjes\AlgoliaIntegration\Command\ReIndexUsingTemporaryNameHandler;
@@ -39,6 +37,7 @@ class Plugin
         $this->options = $options;
 		$algoliaClient = new Client($options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey());
 		$this->ordersIndex = new OrdersIndex($options->getOrdersIndexName(), $algoliaClient);
+		new OrderChangeListener($this->ordersIndex);
     }
 
     /**

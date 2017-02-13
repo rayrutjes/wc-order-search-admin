@@ -13,6 +13,7 @@ add_action( 'plugins_loaded', function() {
 		require_once( 'vendor/autoload.php' );
 
 		// Resources
+		require_once( 'inc/OrderChangeListener.php' );
 		require_once( 'inc/OrdersIndex.php' );
 		require_once( 'inc/Options.php' );
 		require_once( 'inc/Plugin.php' );
@@ -21,9 +22,8 @@ add_action( 'plugins_loaded', function() {
 
 		if(is_admin()) {
             require_once( 'inc/admin/OptionsPage.php' );
-		    new \AlgoliaOrdersSearch\Admin\OptionsPage();
-
             require_once( 'inc/admin/OrdersListPage.php' );
+		    new \AlgoliaOrdersSearch\Admin\OptionsPage();
             new \AlgoliaOrdersSearch\Admin\OrdersListPage( $plugin->getOptions() );
         }
 		// WP CLI commands

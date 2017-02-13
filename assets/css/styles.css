@@ -14,7 +14,7 @@
 #post-search-input {
     border-color: #00AEFF;
     padding-left: 26px;
-    width: 300px;
+    width: 350px;
     border-radius: 3px;
 }
 #post-search-input:focus {
@@ -22,7 +22,7 @@
 }
 
 .aa-dropdown-menu {
-    width: 298px;
+    width: 348px;
     background: #FFF;
     border: 1px solid #00AEFF;
     top: 26px !important;

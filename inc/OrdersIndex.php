@@ -38,6 +38,14 @@ class OrdersIndex extends Index implements RecordsProvider {
     }
 
     /**
+     * @param string $orderId
+     */
+    public function deleteRecordsByOrderId($orderId)
+    {
+        $this->getAlgoliaIndex()->deleteObject((string) $orderId);
+    }
+
+    /**
      * @return RecordsProvider
      */
     protected function getRecordsProvider()
@@ -105,44 +113,7 @@ class OrdersIndex extends Index implements RecordsProvider {
         $factory = new \WC_Order_Factory();
         foreach ($results->posts as $post) {
             $order = $factory->get_order($post);
-
-            $record = [
-                'objectID' => (int) $order->id,
-                'id' => (int) $order->id,
-                'type' => $order->order_type,
-                'number' => $order->get_order_number(),
-                'status' => $order->get_status(),
-                'status_name' => wc_get_order_status_name( $order->get_status() ),
-                'date_timestamp' => strtotime( $order->order_date ),
-                'date_formatted' => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
-                'formatted_order_total' => $order->get_formatted_order_total(),
-                'items_count' => $order->get_item_count(),
-            ];
-
-            // Add user info.
-            $user = $order->get_user();
-            if($user) {
-                $record['customer'] = [
-                    'id' => (int) $user->ID,
-                    'display_name' => $user->display_name,
-                    'email' => $user->user_email,
-                ];
-            }
-
-            // Add items.
-            $record['items'] = [];
-            foreach ($order->get_items() as $itemId => $item) {
-                $product = $order->get_product_from_item( $item );
-                $record['items'][] = [
-                    'id' => (int) $itemId,
-                    'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
-                    'qty' => (int) $item['qty'],
-                    'sku' => $product->get_sku()
-                ];
-
-            }
-
-            $records[] = $record;
+            $records = array_merge($records, $this->getRecordsForOrder($order));
         }
 
         return $records;
@@ -167,5 +138,68 @@ class OrdersIndex extends Index implements RecordsProvider {
     protected function getAlgoliaClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @param \WC_Abstract_Order $order
+     *
+     * @return array
+     */
+    private function getRecordsForOrder(\WC_Abstract_Order $order)
+    {
+        $record = [
+            'objectID' => (int) $order->id,
+            'id' => (int) $order->id,
+            'type' => $order->order_type,
+            'number' => (string) $order->get_order_number(),
+            'status' => $order->get_status(),
+            'status_name' => wc_get_order_status_name( $order->get_status() ),
+            'date_timestamp' => strtotime( $order->order_date ),
+            'date_formatted' => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
+            'formatted_order_total' => $order->get_formatted_order_total(),
+            'items_count' => $order->get_item_count(),
+        ];
+
+        // Add user info.
+        $user = $order->get_user();
+        if($user) {
+            $record['customer'] = [
+                'id' => (int) $user->ID,
+                'display_name' => $user->display_name,
+                'email' => $user->user_email,
+            ];
+        }
+
+        // Add items.
+        $record['items'] = [];
+        foreach ($order->get_items() as $itemId => $item) {
+            $product = $order->get_product_from_item( $item );
+            $record['items'][] = [
+                'id' => (int) $itemId,
+                'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
+                'qty' => (int) $item['qty'],
+                'sku' => $product->get_sku()
+            ];
+
+        }
+
+        return array($record);
+    }
+
+    /**
+     * @param \WC_Abstract_Order $order
+     *
+     * @return int
+     */
+    public function pushRecordsForOrder(\WC_Abstract_Order $order){
+        $records = $this->getRecordsForOrder($order);
+        $totalRecordsCount = count($records);
+        if($totalRecordsCount === 0) {
+            return 0;
+        }
+
+        $this->getAlgoliaIndex()->addObjects($records);
+
+        return $totalRecordsCount;
     }
 }
