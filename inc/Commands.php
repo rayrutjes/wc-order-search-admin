@@ -42,7 +42,6 @@ class Commands extends WP_CLI_Command
         $this->index->pushSettings();
         WP_CLI::success(sprintf('Correctly pushed settings to the index "%s".', $this->index->getName()));
 
-
         WP_CLI::line('About to push all orders to Algolia. Please be patient...');
 
         $start = microtime(true);
