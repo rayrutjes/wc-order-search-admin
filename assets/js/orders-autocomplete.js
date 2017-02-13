@@ -16,9 +16,10 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: fals
 ]).on('autocomplete:selected', function(event, suggestion, dataset) {
     window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
+jQuery('#post-search-input').focus();
 
 function getStatusMark(suggestion) {
-  return '<span class="aos-order__status"><mark class="' + suggestion.status + '">'
+  return '<span class="aos-order__status"><mark title="' + suggestion.status_name + '" class="' + suggestion.status + ' tips">'
     + suggestion._highlightResult.status_name.value
     + '</mark></span>';
 }

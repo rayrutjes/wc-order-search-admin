@@ -46,7 +46,6 @@ class OrderChangeListener
     public function deleteOrderRecords($postId)
     {
         $post = get_post($postId);
-        // exit('test');
 
         if ($post->post_type === 'shop_order') {
             $this->ordersIndex->deleteRecordsByOrderId($post->ID);
