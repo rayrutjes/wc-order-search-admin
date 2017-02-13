@@ -17,9 +17,8 @@ autocomplete('#post-search-input', { hint: false, debug:true }, [
     }
   }
 ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-  console.log(suggestion, dataset);
-
-    window.location.href = "post.php?post=" + + "&action=edit"
+    console.log(suggestion, dataset);
+    window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
 
 function getNumberLine(suggestion) {
@@ -30,6 +29,10 @@ function getNumberLine(suggestion) {
 }
 
 function getCustomerLine(suggestion) {
+  if(typeof suggestion.customer === 'undefined') {
+    return 'Anonymous user';
+  }
+
   return suggestion._highlightResult.customer.display_name.value
     + ' (' + suggestion._highlightResult.customer.email.value + ')';
 }
