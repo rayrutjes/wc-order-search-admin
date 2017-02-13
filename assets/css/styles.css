@@ -35,12 +35,21 @@
 
 .aa-suggestion.aa-cursor {
     background: rgba(0,174,255, .1);
+    cursor: pointer;
 }
 
 .aa-suggestion em {
     font-style: normal;
     background-color: rgba(0,174,255, .1);
     border-bottom: 1px solid rgba(0,174,255, 1);
+}
+
+.aos-order__number {
+    font-weight: bold;
+}http://local.wordpress.dev/wp-admin/post.php?post=883&action=edit
+
+.aos-order__date {
+    color: #9D9DBD;
 }
 
 

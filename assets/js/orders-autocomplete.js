@@ -11,20 +11,32 @@ autocomplete('#post-search-input', { hint: false, debug:true }, [
     templates: {
       suggestion: function(suggestion) {
         return getNumberLine(suggestion)
-          + getCustomerLine(suggestion);
+          + getCustomerLine(suggestion)
+          + getTotalsLine(suggestion);
       }
     }
   }
 ]).on('autocomplete:selected', function(event, suggestion, dataset) {
   console.log(suggestion, dataset);
+
+    window.location.href = "post.php?post=" + + "&action=edit"
 });
 
 function getNumberLine(suggestion) {
-  return '#' + suggestion._highlightResult.number.value + ' - '
-    + suggestion.date_formatted;
+  return '<div class="aos-order__line">'
+    + '<span class="aos-order__number">#' + suggestion._highlightResult.number.value + '</span> - '
+    + '<span class="aos-order__date">' + suggestion.date_formatted + '</span>'
+    + '</div>';
 }
 
 function getCustomerLine(suggestion) {
   return suggestion._highlightResult.customer.display_name.value
     + ' (' + suggestion._highlightResult.customer.email.value + ')';
+}
+
+function getTotalsLine(suggestion) {
+  return '<div class="aos-order__line">'
+    + '<span class="aos-order__items">' + suggestion.items_count + ' items</span> - '
+    + '<span class="aos-order__total">' + suggestion.formatted_order_total + '</span>'
+    + '</div>';
 }
