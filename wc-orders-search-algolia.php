@@ -22,6 +22,9 @@ add_action( 'plugins_loaded', function() {
 		if(is_admin()) {
             require_once( 'inc/admin/OptionsPage.php' );
 		    new \AlgoliaOrdersSearch\Admin\OptionsPage();
+
+            require_once( 'inc/admin/OrdersListPage.php' );
+            new \AlgoliaOrdersSearch\Admin\OrdersListPage( $plugin->getOptions() );
         }
 		// WP CLI commands
 		if ( defined('WP_CLI') && WP_CLI ) {
