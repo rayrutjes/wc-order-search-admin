@@ -35,6 +35,6 @@ class Options
      */
     public function getOrdersToIndexPerBatchCount()
     {
-        return 500;
+        return (int) get_option('wcos_orders_per_batch', 500);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaOrdersSearch\Client;
 use AlgoliaOrdersSearch\AlgoliaIntegration\Index\Index;
 use AlgoliaOrdersSearch\AlgoliaIntegration\Index\IndexSettings;
 use AlgoliaOrdersSearch\AlgoliaIntegration\Index\RecordsProvider;
