@@ -1,6 +1,6 @@
 var client = algoliasearch(aosOptions.appId, aosOptions.searchApiKey);
 var index = client.initIndex(aosOptions.ordersIndexName);
-autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: true }, [
+autocomplete('#post-search-input', { hint: false, openOnFocus: true }, [
   {
     source: autocomplete.sources.hits(index, { hitsPerPage: 7 }),
     displayKey: 'number',
