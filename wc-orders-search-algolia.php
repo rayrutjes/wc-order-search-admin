@@ -51,7 +51,7 @@ add_action(
         }
 
         // WP CLI commands
-        if (defined('WP_CLI') && WP_CLI) {
+        if (defined('WP_CLI') && WP_CLI && $plugin->getOptions()->hasAlgoliaAccountSettings()) {
             require_once 'inc/Commands.php';
             $commands = new \AlgoliaOrdersSearch\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
             WP_CLI::add_command('orders', $commands);
