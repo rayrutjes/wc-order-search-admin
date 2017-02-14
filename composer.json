@@ -14,7 +14,7 @@
         }
     ],
     "config": {
-        "preferred-install": "source",
+        "preferred-install": "dist",
         "sort-packages": true
     },
     "scripts": {
