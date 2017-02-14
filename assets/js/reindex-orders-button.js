@@ -31,6 +31,12 @@
         return;
       }
 
+      if(typeof response.recordsPushedCount === 'undefined') {
+        alert('You should first configure your Algolia account settings.');
+        resetButtons();
+        return;
+      }
+
       totalOrdersIndexed += response.recordsPushedCount;
 
       progress = Math.round((currentPage / response.totalPagesCount)*100);

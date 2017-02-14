@@ -1,10 +1,16 @@
 <div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 
-    <h2>Orders Algolia index</h2>
-    <p class="submit">
-        <button class="aos-reindex-button button button-primary">Re-index orders</button>
-    </p>
+    <h2>Setup instructions</h2>
+    <p>To power your orders search with this plugin you need to:</p>
+    <ol>
+        <li>Create an Algolia account</li>
+        <li>Paste the API keys in the Algolia Account settings section of this page</li>
+        <li>Hit this <button class="aos-reindex-button button button-primary">Re-index orders</button> button</li>
+    </ol>
+    <p>Once you are all set, the search input on your <a href="edit.php?post_type=shop_order">orders list page</a> will be powered by the plugin.</p>
+    <p>Feel free to re-index every time you think something went wrong.</p>
+
 
     <h2>Algolia Account settings</h2>
     <p>This plugin indexes your orders in <a href="https://www.algolia.com/" target="_blank">Algolia</a> to get extremely fast an relevant results.</p>

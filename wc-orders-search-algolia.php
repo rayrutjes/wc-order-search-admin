@@ -12,6 +12,18 @@ define('AOS_VERSION', '0.1.0');
 add_action(
     'plugins_loaded',
     function () {
+        if(!defined( 'WC_VERSION' )) {
+            add_action('admin_notices', function() {
+                ?>
+                <div class="notice notice-error">
+                    <p>The WooCommerce orders search requires the WooCommerce plugin to be active.</p>
+                </div>
+                <?php
+            });
+
+            return;
+        };
+
         // Composer dependencies
         require_once 'vendor/autoload.php';
 
