@@ -2,6 +2,7 @@
 
 namespace AlgoliaOrdersSearch\Admin;
 
+use AlgoliaOrdersSearch\AlgoliaException;
 use AlgoliaOrdersSearch\Options;
 use AlgoliaOrdersSearch\OrdersIndex;
 
@@ -39,13 +40,25 @@ class AjaxReindex
         }
 
         if ($page === 1) {
-            $this->ordersIndex->pushSettings();
+            try {
+                $this->ordersIndex->pushSettings();
+            } catch (AlgoliaException $exception) {
+                wp_send_json_error(array(
+                    'message' => $exception->getMessage(),
+                ));
+            }
         }
 
         $perPage = $this->options->getOrdersToIndexPerBatchCount();
         $totalPages = $this->ordersIndex->getTotalPagesCount($this->options->getOrdersToIndexPerBatchCount());
 
-        $recordsPushedCount = $this->ordersIndex->pushRecords($page, $perPage);
+        try {
+            $recordsPushedCount = $this->ordersIndex->pushRecords($page, $perPage);
+        } catch (AlgoliaException $exception) {
+            wp_send_json_error(array(
+                'message' => $exception->getMessage(),
+            ));
+        }
 
         $response = [
             'recordsPushedCount' => $recordsPushedCount,
@@ -54,8 +67,6 @@ class AjaxReindex
         ];
 
         wp_send_json($response);
-
-        wp_die();
     }
 
 }
