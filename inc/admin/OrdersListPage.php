@@ -30,7 +30,7 @@ class OrdersListPage
         if($screen->id !== 'edit-shop_order') {
             return;
         }
-        
+
         wp_enqueue_style( 'aos_orders_search', plugin_dir_url( __FILE__ ) . '../../assets/css/styles.css' );
 
         wp_enqueue_script( 'aos_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', array(), false, true );
