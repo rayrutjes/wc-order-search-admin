@@ -126,3 +126,9 @@
     content: "\e014";
     color: #999;
 }
+
+.aa-dropdown-menu img.aos-powered-by{
+    width: 130px;
+    float: right;
+    margin: 10px;
+}

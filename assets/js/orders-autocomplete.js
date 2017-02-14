@@ -1,6 +1,6 @@
 var client = algoliasearch(aosOptions.appId, aosOptions.searchApiKey);
 var index = client.initIndex(aosOptions.ordersIndexName);
-autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: false }, [
+autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: true }, [
   {
     source: autocomplete.sources.hits(index, { hitsPerPage: 7 }),
     displayKey: 'number',
@@ -10,6 +10,9 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: fals
           + getNumberLine(suggestion)
           + getCustomerLine(suggestion)
           + getTotalsLine(suggestion);
+      },
+      footer: function(){
+        return '<a href="https://www.algolia.com/"><img class="aos-powered-by" src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg"></a>';
       }
     }
   }
