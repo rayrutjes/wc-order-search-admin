@@ -6,6 +6,8 @@
  * Author Name: Raymond Rutjes
  */
 
+define('AOS_VERSION', '0.1.0');
+
 add_action( 'plugins_loaded', function() {
 	// Check `composer install` has been ran
 	if ( file_exists( dirname( __FILE__ ) . '/vendor' ) ) { 

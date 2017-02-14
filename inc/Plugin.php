@@ -8,8 +8,6 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaOrdersSearch\Client;
-
 class Plugin
 {
     /**
@@ -27,8 +25,18 @@ class Plugin
      */
     private function __construct(Options $options)
     {
+        global $wp_version;
+
         $this->options = $options;
 		$algoliaClient = new Client($options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey());
+
+        $integrationName = 'wc-orders-search';
+        $ua = '; ' . $integrationName . ' integration (' . AOS_VERSION . ')'
+            . '; PHP (' . phpversion() . ')'
+            . '; Wordpress (' . $wp_version . ')';
+
+        Version::$custom_value = $ua;
+
 		$this->ordersIndex = new OrdersIndex($options->getOrdersIndexName(), $algoliaClient);
 		new OrderChangeListener($this->ordersIndex);
     }
