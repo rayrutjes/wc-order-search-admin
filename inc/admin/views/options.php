@@ -7,6 +7,10 @@
     </p>
 
     <h2>Algolia Account settings</h2>
+    <p>This plugin indexes your orders in <a href="https://www.algolia.com/" target="_blank">Algolia</a> to get extremely fast an relevant results.</p>
+    <p>Algolia is a hosted search service that offers <a href="https://www.algolia.com/pricing" target="_blank">different pricing plans</a> according to your usage.</p>
+    <p>In this plugin, every un-trashed order will be stored as one record in Algolia.</p>
+    <p>If you <strong>don't have an Algolia account yet</strong>, you can <a href="https://www.algolia.com/users/sign_up" target="_blank">create one in a few minutes</a>.</p>
 
     <form method="post">
         <table class="form-table">
@@ -17,6 +21,7 @@
                     </th>
                     <td>
                         <input type="text" class="regular-text" name="wcos_alg_app_id" value="<?php echo esc_attr($this->options->getAlgoliaAppId()); ?>">
+                        <p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
                     </td>
                 </tr>
                 <tr>
@@ -25,7 +30,13 @@
                     </th>
                     <td>
                         <input type="text" class="regular-text" name="wcos_alg_search_api_key" value="<?php echo esc_attr($this->options->getAlgoliaSearchApiKey()); ?>">
-                        <p class="description">Make sure this key is not used for frontend search!</p>
+                        <p class="description">
+                            You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.
+                            <br>
+                            For maximum security, this key should only have "search" permission on the "<?php echo esc_attr($this->options->getOrdersIndexName()); ?>" index.
+                            <br>
+                            Read more about permissions in the <a href="https://www.algolia.com/doc/guides/security/api-keys/" target="_blank">Algolia guide about API keys</a>.
+                        </p>
                     </td>
                 </tr>
                 <tr>
@@ -34,6 +45,7 @@
                     </th>
                     <td>
                         <input type="password" class="regular-text" name="wcos_alg_admin_api_key" value="<?php echo esc_attr($this->options->getAlgoliaAdminApiKey()); ?>">
+                        <p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
                     </td>
                 </tr>
             </tbody>
