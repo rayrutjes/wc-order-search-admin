@@ -8,7 +8,7 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaSearch\Client;
+use AlgoliaOrdersSearch\Client;
 
 class Plugin
 {

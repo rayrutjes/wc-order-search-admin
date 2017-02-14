@@ -2,10 +2,10 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaSearch\Client;
-use RayRutjes\AlgoliaIntegration\Index\Index;
-use RayRutjes\AlgoliaIntegration\Index\IndexSettings;
-use RayRutjes\AlgoliaIntegration\Index\RecordsProvider;
+use AlgoliaOrdersSearch\Client;
+use AlgoliaOrdersSearch\AlgoliaIntegration\Index\Index;
+use AlgoliaOrdersSearch\AlgoliaIntegration\Index\IndexSettings;
+use AlgoliaOrdersSearch\AlgoliaIntegration\Index\RecordsProvider;
 
 class OrdersIndex extends Index implements RecordsProvider {
 
