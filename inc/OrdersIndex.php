@@ -198,11 +198,12 @@ class OrdersIndex extends Index implements RecordsProvider
         $record['items'] = array();
         foreach ($order->get_items() as $itemId => $item) {
             $product = $order->get_product_from_item($item);
+
             $record['items'][] = array(
                 'id' => (int) $itemId,
                 'name' => apply_filters('woocommerce_order_item_name', esc_html($item['name']), $item, false),
                 'qty' => (int) $item['qty'],
-                'sku' => $product->get_sku(),
+                'sku' => $product instanceof \WC_Product ? $product->get_sku() : '',
             );
         }
 

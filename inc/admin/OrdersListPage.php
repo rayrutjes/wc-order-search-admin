@@ -47,6 +47,7 @@ class OrdersListPage
             'appId' => $this->options->getAlgoliaAppId(),
             'searchApiKey' => $this->options->getAlgoliaSearchApiKey(),
             'ordersIndexName' => $this->options->getOrdersIndexName(),
+            'debug' => defined('WP_DEBUG') && WP_DEBUG === true,
         ));
     }
 }
