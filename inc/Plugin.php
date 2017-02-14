@@ -8,14 +8,7 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaSearch\Client;
-use RayRutjes\AlgoliaIntegration\Command\PushRecordsToIndex;
-use RayRutjes\AlgoliaIntegration\Command\PushRecordsToIndexHandler;
-use RayRutjes\AlgoliaIntegration\Command\ReIndexUsingTemporaryNameHandler;
-use RayRutjes\AlgoliaIntegration\Command\UpdateIndexSettingsHandler;
-use RayRutjes\AlgoliaIntegration\Index\InMemoryIndexManager;
-use RayRutjes\AlgoliaIntegration\Index\NoopIndexNameInflector;
-use RayRutjes\AlgoliaIntegration\Index\TemporaryIndexNameInflector;
+use AlgoliaOrdersSearch\Client;
 
 class Plugin
 {

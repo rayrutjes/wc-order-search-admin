@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c0f26638d5ac159089ab5c73a9d62c3a",
+    "hash": "f575a538258d262e2bd8a9de38fe5a0c",
     "content-hash": "427f86b16a4ff7121dcde909a1441130",
     "packages": [
         {
@@ -64,12 +64,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:rayrutjes/algolia-php-integration.git",
-                "reference": "d2b942b4e923476a023c271e1a3893711c41da93"
+                "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rayrutjes/algolia-php-integration/zipball/d2b942b4e923476a023c271e1a3893711c41da93",
-                "reference": "d2b942b4e923476a023c271e1a3893711c41da93",
+                "url": "https://api.github.com/repos/rayrutjes/algolia-php-integration/zipball/c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
+                "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "source": "https://github.com/rayrutjes/algolia-php-integration/tree/master",
                 "issues": "https://github.com/rayrutjes/algolia-php-integration/issues"
             },
-            "time": "2017-02-10 15:56:43"
+            "time": "2017-02-14 10:17:22"
         }
     ],
     "packages-dev": [],

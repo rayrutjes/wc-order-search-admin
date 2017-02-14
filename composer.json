@@ -16,5 +16,9 @@
     "config": {
         "preferred-install": "source",
         "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": "bin/scope-deps.sh",
+        "post-update-cmd": "bin/scope-deps.sh"
     }
 }
