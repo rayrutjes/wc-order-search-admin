@@ -192,6 +192,12 @@ class OrdersIndex extends Index implements RecordsProvider
                 'display_name' => $user->display_name,
                 'email' => $user->user_email,
             );
+        } else {
+            // Deal with guest checkouts.
+            $record['customer'] = array(
+                'display_name' => $order->get_formatted_billing_full_name(),
+                'email' => $order->billing_email,
+            );
         }
 
         // Add items.
