@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of AlgoliaIntegration library.
+ * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace AlgoliaOrdersSearch;
 
 use WP_CLI;
@@ -35,6 +42,8 @@ class Commands extends WP_CLI_Command
      *     wp orders reIndex
      *
      * @when before_wp_load
+     * @param mixed $args
+     * @param mixed $assoc_args
      */
     public function reIndex($args, $assoc_args)
     {
@@ -63,5 +72,3 @@ class Commands extends WP_CLI_Command
         WP_CLI::success(sprintf('%d orders indexed in %d seconds!', $totalRecordsCount, $elapsed));
     }
 }
-
-

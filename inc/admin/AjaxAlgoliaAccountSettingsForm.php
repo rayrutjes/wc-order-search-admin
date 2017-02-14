@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of AlgoliaIntegration library.
+ * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace AlgoliaOrdersSearch\Admin;
 
 use AlgoliaOrdersSearch\Options;
@@ -20,12 +27,12 @@ class AjaxAlgoliaAccountSettingsForm
     {
         $this->options = $options;
 
-        add_action('wp_ajax_aos_save_algolia_settings', [$this, 'saveAlgoliaAccountSettings']);
+        add_action('wp_ajax_aos_save_algolia_settings', array($this, 'saveAlgoliaAccountSettings'));
     }
 
     public function saveAlgoliaAccountSettings()
     {
-        if(!isset($_POST['app_id']) || !isset($_POST['search_api_key']) || !isset($_POST['admin_api_key'])) {
+        if (!isset($_POST['app_id']) || !isset($_POST['search_api_key']) || !isset($_POST['admin_api_key'])) {
             wp_die('Hacker');
         }
 
@@ -37,13 +44,11 @@ class AjaxAlgoliaAccountSettingsForm
             ));
         }
 
-        $response = [
+        $response = array(
             'success' => true,
-            'message' => 'Your Algolia account settings have been saved. Please refresh the page and hit the "re-index orders" button if you never did so already.'
-        ];
+            'message' => 'Your Algolia account settings have been saved. Please refresh the page and hit the "re-index orders" button if you never did so already.',
+        );
 
         wp_send_json($response);
     }
-
-
 }

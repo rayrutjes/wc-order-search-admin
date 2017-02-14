@@ -1,13 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: raymond
- * Date: 13/02/2017
- * Time: 22:50
+
+/*
+ * This file is part of AlgoliaIntegration library.
+ * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace AlgoliaOrdersSearch;
-
 
 class OrderChangeListener
 {
@@ -22,13 +22,15 @@ class OrderChangeListener
     public function __construct(OrdersIndex $ordersIndex)
     {
         $this->ordersIndex = $ordersIndex;
-        add_action('save_post', [$this, 'pushOrderRecords'], 10, 2);
-        add_action('before_delete_post', [$this, 'deleteOrderRecords']);
-        add_action('wp_trash_post', [$this, 'deleteOrderRecords']);
+        add_action('save_post', array($this, 'pushOrderRecords'), 10, 2);
+        add_action('before_delete_post', array($this, 'deleteOrderRecords'));
+        add_action('wp_trash_post', array($this, 'deleteOrderRecords'));
     }
 
     /**
-     * @param int $orderId
+     * @param int   $orderId
+     * @param mixed $postId
+     * @param mixed $post
      */
     public function pushOrderRecords($postId, $post)
     {
@@ -51,5 +53,4 @@ class OrderChangeListener
             $this->ordersIndex->deleteRecordsByOrderId($post->ID);
         }
     }
-
 }

@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of AlgoliaIntegration library.
+ * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace AlgoliaOrdersSearch\Admin;
 
 use AlgoliaOrdersSearch\AlgoliaException;
@@ -8,7 +15,6 @@ use AlgoliaOrdersSearch\OrdersIndex;
 
 class AjaxReindex
 {
-
     /**
      * @var OrdersIndex
      */
@@ -27,14 +33,14 @@ class AjaxReindex
     {
         $this->options = $options;
 
-        add_action('wp_ajax_aos_reindex', [$this, 'reIndex']);
+        add_action('wp_ajax_aos_reindex', array($this, 'reIndex'));
         $this->ordersIndex = $ordersIndex;
     }
 
     public function reIndex()
     {
         if (isset($_POST['page'])) {
-            $page = (int)$_POST['page'];
+            $page = (int) $_POST['page'];
         } else {
             $page = 1;
         }
@@ -60,13 +66,12 @@ class AjaxReindex
             ));
         }
 
-        $response = [
+        $response = array(
             'recordsPushedCount' => $recordsPushedCount,
-            'totalPagesCount'    => $totalPages,
-            'finished'           => $page >= $totalPages,
-        ];
+            'totalPagesCount' => $totalPages,
+            'finished' => $page >= $totalPages,
+        );
 
         wp_send_json($response);
     }
-
 }

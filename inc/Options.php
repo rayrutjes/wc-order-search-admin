@@ -1,9 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: raymond
- * Date: 11/02/2017
- * Time: 19:06
+
+/*
+ * This file is part of AlgoliaIntegration library.
+ * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace AlgoliaOrdersSearch;
@@ -15,6 +16,13 @@ class Options
         return !empty($this->getAlgoliaAppId())
             && !empty($this->getAlgoliaSearchApiKey())
             && !empty($this->getAlgoliaAdminApiKey());
+    }
+
+    public function clearAlgoliaAccountSettings()
+    {
+        update_option('aos_alg_app_id', '');
+        update_option('aos_alg_search_api_key', '');
+        update_option('aos_alg_admin_api_key', '');
     }
 
     public function getAlgoliaAppId()
@@ -53,7 +61,7 @@ class Options
 
     public function setOrdersIndexName($ordersIndexName)
     {
-        $ordersIndexName = trim((string)$ordersIndexName);
+        $ordersIndexName = trim((string) $ordersIndexName);
         $this->assertNotEmpty($ordersIndexName, 'Orders index name');
         update_option('aos_orders_index_name', $ordersIndexName);
     }
@@ -63,12 +71,12 @@ class Options
      */
     public function getOrdersToIndexPerBatchCount()
     {
-        return (int)get_option('aos_orders_per_batch', 500);
+        return (int) get_option('aos_orders_per_batch', 500);
     }
 
     public function setOrdersToIndexPerBatchCount($perBatch)
     {
-        $perBatch = (int)$perBatch;
+        $perBatch = (int) $perBatch;
         if ($perBatch <= 0) {
             $perBatch = 500;
         }
@@ -79,7 +87,7 @@ class Options
     private function assertNotEmpty($value, $attributeName)
     {
         if (strlen($value) === 0) {
-            throw new \InvalidArgumentException($attributeName . ' should not be empty.');
+            throw new \InvalidArgumentException($attributeName.' should not be empty.');
         }
     }
 }
