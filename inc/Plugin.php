@@ -28,6 +28,10 @@ class Plugin
         global $wp_version;
 
         $this->options = $options;
+        if(!$this->options->hasAlgoliaAccountSettings()) {
+            return;
+        }
+
 		$algoliaClient = new Client($options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey());
 
         $integrationName = 'wc-orders-search';
@@ -81,6 +85,9 @@ class Plugin
      */
     public function getOrdersIndex()
     {
+        if(null === $this->ordersIndex) {
+            throw new \LogicException('Orders index has not be initialized.');
+        }
         return $this->ordersIndex;
     }
 }

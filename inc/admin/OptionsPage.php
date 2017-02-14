@@ -29,6 +29,7 @@ class OptionsPage {
         }
 
         wp_enqueue_script( 'aos_orders_search', plugin_dir_url( __FILE__ ) . '../../assets/js/reindex-orders-button.js', array('jquery'), false, true );
+        wp_enqueue_script( 'aos_ajax_forms', plugin_dir_url( __FILE__ ) . '../../assets/js/ajax-forms.js', array('jquery'), false, true );
 
         /*wp_localize_script( 'aos_orders_search', 'aosOptions', array(
             'appId' => $this->options->getAlgoliaAppId(),

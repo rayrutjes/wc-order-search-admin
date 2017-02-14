@@ -12,7 +12,8 @@
     <p>In this plugin, every un-trashed order will be stored as one record in Algolia.</p>
     <p>If you <strong>don't have an Algolia account yet</strong>, you can <a href="https://www.algolia.com/users/sign_up" target="_blank">create one in a few minutes</a>.</p>
 
-    <form method="post">
+    <form method="post" class="aos-ajax-form">
+        <input type="hidden" name="action" value="aos_save_algolia_settings">
         <table class="form-table">
             <tbody>
                 <tr>
@@ -20,7 +21,7 @@
                         <label>Algolia Application ID: </label>
                     </th>
                     <td>
-                        <input type="text" class="regular-text" name="wcos_alg_app_id" value="<?php echo esc_attr($this->options->getAlgoliaAppId()); ?>">
+                        <input type="text" class="regular-text" name="app_id" value="<?php echo esc_attr($this->options->getAlgoliaAppId()); ?>">
                         <p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
                     </td>
                 </tr>
@@ -29,7 +30,7 @@
                         <label>Algolia Search API key:</label>
                     </th>
                     <td>
-                        <input type="text" class="regular-text" name="wcos_alg_search_api_key" value="<?php echo esc_attr($this->options->getAlgoliaSearchApiKey()); ?>">
+                        <input type="text" class="regular-text" name="search_api_key" value="<?php echo esc_attr($this->options->getAlgoliaSearchApiKey()); ?>">
                         <p class="description">
                             You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.
                             <br>
@@ -44,7 +45,7 @@
                         <label>Algolia Admin API key:</label>
                     </th>
                     <td>
-                        <input type="password" class="regular-text" name="wcos_alg_admin_api_key" value="<?php echo esc_attr($this->options->getAlgoliaAdminApiKey()); ?>">
+                        <input type="password" class="regular-text" name="admin_api_key" value="<?php echo esc_attr($this->options->getAlgoliaAdminApiKey()); ?>">
                         <p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
                     </td>
                 </tr>
@@ -61,7 +62,8 @@
 
     <h2>Orders indexing settings</h2>
 
-    <form method="post">
+    <form method="post" class="aos-ajax-form">
+        <input type="hidden" name="action" value="aos_save_indexing_options">
         <table class="form-table">
             <tbody>
             <tr>
@@ -69,7 +71,7 @@
                     <label>Orders index name in Algolia:</label>
                 </th>
                 <td>
-                    <input type="text" class="regular-text" name="wcos_orders_index_name" value="<?php echo esc_attr($this->options->getOrdersIndexName()); ?>">
+                    <input type="text" class="regular-text" name="orders_index_name" value="<?php echo esc_attr($this->options->getOrdersIndexName()); ?>">
                 </td>
             </tr>
             <tr>
@@ -77,7 +79,7 @@
                     <label>Orders to index per batch:</label>
                 </th>
                 <td>
-                    <input type="number" name="wcos_orders_per_batch"  value="<?php echo esc_attr($this->options->getOrdersToIndexPerBatchCount()); ?>">
+                    <input type="number" name="orders_per_batch"  value="<?php echo esc_attr($this->options->getOrdersToIndexPerBatchCount()); ?>">
                 </td>
             </tr>
             </tbody>

@@ -28,9 +28,15 @@ add_action(
                 require_once('inc/admin/OptionsPage.php');
                 require_once('inc/admin/OrdersListPage.php');
                 require_once('inc/admin/AjaxReindex.php');
+                require_once('inc/admin/AjaxIndexingOptionsForm.php');
+                require_once('inc/admin/AjaxAlgoliaAccountSettingsForm.php');
                 new \AlgoliaOrdersSearch\Admin\OptionsPage($plugin->getOptions());
                 new \AlgoliaOrdersSearch\Admin\OrdersListPage($plugin->getOptions());
-                new \AlgoliaOrdersSearch\Admin\AjaxReindex($plugin->getOrdersIndex(), $plugin->getOptions());
+                if($plugin->getOptions()->hasAlgoliaAccountSettings()) {
+                    new \AlgoliaOrdersSearch\Admin\AjaxReindex($plugin->getOrdersIndex(), $plugin->getOptions());
+                }
+                new \AlgoliaOrdersSearch\Admin\AjaxIndexingOptionsForm($plugin);
+                new \AlgoliaOrdersSearch\Admin\AjaxAlgoliaAccountSettingsForm($plugin->getOptions());
             }
 
             // WP CLI commands
