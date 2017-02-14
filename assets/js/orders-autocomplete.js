@@ -12,7 +12,7 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: true
           + getTotalsLine(suggestion);
       },
       footer: function(){
-        return '<a href="https://www.algolia.com/"><img class="aos-powered-by" src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg"></a>';
+        return '<a href="https://www.algolia.com/"><img class="aos-powered-by" src="http://res.cloudinary.com/hilnmyskv/image/upload/v1487071435/search-by-algolia.svg"></a>';
       }
     }
   }
