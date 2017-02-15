@@ -9,25 +9,21 @@
 
 namespace AlgoliaOrdersSearch\Admin;
 
-use AlgoliaOrdersSearch\AlgoliaException;
-use AlgoliaOrdersSearch\Plugin;
+use AlgoliaOrdersSearch\Options;
 
 class AjaxIndexingOptionsForm
 {
     /**
-     * @var Plugin
+     * @var Options
      */
-    private $plugin;
+    private $options;
 
     /**
-     * @param Plugin $plugin
-     *
-     * @internal param OrdersIndex $ordersIndex
-     * @internal param Options $options
+     * @param Options $options
      */
-    public function __construct(Plugin $plugin)
+    public function __construct(Options $options)
     {
-        $this->plugin = $plugin;
+        $this->options = $options;
 
         add_action('wp_ajax_aos_save_indexing_options', array($this, 'saveIndexingOptions'));
     }
@@ -38,29 +34,19 @@ class AjaxIndexingOptionsForm
             wp_die('Hacker');
         }
 
-        $options = $this->plugin->getOptions();
-
         try {
-            $options->setOrdersIndexName($_POST['orders_index_name']);
+            $this->options->setOrdersIndexName($_POST['orders_index_name']);
         } catch (\InvalidArgumentException $exception) {
             wp_send_json_error(array(
                 'message' => $exception->getMessage(),
             ));
         }
 
-        if ($options->hasAlgoliaAccountSettings()) {
-            try {
-                $this->plugin->getOrdersIndex()->moveTo($options->getOrdersIndexName());
-            } catch (AlgoliaException $exception) {
-                // Will fail if index doesn't exist which is OK.
-            }
-        }
-
-        $options->setOrdersToIndexPerBatchCount($_POST['orders_per_batch']);
+        $this->options->setOrdersToIndexPerBatchCount($_POST['orders_per_batch']);
 
         $response = array(
             'success' => true,
-            'message' => 'Your indexing options have been saved.',
+            'message' => 'Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.',
         );
 
         wp_send_json($response);

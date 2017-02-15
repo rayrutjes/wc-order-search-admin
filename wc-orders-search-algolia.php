@@ -46,7 +46,7 @@ add_action(
             if ($plugin->getOptions()->hasAlgoliaAccountSettings()) {
                 new \AlgoliaOrdersSearch\Admin\AjaxReindex($plugin->getOrdersIndex(), $plugin->getOptions());
             }
-            new \AlgoliaOrdersSearch\Admin\AjaxIndexingOptionsForm($plugin);
+            new \AlgoliaOrdersSearch\Admin\AjaxIndexingOptionsForm($plugin->getOptions());
             new \AlgoliaOrdersSearch\Admin\AjaxAlgoliaAccountSettingsForm($plugin->getOptions());
         }
 
