@@ -182,6 +182,8 @@ class OrdersIndex extends Index implements RecordsProvider
             'date_formatted' => date_i18n(get_option('date_format'), strtotime($order->order_date)),
             'formatted_order_total' => $order->get_formatted_order_total(),
             'items_count' => $order->get_item_count(),
+            'payment_method_title' => $order->payment_method_title,
+            'shipping_method_title' => $order->shipping_method_title,
         );
 
         // Add user info.

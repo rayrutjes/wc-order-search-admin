@@ -9,7 +9,8 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
         return getStatusMark(suggestion)
           + getNumberLine(suggestion)
           + getCustomerLine(suggestion)
-          + getTotalsLine(suggestion);
+          + getTotalsLine(suggestion)
+          + getMethodsLine(suggestion);
       },
       footer: function(){
         return '<a href="https://www.algolia.com/"><img class="aos-powered-by" src="http://res.cloudinary.com/hilnmyskv/image/upload/v1487071435/search-by-algolia.svg"></a>';
@@ -45,7 +46,23 @@ function getCustomerLine(suggestion) {
 
 function getTotalsLine(suggestion) {
   return '<div class="aos-order__line">'
-    + '<span class="aos-order__items">' + suggestion.items_count + ' items</span> - '
+    + '<span class="aos-order__items">' + suggestion.items_count + ' item(s)</span>'
     + '<span class="aos-order__total">' + suggestion.formatted_order_total + '</span>'
     + '</div>';
+}
+
+function getMethodsLine(suggestion) {
+  var html = '';
+  if(suggestion.shipping_method_title) {
+    html += '<span class="aos-order__shipping-method">Via ' + suggestion.shipping_method_title + '</span>';
+  }
+  if(suggestion.payment_method_title) {
+    html += '<span class="aos-order__payment-method">Via ' + suggestion.payment_method_title + '</span>';
+  }
+
+  if(html.length === 0) {
+    return '';
+  }
+
+  return '<div class="aos-order__line">'+ html + '</div>';
 }

@@ -132,3 +132,14 @@
     float: right;
     margin: 10px;
 }
+
+.aos-order__total,
+.aos-order__payment-method {
+    float: right;
+}
+
+.aos-order__shipping-method,
+.aos-order__payment-method{
+    color: #9D9DBD;
+}
+
