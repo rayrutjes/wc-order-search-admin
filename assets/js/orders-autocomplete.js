@@ -23,9 +23,9 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
 jQuery('#post-search-input').focus();
 
 function getStatusMark(suggestion) {
-  return '<span class="aos-order__status"><mark title="' + suggestion.status_name + '" class="' + suggestion.status + ' tips">'
+  return '<span class="widefat"><span class="aos-order__status column-order_status"><mark title="' + suggestion.status_name + '" class="' + suggestion.status + ' tips">'
     + suggestion._highlightResult.status_name.value
-    + '</mark></span>';
+    + '</mark></span></span>';
 }
 
 function getNumberLine(suggestion) {

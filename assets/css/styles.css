@@ -56,75 +56,10 @@
 }
 
 .aa-suggestion mark {
-    display: block;
-    text-indent: -9999px;
-    position: relative;
-    height: 1em;
-    width: 1em;
-    background: 0 0;
-    font-size: 1.4em;
     float: left;
-    margin-right: 5px;
-}
-
-.aa-suggestion mark.pending:after,
-.aa-suggestion mark.completed:after,
-.aa-suggestion mark.on-hold:after,
-.aa-suggestion mark.failed:after,
-.aa-suggestion mark.cancelled:after,
-.aa-suggestion mark.processing:after,
-.aa-suggestion mark.refunded:after {
-    font-family: 'WooCommerce';
-    speak: none;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-    text-indent: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    content: "\e001";
-}
-
-.aa-suggestion mark.pending:after {
-    content: "\e012";
-    color: #ffba00;
-}
-
-.aa-suggestion mark.completed:after {
-    content: "\e015";
-    color: #2ea2cc;
-}
-
-.aa-suggestion mark.on-hold:after {
-    content: "\e033";
-    color: #999;
-}
-
-.aa-suggestion mark.failed:after {
-    content: "\e016";
-    color: #d0c21f;
-}
-
-.aa-suggestion mark.cancelled:after {
-    content: "\e013";
-    color: #a00;
-}
-
-.aa-suggestion mark.processing:after {
-    content: "\e011";
-    color: #73a724;
-}
-
-.aa-suggestion mark.refunded:after {
-    content: "\e014";
-    color: #999;
+    margin-right: 5px !important;
+    height: 18px !important;
+    width: 18px !important;
 }
 
 .aa-dropdown-menu img.aos-powered-by{
