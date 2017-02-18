@@ -28,7 +28,6 @@ class OrderChangeListener
     }
 
     /**
-     * @param int   $orderId
      * @param mixed $postId
      * @param mixed $post
      */
