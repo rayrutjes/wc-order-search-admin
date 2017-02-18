@@ -30,7 +30,7 @@ class Plugin
 
         $this->options = $options;
         if (!$this->options->hasAlgoliaAccountSettings()) {
-            add_action( 'admin_notices', array($this, 'configureAlgoliaSettingsNotice') );
+            add_action('admin_notices', array($this, 'configureAlgoliaSettingsNotice'));
 
             return;
         }
@@ -96,16 +96,17 @@ class Plugin
         return $this->ordersIndex;
     }
 
-    public function configureAlgoliaSettingsNotice(){
+    public function configureAlgoliaSettingsNotice()
+    {
         $screen = get_current_screen();
-        if($screen->id === 'settings_page_aos_options') {
+        if ($screen->id === 'settings_page_aos_options') {
             return;
-        }
-        ?>
+        } ?>
         <div class="notice notice-success">
             <p>You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.</p>
             <p><a href="options-general.php?page=aos_options" class="button button-primary">Setup now</a></p>
         </div>
         <?php
+
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of AlgoliaIndex library.
+ * This file is part of Algolia Orders Search for WooCommerce library.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -95,6 +95,23 @@ class OrdersIndex extends Index implements RecordsProvider
         $this->getAlgoliaIndex()->addObjects($records);
 
         return $totalRecordsCount;
+    }
+
+    /**
+     * @param mixed $id
+     *
+     * @return array
+     */
+    public function getRecordsForId($id)
+    {
+        $factory = new \WC_Order_Factory();
+        $order = $factory->get_order($id);
+
+        if (!$order instanceof \WC_Abstract_Order) {
+            return array();
+        }
+
+        return $this->getRecordsForOrder($order);
     }
 
     /**
@@ -216,23 +233,6 @@ class OrdersIndex extends Index implements RecordsProvider
     }
 
     /**
-     * @param mixed $id
-     *
-     * @return array
-     */
-    public function getRecordsForId($id)
-    {
-        $factory = new \WC_Order_Factory();
-        $order = $factory->get_order($id);
-
-        if(!$order instanceof \WC_Abstract_Order) {
-            return array();
-        }
-
-        return $this->getRecordsForOrder($order);
-    }
-
-    /**
      * @param \WP_Query $query
      *
      * @return array
@@ -243,7 +243,7 @@ class OrdersIndex extends Index implements RecordsProvider
         $factory = new \WC_Order_Factory();
         foreach ($query->posts as $post) {
             $order = $factory->get_order($post);
-            if(!$order instanceof \WC_Abstract_Order) {
+            if (!$order instanceof \WC_Abstract_Order) {
                 continue;
             }
             $records = array_merge($records, $this->getRecordsForOrder($order));

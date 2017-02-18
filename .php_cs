@@ -23,6 +23,9 @@ return PhpCsFixer\Config::create()
         'strict_param' => true,
     ))
     ->setFinder(
-        PhpCsFixer\Finder::create()->in(__DIR__)
+        PhpCsFixer\Finder::create()
+        ->in(__DIR__)
+        ->exclude('libs')
+        ->notPath('wc-orders-search-algolia.php')
     )
 ;

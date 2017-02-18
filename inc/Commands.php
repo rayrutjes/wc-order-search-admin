@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of AlgoliaIndex library.
+ * This file is part of Algolia Orders Search for WooCommerce library.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -24,6 +24,9 @@ class Commands extends WP_CLI_Command
      */
     private $options;
 
+    /**
+     * @var \cli\progress\Bar
+     */
     private $progress;
 
     /**
@@ -44,6 +47,7 @@ class Commands extends WP_CLI_Command
      *     wp orders reIndex
      *
      * @when before_wp_load
+     *
      * @param mixed $args
      * @param mixed $assoc_args
      */
@@ -61,14 +65,14 @@ class Commands extends WP_CLI_Command
 
         $self = $this;
 
-        $totalRecordsCount = $this->index->reIndex(false, $perPage, function($records, $page, $totalPages) use ($self) {
-            if(null === $self->progress) {
+        $totalRecordsCount = $this->index->reIndex(false, $perPage, function ($records, $page, $totalPages) use ($self) {
+            if (null === $self->progress) {
                 $self->progress = WP_CLI\Utils\make_progress_bar('Indexing orders', $totalPages);
             }
             $self->progress->tick();
         });
 
-        if(null !== $this->progress) {
+        if (null !== $this->progress) {
             $this->progress->finish();
         }
 
