@@ -25,7 +25,7 @@ add_action(
         };
 
         // Composer dependencies
-        require_once 'vendor/autoload.php';
+        require_once 'libs/autoload.php';
 
         // Resources
         require_once 'inc/OrderChangeListener.php';

@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-# Todo: abstract this to make it more re-usable.
+rm -rf ./libs
+cp -R vendor libs
 
-find ./vendor -name "*.php" -exec sed -i 's/AlgoliaSearch/AlgoliaOrdersSearch/g' {} \;
-find ./vendor -name "composer.json" -exec sed -i 's/AlgoliaSearch/AlgoliaOrdersSearch/g' {} \;
-mv ./vendor/algolia/algoliasearch-client-php/src/AlgoliaSearch ./vendor/algolia/algoliasearch-client-php/src/AlgoliaOrdersSearch 2>/dev/null
+MY_NAMESPACE="AlgoliaOrdersSearch"
 
-find ./vendor -name "*.php" -exec sed -i 's/RayRutjes/AlgoliaOrdersSearch/g' {} \;
-find ./vendor -name "composer.json" -exec sed -i 's/RayRutjes/AlgoliaOrdersSearch/g' {} \;
+find ./libs -name "*.php" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;
+find ./libs -name "composer.json" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;
+mv ./libs/algolia/algoliasearch-client-php/src/AlgoliaSearch ./libs/algolia/algoliasearch-client-php/src/${MY_NAMESPACE} 2>/dev/null
+
+find ./libs -name "*.php" -exec sed -i "s/RayRutjes/${MY_NAMESPACE}/g" {} \;
+find ./libs -name "composer.json" -exec sed -i "s/RayRutjes/${MY_NAMESPACE}/g" {} \;
