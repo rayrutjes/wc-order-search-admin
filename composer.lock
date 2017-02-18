@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5838c556e2ad71de327b0db577743ebe",
-    "content-hash": "427f86b16a4ff7121dcde909a1441130",
+    "hash": "6d5830537d8d3243263a0ed2e236de64",
+    "content-hash": "5f844ff6faf63bb81b27b78c181426e1",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -59,17 +59,17 @@
             "time": "2017-02-07 12:48:11"
         },
         {
-            "name": "rayrutjes/algolia-php-integration",
+            "name": "rayrutjes/algolia-index",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:rayrutjes/algolia-php-integration.git",
-                "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef"
+                "url": "git@github.com:rayrutjes/algolia-index.git",
+                "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rayrutjes/algolia-php-integration/zipball/c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
-                "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
+                "url": "https://api.github.com/repos/rayrutjes/algolia-index/zipball/b66e6aafae603b2badf59ba5556844a01fc16a87",
+                "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87",
                 "shasum": ""
             },
             "require": {
@@ -77,14 +77,13 @@
                 "php": "~5.3 || ^7.0"
             },
             "require-dev": {
-                "illuminate/database": "^5.2",
                 "phpunit/phpunit": "~4.0 | ~5.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "RayRutjes\\AlgoliaIntegration\\": "src/",
-                    "RayRutjes\\AlgoliaIntegration\\Tests\\": "tests/"
+                    "RayRutjes\\AlgoliaIndex\\": "src/",
+                    "RayRutjes\\AlgoliaIndex\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -96,19 +95,19 @@
                     "email": "raymond.rutjes@gmail.com"
                 }
             ],
-            "homepage": "https://github.com/rayrutjes/algolia-php-integration",
+            "homepage": "https://github.com/rayrutjes/algolia-index",
             "support": {
-                "source": "https://github.com/rayrutjes/algolia-php-integration/tree/master",
-                "issues": "https://github.com/rayrutjes/algolia-php-integration/issues"
+                "source": "https://github.com/rayrutjes/algolia-index/tree/master",
+                "issues": "https://github.com/rayrutjes/algolia-index/issues"
             },
-            "time": "2017-02-14 10:17:22"
+            "time": "2017-02-17 22:58:20"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "rayrutjes/algolia-php-integration": 20
+        "rayrutjes/algolia-index": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

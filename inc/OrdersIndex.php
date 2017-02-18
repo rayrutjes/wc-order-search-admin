@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of AlgoliaIntegration library.
+ * This file is part of AlgoliaIndex library.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -9,9 +9,9 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaOrdersSearch\AlgoliaIntegration\Index\Index;
-use AlgoliaOrdersSearch\AlgoliaIntegration\Index\IndexSettings;
-use AlgoliaOrdersSearch\AlgoliaIntegration\Index\RecordsProvider;
+use AlgoliaOrdersSearch\AlgoliaIndex\Index;
+use AlgoliaOrdersSearch\AlgoliaIndex\IndexSettings;
+use AlgoliaOrdersSearch\AlgoliaIndex\RecordsProvider;
 
 class OrdersIndex extends Index implements RecordsProvider
 {
@@ -71,20 +71,12 @@ class OrdersIndex extends Index implements RecordsProvider
      */
     public function getRecords($page, $perPage)
     {
-        $results = $this->newQuery(array(
+        $query = $this->newQuery(array(
             'posts_per_page' => $perPage,
             'paged' => $page,
         ));
 
-        // http://stackoverflow.com/questions/39401393/how-to-get-woocommerce-order-details
-        $records = array();
-        $factory = new \WC_Order_Factory();
-        foreach ($results->posts as $post) {
-            $order = $factory->get_order($post);
-            $records = array_merge($records, $this->getRecordsForOrder($order));
-        }
-
-        return $records;
+        return $this->getRecordsForQuery($query);
     }
 
     /**
@@ -151,6 +143,11 @@ class OrdersIndex extends Index implements RecordsProvider
         return $this->client;
     }
 
+    /**
+     * @param array $args
+     *
+     * @return \WP_Query
+     */
     private function newQuery(array $args = array())
     {
         $defaultArgs = array(
@@ -216,5 +213,42 @@ class OrdersIndex extends Index implements RecordsProvider
         }
 
         return array($record);
+    }
+
+    /**
+     * @param mixed $id
+     *
+     * @return array
+     */
+    public function getRecordsForId($id)
+    {
+        $factory = new \WC_Order_Factory();
+        $order = $factory->get_order($id);
+
+        if(!$order instanceof \WC_Abstract_Order) {
+            return array();
+        }
+
+        return $this->getRecordsForOrder($order);
+    }
+
+    /**
+     * @param \WP_Query $query
+     *
+     * @return array
+     */
+    private function getRecordsForQuery(\WP_Query $query)
+    {
+        $records = array();
+        $factory = new \WC_Order_Factory();
+        foreach ($query->posts as $post) {
+            $order = $factory->get_order($post);
+            if(!$order instanceof \WC_Abstract_Order) {
+                continue;
+            }
+            $records = array_merge($records, $this->getRecordsForOrder($order));
+        }
+
+        return $records;
     }
 }

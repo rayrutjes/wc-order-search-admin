@@ -53,18 +53,18 @@
         "homepage": "https://github.com/algolia/algoliasearch-client-php"
     },
     {
-        "name": "rayrutjes/algolia-php-integration",
+        "name": "rayrutjes/algolia-index",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "git@github.com:rayrutjes/algolia-php-integration.git",
-            "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef"
+            "url": "git@github.com:rayrutjes/algolia-index.git",
+            "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/rayrutjes/algolia-php-integration/zipball/c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
-            "reference": "c7a7813bdfe1f2048431c199f7e9a65c1dc023ef",
+            "url": "https://api.github.com/repos/rayrutjes/algolia-index/zipball/b66e6aafae603b2badf59ba5556844a01fc16a87",
+            "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87",
             "shasum": ""
         },
         "require": {
@@ -72,16 +72,15 @@
             "php": "~5.3 || ^7.0"
         },
         "require-dev": {
-            "illuminate/database": "^5.2",
             "phpunit/phpunit": "~4.0 | ~5.0"
         },
-        "time": "2017-02-14 10:17:22",
+        "time": "2017-02-17 22:58:20",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "RayRutjes\\AlgoliaIntegration\\": "src/",
-                "RayRutjes\\AlgoliaIntegration\\Tests\\": "tests/"
+                "RayRutjes\\AlgoliaIndex\\": "src/",
+                "RayRutjes\\AlgoliaIndex\\Tests\\": "tests/"
             }
         },
         "license": [
@@ -93,10 +92,10 @@
                 "email": "raymond.rutjes@gmail.com"
             }
         ],
-        "homepage": "https://github.com/rayrutjes/algolia-php-integration",
+        "homepage": "https://github.com/rayrutjes/algolia-index",
         "support": {
-            "source": "https://github.com/rayrutjes/algolia-php-integration/tree/master",
-            "issues": "https://github.com/rayrutjes/algolia-php-integration/issues"
+            "source": "https://github.com/rayrutjes/algolia-index/tree/master",
+            "issues": "https://github.com/rayrutjes/algolia-index/issues"
         }
     }
 ]

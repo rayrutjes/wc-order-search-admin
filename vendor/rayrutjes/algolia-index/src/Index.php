@@ -1,14 +1,15 @@
 <?php
 
 /*
- * This file is part of AlgoliaIntegration library.
+ * This file is part of AlgoliaIndex library.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\AlgoliaIntegration\Index;
+namespace AlgoliaOrdersSearch\AlgoliaIndex;
 
+use AlgoliaOrdersSearch\AlgoliaException;
 use AlgoliaOrdersSearch\Client;
 
 abstract class Index
@@ -23,7 +24,7 @@ abstract class Index
      */
     public function delete()
     {
-        $this->getAlgoliaIndex()->deleteIndex($this->getName());
+        $this->getAlgoliaClient()->deleteIndex($this->getName());
     }
 
     /**
@@ -35,12 +36,37 @@ abstract class Index
     }
 
     /**
-     * @param int $page
-     * @param int $perPage
+     * @param int           $page
+     * @param int           $perPage
+     * @param callable|null $batchCallback
+     *
+     * @return int the number of records pushed
      */
-    public function pushRecords($page, $perPage)
+    public function pushRecords($page, $perPage, $batchCallback = null)
     {
-        $records = $this->getRecordsProvider()->getRecords($page, $perPage);
+        $recordsProvider = $this->getRecordsProvider();
+        $totalPagesCount = $recordsProvider->getTotalPagesCount($perPage);
+
+        $records = $recordsProvider->getRecords($page, $perPage);
+        if (count($records) > 0) {
+            $this->getAlgoliaIndex()->addObjects($records);
+        }
+
+        if (is_callable($batchCallback)) {
+            call_user_func($batchCallback, $records, $page, $totalPagesCount);
+        }
+
+        return count($records);
+    }
+
+    /**
+     * @param mixed $id
+     *
+     * @return int
+     */
+    public function pushRecordsForId($id)
+    {
+        $records = $this->getRecordsProvider()->getRecordsForId($id);
         if (count($records) > 0) {
             $this->getAlgoliaIndex()->addObjects($records);
         }
@@ -49,16 +75,36 @@ abstract class Index
     }
 
     /**
-     * @param int $perPage
+     * @param int           $perPage
+     * @param callable|null $batchCallback
+     *
+     * @return int
      */
-    public function pushAllRecords($perPage)
+    public function pushAllRecords($perPage, $batchCallback = null)
     {
         $recordsProvider = $this->getRecordsProvider();
-        $totalPages = $recordsProvider->getTotalPagesCount();
+        $totalPages = $recordsProvider->getTotalPagesCount($perPage);
+        $totalRecordsCount = 0;
         for ($page = 1; $page <= $totalPages; ++$page) {
-            $records = $recordsProvider->getRecords($page, $perPage);
-            $this->getAlgoliaIndex()->addObjects($records);
+            $totalRecordsCount += $this->pushRecords($page, $perPage, $batchCallback);
         }
+
+        return $totalRecordsCount;
+    }
+
+    /**
+     * @param array $recordIds
+     *
+     * @return int
+     */
+    public function deleteRecordsByIds(array $recordIds)
+    {
+        if (empty($recordIds)) {
+            return 0;
+        }
+        $this->getAlgoliaIndex()->deleteObjects($recordIds);
+
+        return count($recordIds);
     }
 
     /**
@@ -113,16 +159,30 @@ abstract class Index
         $index->setSettings($settings);
     }
 
-    public function reIndex($clearExistingRecords = true, $perPage = 500)
+    /**
+     * @param bool          $clearExistingRecords
+     * @param int           $perPage
+     * @param callable|null $batchCallback
+     *
+     * @return int
+     */
+    public function reIndex($clearExistingRecords = true, $perPage = 500, $batchCallback = null)
     {
         if ((bool) $clearExistingRecords === true) {
             $this->clear();
         }
 
-        $this->pushAllRecords();
+        return $this->pushAllRecords($perPage, $batchCallback);
     }
 
-    public function reIndexUsingTemporaryIndex($keepSettings = false, $perPage = 500)
+    /**
+     * @param bool          $keepSettings
+     * @param int           $perPage
+     * @param callable|null $batchCallback
+     *
+     * @return int
+     */
+    public function reIndexUsingTemporaryIndex($keepSettings = false, $perPage = 500, $batchCallback = null)
     {
         $temporaryIndex = new SimpleIndex($this->getName().'_tmp_'.time(), $this->getSettings(), $this->getRecordsProvider(), $this->getAlgoliaClient());
 
@@ -142,13 +202,15 @@ abstract class Index
             $temporaryIndex->pushSettings(true);
         }
 
-        $temporaryIndex->pushAllRecords((int) $perPage);
+        $totalRecordsCount = $temporaryIndex->pushAllRecords((int) $perPage, $batchCallback);
         $temporaryIndex->moveTo($this->getName());
         if ($keptSettings === false) {
             $this->pushReplicaSettings();
         } else {
             $this->pushSettings();
         }
+
+        return $totalRecordsCount;
     }
 
     /**
