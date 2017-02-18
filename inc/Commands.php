@@ -24,6 +24,8 @@ class Commands extends WP_CLI_Command
      */
     private $options;
 
+    private $progress;
+
     /**
      * @param OrdersIndex $index
      * @param Options     $options
@@ -56,16 +58,19 @@ class Commands extends WP_CLI_Command
         $start = microtime(true);
 
         $perPage = $this->options->getOrdersToIndexPerBatchCount();
-        $totalPages = $this->index->getTotalPagesCount($perPage);
 
-        $progress = WP_CLI\Utils\make_progress_bar('Indexing orders', $totalPages);
+        $self = $this;
 
-        $totalRecordsCount = 0;
-        for ($page = 1; $page <= $totalPages; ++$page) {
-            $totalRecordsCount += $this->index->pushRecords($page, $perPage);
-            $progress->tick();
+        $totalRecordsCount = $this->index->reIndex(false, $perPage, function($records, $page, $totalPages) use ($self) {
+            if(null === $self->progress) {
+                $self->progress = WP_CLI\Utils\make_progress_bar('Indexing orders', $totalPages);
+            }
+            $self->progress->tick();
+        });
+
+        if(null !== $this->progress) {
+            $this->progress->finish();
         }
-        $progress->finish();
 
         $elapsed = microtime(true) - $start;
 
