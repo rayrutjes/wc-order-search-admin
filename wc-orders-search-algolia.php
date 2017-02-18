@@ -3,11 +3,11 @@
 /**
  * Plugin Name: WC Orders Search Algolia
  * Description: Adds a dropdown to the orders admin screen to find orders as you type
- * Version: 0.4.0
+ * Version: 0.5.0
  * Author Name: Raymond Rutjes
  */
 
-define('AOS_VERSION', '0.4.0');
+define('AOS_VERSION', '0.5.0');
 
 add_action(
     'plugins_loaded',
