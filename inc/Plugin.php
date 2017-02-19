@@ -103,8 +103,8 @@ class Plugin
             return;
         } ?>
         <div class="notice notice-success">
-            <p>You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.</p>
-            <p><a href="options-general.php?page=aos_options" class="button button-primary">Setup now</a></p>
+            <p><?php esc_html_e('You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.', 'wc-orders-search-algolia'); ?></p>
+            <p><a href="options-general.php?page=aos_options" class="button button-primary"><?php esc_html_e('Setup now', 'wc-orders-search-algolia'); ?></a></p>
         </div>
         <?php
 

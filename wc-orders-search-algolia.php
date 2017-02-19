@@ -9,6 +9,13 @@
 
 define('AOS_VERSION', '0.5.0');
 
+add_action( 'init', function() {
+    $locale = apply_filters( 'plugin_locale', get_locale(), 'wc-orders-search-algolia' );
+
+    load_textdomain( 'wc-orders-search-algolia', WP_LANG_DIR . '/wc-orders-search-algolia/wc-orders-search-algolia-' . $locale . '.mo' );
+    load_plugin_textdomain( 'wc-orders-search-algolia', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+});
+
 add_action(
     'plugins_loaded',
     function () {
@@ -16,7 +23,7 @@ add_action(
             add_action('admin_notices', function() {
                 ?>
                 <div class="notice notice-error">
-                    <p>The WooCommerce orders search requires the WooCommerce plugin to be active.</p>
+                    <p><?php esc_html_e('WC Orders Search Algolia requires the WooCommerce plugin to be active.', 'wc-orders-search-algolia'); ?></p>
                 </div>
                 <?php
             });

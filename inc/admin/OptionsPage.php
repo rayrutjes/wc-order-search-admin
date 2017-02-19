@@ -48,7 +48,13 @@ class OptionsPage
 
     public function register_page_in_menu()
     {
-        add_options_page('WooCommerce Orders Search - Settings', 'WooCommerce Orders Search', 'manage_options', 'aos_options', array($this, 'render_page'));
+        add_options_page(
+            __('WooCommerce Orders Search - Settings', 'wc-orders-search-algolia'),
+            __('WooCommerce Orders Search', 'wc-orders-search-algolia'),
+            'manage_options',
+            'aos_options',
+            array($this, 'render_page')
+        );
     }
 
     public function render_page()
