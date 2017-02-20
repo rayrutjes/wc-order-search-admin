@@ -10,6 +10,7 @@ cp -R ./inc ./build/wc-orders-search-algolia
 cp -R ./libs ./build/wc-orders-search-algolia
 cp -R ./languages ./build/wc-orders-search-algolia
 cp wc-orders-search-algolia.php ./build/wc-orders-search-algolia
+cp readme.txt ./build/wc-orders-search-algolia
 
 cd ./build
 zip -r wc-orders-search-algolia.zip wc-orders-search-algolia
