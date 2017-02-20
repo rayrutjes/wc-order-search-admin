@@ -53,18 +53,18 @@
         "homepage": "https://github.com/algolia/algoliasearch-client-php"
     },
     {
-        "name": "rayrutjes/algolia-index",
+        "name": "algolia/index",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "git@github.com:rayrutjes/algolia-index.git",
-            "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87"
+            "url": "git@github.com:algolia/php-index.git",
+            "reference": "b5496867cafda73629f62154ac6f4539ea4a1d94"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/rayrutjes/algolia-index/zipball/b66e6aafae603b2badf59ba5556844a01fc16a87",
-            "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87",
+            "url": "https://api.github.com/repos/algolia/php-index/zipball/b5496867cafda73629f62154ac6f4539ea4a1d94",
+            "reference": "b5496867cafda73629f62154ac6f4539ea4a1d94",
             "shasum": ""
         },
         "require": {
@@ -74,13 +74,13 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0 | ~5.0"
         },
-        "time": "2017-02-17 22:58:20",
+        "time": "2017-02-20 08:28:03",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "RayRutjes\\AlgoliaIndex\\": "src/",
-                "RayRutjes\\AlgoliaIndex\\Tests\\": "tests/"
+                "Algolia\\Index\\": "src/",
+                "Algolia\\Index\\Tests\\": "tests/"
             }
         },
         "license": [
@@ -92,10 +92,10 @@
                 "email": "raymond.rutjes@gmail.com"
             }
         ],
-        "homepage": "https://github.com/rayrutjes/algolia-index",
+        "homepage": "https://github.com/algolia/php-index",
         "support": {
-            "source": "https://github.com/rayrutjes/algolia-index/tree/master",
-            "issues": "https://github.com/rayrutjes/algolia-index/issues"
+            "source": "https://github.com/algolia/php-index/tree/master",
+            "issues": "https://github.com/algolia/php-index/issues"
         }
     }
 ]

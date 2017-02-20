@@ -9,9 +9,9 @@
 
 namespace AlgoliaOrdersSearch;
 
-use AlgoliaOrdersSearch\AlgoliaIndex\Index;
-use AlgoliaOrdersSearch\AlgoliaIndex\IndexSettings;
-use AlgoliaOrdersSearch\AlgoliaIndex\RecordsProvider;
+use AlgoliaOrdersSearch\Index\Index;
+use AlgoliaOrdersSearch\Index\IndexSettings;
+use AlgoliaOrdersSearch\Index\RecordsProvider;
 
 class OrdersIndex extends Index implements RecordsProvider
 {

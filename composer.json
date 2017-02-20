@@ -4,13 +4,13 @@
     "keywords": [],
     "license": "MIT",
     "require": {
-        "rayrutjes/algolia-index": "dev-master",
+        "algolia/index": "dev-master",
         "algolia/algoliasearch-client-php": "^1.14"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url":  "git@github.com:rayrutjes/algolia-index.git"
+            "url":  "git@github.com:algolia/php-index.git"
         }
     ],
     "config": {

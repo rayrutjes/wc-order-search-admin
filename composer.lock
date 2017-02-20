@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d5830537d8d3243263a0ed2e236de64",
-    "content-hash": "5f844ff6faf63bb81b27b78c181426e1",
+    "hash": "208638f8a8bde3b4d22f8dffe5f54a3e",
+    "content-hash": "80afaa95da2b1880572c8f7f091a9768",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -59,17 +59,17 @@
             "time": "2017-02-07 12:48:11"
         },
         {
-            "name": "rayrutjes/algolia-index",
+            "name": "algolia/index",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:rayrutjes/algolia-index.git",
-                "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87"
+                "url": "git@github.com:algolia/php-index.git",
+                "reference": "b5496867cafda73629f62154ac6f4539ea4a1d94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rayrutjes/algolia-index/zipball/b66e6aafae603b2badf59ba5556844a01fc16a87",
-                "reference": "b66e6aafae603b2badf59ba5556844a01fc16a87",
+                "url": "https://api.github.com/repos/algolia/php-index/zipball/b5496867cafda73629f62154ac6f4539ea4a1d94",
+                "reference": "b5496867cafda73629f62154ac6f4539ea4a1d94",
                 "shasum": ""
             },
             "require": {
@@ -82,8 +82,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "RayRutjes\\AlgoliaIndex\\": "src/",
-                    "RayRutjes\\AlgoliaIndex\\Tests\\": "tests/"
+                    "Algolia\\Index\\": "src/",
+                    "Algolia\\Index\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -95,19 +95,19 @@
                     "email": "raymond.rutjes@gmail.com"
                 }
             ],
-            "homepage": "https://github.com/rayrutjes/algolia-index",
+            "homepage": "https://github.com/algolia/php-index",
             "support": {
-                "source": "https://github.com/rayrutjes/algolia-index/tree/master",
-                "issues": "https://github.com/rayrutjes/algolia-index/issues"
+                "source": "https://github.com/algolia/php-index/tree/master",
+                "issues": "https://github.com/algolia/php-index/issues"
             },
-            "time": "2017-02-17 22:58:20"
+            "time": "2017-02-20 08:28:03"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "rayrutjes/algolia-index": 20
+        "algolia/index": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

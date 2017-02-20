@@ -1,8 +1,8 @@
 {
-  "name": "rayrutjes/algolia-index",
+  "name": "algolia/index",
   "description": "",
   "type": "library",
-  "homepage": "https://github.com/rayrutjes/algolia-index",
+  "homepage": "https://github.com/algolia/php-index",
   "license": "MIT",
   "authors": [
     {
@@ -19,8 +19,8 @@
   },
   "autoload": {
     "psr-4": {
-      "AlgoliaOrdersSearch\\AlgoliaIndex\\": "src/",
-      "AlgoliaOrdersSearch\\AlgoliaIndex\\Tests\\": "tests/"
+      "AlgoliaOrdersSearch\\Index\\": "src/",
+      "AlgoliaOrdersSearch\\Index\\Tests\\": "tests/"
     }
   }
 }

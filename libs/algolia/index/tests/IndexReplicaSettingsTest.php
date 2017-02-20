@@ -2,14 +2,14 @@
 
 /*
  * This file is part of AlgoliaIndex library.
- * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * (c) Raymond Rutjes for Algolia <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\AlgoliaIndex\Tests;
+namespace AlgoliaOrdersSearch\Index\Tests;
 
-use AlgoliaOrdersSearch\AlgoliaIndex\IndexReplicaSettings;
+use AlgoliaOrdersSearch\Index\IndexReplicaSettings;
 
 class IndexReplicaSettingsTest extends \PHPUnit_Framework_TestCase
 {

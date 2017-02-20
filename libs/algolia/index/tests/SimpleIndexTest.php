@@ -2,15 +2,15 @@
 
 /*
  * This file is part of AlgoliaIndex library.
- * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
+ * (c) Raymond Rutjes for Algolia <raymond.rutjes@gmail.com>
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\AlgoliaIndex\Tests;
+namespace AlgoliaOrdersSearch\Index\Tests;
 
-use AlgoliaOrdersSearch\AlgoliaIndex\IndexSettings;
-use AlgoliaOrdersSearch\AlgoliaIndex\SimpleIndex;
+use AlgoliaOrdersSearch\Index\IndexSettings;
+use AlgoliaOrdersSearch\Index\SimpleIndex;
 
 class SimpleIndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -48,7 +48,7 @@ class SimpleIndexTest extends \PHPUnit_Framework_TestCase
     {
         $this->name = 'name';
         $this->settings = new IndexSettings(array());
-        $this->recordsProvider = $this->getMockBuilder('AlgoliaOrdersSearch\AlgoliaIndex\RecordsProvider')->getMock();
+        $this->recordsProvider = $this->getMockBuilder('AlgoliaOrdersSearch\Index\RecordsProvider')->getMock();
         $this->algoliaClient = $this->getMockBuilder('AlgoliaOrdersSearch\Client')->disableOriginalConstructor()->getMock();
         $this->algoliaIndex = $this->getMockBuilder('AlgoliaOrdersSearch\Index')->disableOriginalConstructor()->getMock();
 
