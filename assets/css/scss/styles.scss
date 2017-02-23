@@ -66,10 +66,12 @@ $blue: #00AEFF;
 }
 
 .aa-suggestion mark {
-    float: left;
+    float: left !important;
     margin-right: 5px !important;
     height: 18px !important;
     width: 18px !important;
+    font-size: 18px !important;
+    position: relative !important;
 }
 
 .aa-dropdown-menu img.aos-powered-by{
