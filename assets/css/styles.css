@@ -28,6 +28,10 @@
 .aa-suggestion {
   padding: 10px;
   border-bottom: 1px solid #f5f5f5; }
+  .aa-suggestion:after {
+    content: " ";
+    display: table;
+    clear: both; }
 
 .aa-suggestion.aa-cursor {
   background: rgba(0, 174, 255, 0.1);

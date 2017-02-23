@@ -38,6 +38,12 @@ $blue: #00AEFF;
 .aa-suggestion {
     padding: 10px;
     border-bottom: 1px solid #f5f5f5;
+
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
 }
 
 .aa-suggestion.aa-cursor {
