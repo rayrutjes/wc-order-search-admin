@@ -54,10 +54,10 @@ function getTotalsLine(suggestion) {
 function getMethodsLine(suggestion) {
   var html = '';
   if(suggestion.shipping_method_title) {
-    html += '<span class="aos-order__shipping-method">Via ' + suggestion.shipping_method_title + '</span>';
+    html += '<span class="aos-order__shipping-method">' + suggestion.shipping_method_title + '</span>';
   }
   if(suggestion.payment_method_title) {
-    html += '<span class="aos-order__payment-method">Via ' + suggestion.payment_method_title + '</span>';
+    html += '<span class="aos-order__payment-method">' + suggestion.payment_method_title + '</span>';
   }
 
   if(html.length === 0) {
