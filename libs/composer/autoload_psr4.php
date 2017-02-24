@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AlgoliaOrdersSearch\\Index\\Tests\\' => array($vendorDir . '/algolia/index/tests'),
-    'AlgoliaOrdersSearch\\Index\\' => array($vendorDir . '/algolia/index/src'),
+    'AlgoliaWooCommerceOrderSearchAdmin\\Index\\Tests\\' => array($vendorDir . '/algolia/index/tests'),
+    'AlgoliaWooCommerceOrderSearchAdmin\\Index\\' => array($vendorDir . '/algolia/index/src'),
 );

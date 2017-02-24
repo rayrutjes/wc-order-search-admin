@@ -7,11 +7,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch;
+namespace AlgoliaWooCommerceOrderSearchAdmin;
 
-use AlgoliaOrdersSearch\Index\Index;
-use AlgoliaOrdersSearch\Index\IndexSettings;
-use AlgoliaOrdersSearch\Index\RecordsProvider;
+use AlgoliaWooCommerceOrderSearchAdmin\Index\Index;
+use AlgoliaWooCommerceOrderSearchAdmin\Index\IndexSettings;
+use AlgoliaWooCommerceOrderSearchAdmin\Index\RecordsProvider;
 
 class OrdersIndex extends Index implements RecordsProvider
 {

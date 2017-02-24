@@ -7,10 +7,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Index\Tests;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Index\Tests;
 
-use AlgoliaOrdersSearch\Index\IndexReplicaSettings;
-use AlgoliaOrdersSearch\Index\IndexSettings;
+use AlgoliaWooCommerceOrderSearchAdmin\Index\IndexReplicaSettings;
+use AlgoliaWooCommerceOrderSearchAdmin\Index\IndexSettings;
 
 class IndexSettingsTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,11 +40,11 @@ class IndexSettingsTest extends \PHPUnit_Framework_TestCase
         $replicaSettings = $settings->getReplicaSettings();
         $this->assertCount(2, $replicaSettings);
 
-        $this->assertInstanceOf('AlgoliaOrdersSearch\Index\IndexReplicaSettings', $replicaSettings[0]);
+        $this->assertInstanceOf('AlgoliaWooCommerceOrderSearchAdmin\Index\IndexReplicaSettings', $replicaSettings[0]);
         $this->assertEquals('products_asc', $replicaSettings[0]->getIndexName());
         $this->assertEquals($replicaSettings1, $replicaSettings[0]->toArray());
 
-        $this->assertInstanceOf('AlgoliaOrdersSearch\Index\IndexReplicaSettings', $replicaSettings[1]);
+        $this->assertInstanceOf('AlgoliaWooCommerceOrderSearchAdmin\Index\IndexReplicaSettings', $replicaSettings[1]);
         $this->assertEquals('products_desc', $replicaSettings[1]->getIndexName());
         $this->assertEquals($replicaSettings2, $replicaSettings[1]->toArray());
     }
@@ -96,7 +96,7 @@ class IndexSettingsTest extends \PHPUnit_Framework_TestCase
         $replicaSettings = $settings->getReplicaSettings();
         $this->assertCount(2, $replicaSettings);
 
-        $this->assertInstanceOf('AlgoliaOrdersSearch\Index\IndexReplicaSettings', $replicaSettings[1]);
+        $this->assertInstanceOf('AlgoliaWooCommerceOrderSearchAdmin\Index\IndexReplicaSettings', $replicaSettings[1]);
         $this->assertEquals('products_desc', $replicaSettings[1]->getIndexName());
         $this->assertEquals(array(), $replicaSettings[1]->toArray());
     }

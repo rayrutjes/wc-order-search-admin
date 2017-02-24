@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Index;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Index;
 
-use AlgoliaOrdersSearch\Client;
+use AlgoliaWooCommerceOrderSearchAdmin\Client;
 
 final class SimpleIndex extends Index
 {

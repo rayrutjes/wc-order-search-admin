@@ -40,7 +40,7 @@ add_action(
         require_once 'inc/Options.php';
         require_once 'inc/Plugin.php';
 
-        $plugin = \AlgoliaOrdersSearch\Plugin::initialize(new \AlgoliaOrdersSearch\Options());
+        $plugin = \AlgoliaWooCommerceOrderSearchAdmin\Plugin::initialize(new \AlgoliaWooCommerceOrderSearchAdmin\Options());
 
         if (is_admin()) {
             require_once 'inc/admin/OptionsPage.php';
@@ -48,19 +48,19 @@ add_action(
             require_once 'inc/admin/AjaxReindex.php';
             require_once 'inc/admin/AjaxIndexingOptionsForm.php';
             require_once 'inc/admin/AjaxAlgoliaAccountSettingsForm.php';
-            new \AlgoliaOrdersSearch\Admin\OptionsPage($plugin->getOptions());
-            new \AlgoliaOrdersSearch\Admin\OrdersListPage($plugin->getOptions());
+            new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OptionsPage($plugin->getOptions());
+            new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OrdersListPage($plugin->getOptions());
             if ($plugin->getOptions()->hasAlgoliaAccountSettings()) {
-                new \AlgoliaOrdersSearch\Admin\AjaxReindex($plugin->getOrdersIndex(), $plugin->getOptions());
+                new \AlgoliaWooCommerceOrderSearchAdmin\Admin\AjaxReindex($plugin->getOrdersIndex(), $plugin->getOptions());
             }
-            new \AlgoliaOrdersSearch\Admin\AjaxIndexingOptionsForm($plugin->getOptions());
-            new \AlgoliaOrdersSearch\Admin\AjaxAlgoliaAccountSettingsForm($plugin->getOptions());
+            new \AlgoliaWooCommerceOrderSearchAdmin\Admin\AjaxIndexingOptionsForm($plugin->getOptions());
+            new \AlgoliaWooCommerceOrderSearchAdmin\Admin\AjaxAlgoliaAccountSettingsForm($plugin->getOptions());
         }
 
         // WP CLI commands
         if (defined('WP_CLI') && WP_CLI && $plugin->getOptions()->hasAlgoliaAccountSettings()) {
             require_once 'inc/Commands.php';
-            $commands = new \AlgoliaOrdersSearch\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
+            $commands = new \AlgoliaWooCommerceOrderSearchAdmin\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
             WP_CLI::add_command('orders', $commands);
         }
 

@@ -7,7 +7,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Index;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Index;
 
 interface RecordsProvider
 {

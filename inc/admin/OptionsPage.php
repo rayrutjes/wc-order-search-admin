@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Admin;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Admin;
 
-use AlgoliaOrdersSearch\Options;
+use AlgoliaWooCommerceOrderSearchAdmin\Options;
 
 class OptionsPage
 {
@@ -49,8 +49,8 @@ class OptionsPage
     public function register_page_in_menu()
     {
         add_options_page(
-            __('WooCommerce Orders Search - Settings', 'algolia-woocommerce-order-search-admin'),
-            __('WooCommerce Orders Search', 'algolia-woocommerce-order-search-admin'),
+            __('Algolia WooCommerce Order Search Admin', 'algolia-woocommerce-order-search-admin'),
+            __('Algolia WooCommerce Order Search Admin', 'algolia-woocommerce-order-search-admin'),
             'manage_options',
             'aos_options',
             array($this, 'render_page')

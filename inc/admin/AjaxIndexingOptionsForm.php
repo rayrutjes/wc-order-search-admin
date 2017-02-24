@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Admin;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Admin;
 
-use AlgoliaOrdersSearch\Options;
+use AlgoliaWooCommerceOrderSearchAdmin\Options;
 
 class AjaxIndexingOptionsForm
 {

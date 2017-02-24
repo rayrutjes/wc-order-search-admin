@@ -24,12 +24,12 @@
  *
  */
 
-require_once 'src/AlgoliaOrdersSearch/AlgoliaException.php';
-require_once 'src/AlgoliaOrdersSearch/Client.php';
-require_once 'src/AlgoliaOrdersSearch/ClientContext.php';
-require_once 'src/AlgoliaOrdersSearch/Index.php';
-require_once 'src/AlgoliaOrdersSearch/IndexBrowser.php';
-require_once 'src/AlgoliaOrdersSearch/PlacesIndex.php';
-require_once 'src/AlgoliaOrdersSearch/SynonymType.php';
-require_once 'src/AlgoliaOrdersSearch/Version.php';
-require_once 'src/AlgoliaOrdersSearch/Json.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/AlgoliaException.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Client.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/ClientContext.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Index.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/IndexBrowser.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/PlacesIndex.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/SynonymType.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Version.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Json.php';

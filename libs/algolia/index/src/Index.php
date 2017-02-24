@@ -7,10 +7,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Index;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Index;
 
-use AlgoliaOrdersSearch\AlgoliaException;
-use AlgoliaOrdersSearch\Client;
+use AlgoliaWooCommerceOrderSearchAdmin\AlgoliaException;
+use AlgoliaWooCommerceOrderSearchAdmin\Client;
 
 abstract class Index
 {
@@ -253,7 +253,7 @@ abstract class Index
     abstract protected function getAlgoliaClient();
 
     /**
-     * @return \AlgoliaOrdersSearch\Index
+     * @return \AlgoliaWooCommerceOrderSearchAdmin\Index
      */
     protected function getAlgoliaIndex()
     {

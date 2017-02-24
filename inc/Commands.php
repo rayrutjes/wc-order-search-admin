@@ -7,7 +7,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch;
+namespace AlgoliaWooCommerceOrderSearchAdmin;
 
 use WP_CLI;
 use WP_CLI_Command;

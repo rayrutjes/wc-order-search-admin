@@ -7,10 +7,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaOrdersSearch\Admin;
+namespace AlgoliaWooCommerceOrderSearchAdmin\Admin;
 
-use AlgoliaOrdersSearch\Options;
-use AlgoliaOrdersSearch\OrdersIndex;
+use AlgoliaWooCommerceOrderSearchAdmin\Options;
+use AlgoliaWooCommerceOrderSearchAdmin\OrdersIndex;
 
 class AjaxAlgoliaAccountSettingsForm
 {
