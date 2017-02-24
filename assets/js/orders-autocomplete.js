@@ -6,7 +6,8 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
     displayKey: 'number',
     templates: {
       suggestion: function(suggestion) {
-        return getStatusMark(suggestion)
+        return ""
+          + getStatusLine(suggestion)
           + getNumberLine(suggestion)
           + getCustomerLine(suggestion)
           + getTotalsLine(suggestion)
@@ -22,10 +23,10 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
 });
 jQuery('#post-search-input').focus();
 
-function getStatusMark(suggestion) {
-  return '<span class="widefat"><span class="aos-order__status column-order_status"><mark title="' + suggestion.status_name + '" class="' + suggestion.status + ' tips">'
-    + suggestion._highlightResult.status_name.value
-    + '</mark></span></span>';
+function getStatusLine(suggestion) {
+  return '<div class="aos-order__line">'
+  + '<span class="aos-order__status">' + suggestion._highlightResult.status_name.value + '</span>'
+  + '</div>';
 }
 
 function getNumberLine(suggestion) {
