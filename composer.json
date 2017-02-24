@@ -1,5 +1,5 @@
 {
-    "name": "rayrutjes/woocommerce-orders-search-algolia",
+    "name": "rayrutjes/algolia-woocommerce-order-search-admin",
     "description": "Adds a dropdown to the orders admin screen to find orders as you type.",
     "keywords": [],
     "license": "MIT",
