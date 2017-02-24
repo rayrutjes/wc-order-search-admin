@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: WC Orders Search Algolia
+ * Plugin Name: Algolia WooCommerce Order Search Admin
  * Description: Adds a dropdown to the orders admin screen to find orders as you type
  * Version: 0.5.0
  * Author Name: Raymond Rutjes
@@ -10,10 +10,10 @@
 define('AOS_VERSION', '0.5.0');
 
 add_action( 'init', function() {
-    $locale = apply_filters( 'plugin_locale', get_locale(), 'wc-orders-search-algolia' );
+    $locale = apply_filters( 'plugin_locale', get_locale(), 'algolia-woocommerce-order-search-admin' );
 
-    load_textdomain( 'wc-orders-search-algolia', WP_LANG_DIR . '/wc-orders-search-algolia/wc-orders-search-algolia-' . $locale . '.mo' );
-    load_plugin_textdomain( 'wc-orders-search-algolia', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+    load_textdomain( 'algolia-woocommerce-order-search-admin', WP_LANG_DIR . '/algolia-woocommerce-order-search-admin/algolia-woocommerce-order-search-admin-' . $locale . '.mo' );
+    load_plugin_textdomain( 'algolia-woocommerce-order-search-admin', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 });
 
 add_action(
@@ -23,7 +23,7 @@ add_action(
             add_action('admin_notices', function() {
                 ?>
                 <div class="notice notice-error">
-                    <p><?php esc_html_e('WC Orders Search Algolia requires the WooCommerce plugin to be active.', 'wc-orders-search-algolia'); ?></p>
+                    <p><?php esc_html_e('WC Orders Search Algolia requires the WooCommerce plugin to be active.', 'algolia-woocommerce-order-search-admin'); ?></p>
                 </div>
                 <?php
             });

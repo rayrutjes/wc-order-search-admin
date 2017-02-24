@@ -8,13 +8,13 @@ var sort = require('gulp-sort');
 var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('makepot', function () {
-  return gulp.src(['wc-orders-search-algolia.php', 'inc/**/*.php'])
+  return gulp.src(['algolia-woocommerce-order-search-admin.php', 'inc/**/*.php'])
   .pipe(sort())
   .pipe(wpPot( {
-    domain: 'wc-orders-search-algolia',
+    domain: 'algolia-woocommerce-order-search-admin',
     package: 'WC Orders Search Algolia' + plugin.version
   } ))
-  .pipe(gulp.dest('languages/wc-orders-search-algolia.pot'));
+  .pipe(gulp.dest('languages/algolia-woocommerce-order-search-admin.pot'));
 });
 
 gulp.task('sass', function () {

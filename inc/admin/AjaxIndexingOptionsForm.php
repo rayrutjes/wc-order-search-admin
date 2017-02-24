@@ -46,7 +46,7 @@ class AjaxIndexingOptionsForm
 
         $response = array(
             'success' => true,
-            'message' => __('Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'wc-orders-search-algolia'),
+            'message' => __('Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'algolia-woocommerce-order-search-admin'),
         );
 
         wp_send_json($response);

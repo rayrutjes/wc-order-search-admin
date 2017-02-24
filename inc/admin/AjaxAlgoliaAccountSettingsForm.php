@@ -46,7 +46,7 @@ class AjaxAlgoliaAccountSettingsForm
 
         $response = array(
             'success' => true,
-            'message' => __('Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'wc-orders-search-algolia'),
+            'message' => __('Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'algolia-woocommerce-order-search-admin'),
         );
 
         wp_send_json($response);

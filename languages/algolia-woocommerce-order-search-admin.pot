@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: wc-orders-search-algolia.php:19
+#: algolia-woocommerce-order-search-admin.php:19
 msgid "WC Orders Search Algolia requires the WooCommerce plugin to be active."
 msgstr ""
 

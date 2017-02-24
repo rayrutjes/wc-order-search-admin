@@ -53,11 +53,11 @@ class Commands extends WP_CLI_Command
      */
     public function reIndex($args, $assoc_args)
     {
-        WP_CLI::line(sprintf(__('About push the settings for index %s...', 'wc-orders-search-algolia'), $this->index->getName()));
+        WP_CLI::line(sprintf(__('About push the settings for index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
         $this->index->pushSettings();
-        WP_CLI::success(sprintf(__('Correctly pushed settings to the index "%s".', 'wc-orders-search-algolia'), $this->index->getName()));
+        WP_CLI::success(sprintf(__('Correctly pushed settings to the index "%s".', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
 
-        WP_CLI::line(__('About to push all orders to Algolia. Please be patient...', 'wc-orders-search-algolia'));
+        WP_CLI::line(__('About to push all orders to Algolia. Please be patient...', 'algolia-woocommerce-order-search-admin'));
 
         $start = microtime(true);
 
@@ -67,7 +67,7 @@ class Commands extends WP_CLI_Command
 
         $totalRecordsCount = $this->index->reIndex(false, $perPage, function ($records, $page, $totalPages) use ($self) {
             if (null === $self->progress) {
-                $self->progress = WP_CLI\Utils\make_progress_bar(__('Indexing WooCommerce orders', 'wc-orders-search-algolia'), $totalPages);
+                $self->progress = WP_CLI\Utils\make_progress_bar(__('Indexing WooCommerce orders', 'algolia-woocommerce-order-search-admin'), $totalPages);
             }
             $self->progress->tick();
         });
@@ -78,6 +78,6 @@ class Commands extends WP_CLI_Command
 
         $elapsed = microtime(true) - $start;
 
-        WP_CLI::success(sprintf(__('%d orders indexed in %d seconds!', 'wc-orders-search-algolia'), $totalRecordsCount, $elapsed));
+        WP_CLI::success(sprintf(__('%d orders indexed in %d seconds!', 'algolia-woocommerce-order-search-admin'), $totalRecordsCount, $elapsed));
     }
 }

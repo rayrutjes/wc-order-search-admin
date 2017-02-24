@@ -1,8 +1,8 @@
 {
-  "name": "wc-orders-search-algolia",
+  "name": "algolia-woocommerce-order-search-admin",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:rayrutjes/wc-orders-search-algolia.git",
+  "repository": "git@github.com:rayrutjes/algolia-woocommerce-order-search-admin.git",
   "author": "Raymond Rutjes <raymond.rutjes@gmail.com>",
   "license": "MIT",
   "dependencies": {

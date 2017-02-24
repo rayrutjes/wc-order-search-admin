@@ -3,18 +3,18 @@
 rm -rf ./build
 
 mkdir ./build
-mkdir ./build/wc-orders-search-algolia
+mkdir ./build/algolia-woocommerce-order-search-admin
 
-cp -R ./assets ./build/wc-orders-search-algolia
-cp -R ./inc ./build/wc-orders-search-algolia
-cp -R ./libs ./build/wc-orders-search-algolia
-cp -R ./languages ./build/wc-orders-search-algolia
-cp wc-orders-search-algolia.php ./build/wc-orders-search-algolia
-cp readme.txt ./build/wc-orders-search-algolia
+cp -R ./assets ./build/algolia-woocommerce-order-search-admin
+cp -R ./inc ./build/algolia-woocommerce-order-search-admin
+cp -R ./libs ./build/algolia-woocommerce-order-search-admin
+cp -R ./languages ./build/algolia-woocommerce-order-search-admin
+cp algolia-woocommerce-order-search-admin.php ./build/algolia-woocommerce-order-search-admin
+cp readme.txt ./build/algolia-woocommerce-order-search-admin
 
 cd ./build
-zip -r wc-orders-search-algolia.zip wc-orders-search-algolia
-rm -rf ./wc-orders-search-algolia
+zip -r algolia-woocommerce-order-search-admin.zip algolia-woocommerce-order-search-admin
+rm -rf ./algolia-woocommerce-order-search-admin
 cd ..
 
 

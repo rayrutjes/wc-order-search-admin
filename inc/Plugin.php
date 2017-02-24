@@ -37,7 +37,7 @@ class Plugin
 
         $algoliaClient = new Client($options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey());
 
-        $integrationName = 'wc-orders-search';
+        $integrationName = 'algolia-woocommerce-order-search-admin';
         $ua = '; '.$integrationName.' integration ('.AOS_VERSION.')'
             .'; PHP ('.phpversion().')'
             .'; Wordpress ('.$wp_version.')';
@@ -103,8 +103,8 @@ class Plugin
             return;
         } ?>
         <div class="notice notice-success">
-            <p><?php esc_html_e('You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.', 'wc-orders-search-algolia'); ?></p>
-            <p><a href="options-general.php?page=aos_options" class="button button-primary"><?php esc_html_e('Setup now', 'wc-orders-search-algolia'); ?></a></p>
+            <p><?php esc_html_e('You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.', 'algolia-woocommerce-order-search-admin'); ?></p>
+            <p><a href="options-general.php?page=aos_options" class="button button-primary"><?php esc_html_e('Setup now', 'algolia-woocommerce-order-search-admin'); ?></a></p>
         </div>
         <?php
 
