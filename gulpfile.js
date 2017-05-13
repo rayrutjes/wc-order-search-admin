@@ -12,7 +12,7 @@ gulp.task('makepot', function () {
   .pipe(sort())
   .pipe(wpPot( {
     domain: 'algolia-woocommerce-order-search-admin',
-    package: 'WC Orders Search Algolia' + plugin.version
+    package: 'WC Orders Search Algolia ' + plugin.version
   } ))
   .pipe(gulp.dest('languages/algolia-woocommerce-order-search-admin.pot'));
 });
