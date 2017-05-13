@@ -33,3 +33,6 @@ require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/PlacesIndex.php';
 require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/SynonymType.php';
 require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Version.php';
 require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Json.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/FailingHostsCache.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/FileFailingHostsCache.php';
+require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/InMemoryFailingHostsCache.php';

@@ -1,24 +1,31 @@
 {
-    "name": "rayrutjes/algolia-woocommerce-order-search-admin",
-    "description": "Adds a dropdown to the orders admin screen to find orders as you type.",
-    "keywords": [],
-    "license": "MIT",
-    "require": {
-        "algolia/index": "dev-master",
-        "algolia/algoliasearch-client-php": "^1.14"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:algolia/php-index.git"
-        }
-    ],
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "scripts": {
-        "post-install-cmd": "bin/scope-deps.sh",
-        "post-update-cmd": "bin/scope-deps.sh"
+  "name": "rayrutjes/algolia-woocommerce-order-search-admin",
+  "description": "WordPress plugin that allows for fast searching for orders in admin with Algolia.",
+  "type": "wordpress-plugin",
+  "keywords": [],
+  "license": "GPL-3",
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "require-dev": {
+    "algolia/index": "dev-master",
+    "algolia/algoliasearch-client-php": "^1.14"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:algolia/php-index.git"
     }
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "scripts": {
+    "post-install-cmd": "bin/scope-deps.sh",
+    "post-update-cmd": "bin/scope-deps.sh"
+  },
+  "extra": {
+    "installer-name": "algolia-woocommerce-order-search-admin"
+  }
 }

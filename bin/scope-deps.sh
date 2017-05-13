@@ -2,6 +2,7 @@
 
 rm -rf ./libs
 cp -R vendor libs
+rm -rf ./libs/composer/installers
 
 MY_NAMESPACE="AlgoliaWooCommerceOrderSearchAdmin"
 
