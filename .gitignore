@@ -1,5 +1,4 @@
 node_modules
-build
 vendor
 .php_cs.cache
 yarn.lock
