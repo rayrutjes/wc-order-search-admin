@@ -185,10 +185,15 @@ class OrdersIndex extends Index implements RecordsProvider
      */
     private function getRecordsForOrder(\WC_Abstract_Order $order)
     {
+        if( ! $order instanceof \WC_Order) {
+            // Only support default order type for now.
+            return array();
+        }
+
         $record = array(
-            'objectID' => (int) $order->id,
-            'id' => (int) $order->id,
-            'type' => $order->order_type,
+            'objectID' => (int) $order->get_id(),
+            'id' => (int) $order->get_id(),
+            'type' => $order->get_type(),
             'number' => (string) $order->get_order_number(),
             'status' => $order->get_status(),
             'status_name' => wc_get_order_status_name($order->get_status()),
@@ -196,8 +201,8 @@ class OrdersIndex extends Index implements RecordsProvider
             'date_formatted' => date_i18n(get_option('date_format'), strtotime($order->order_date)),
             'formatted_order_total' => $order->get_formatted_order_total(),
             'items_count' => $order->get_item_count(),
-            'payment_method_title' => $order->payment_method_title,
-            'shipping_method_title' => $order->shipping_method_title,
+            'payment_method_title' => $order->get_payment_method_title(),
+            'shipping_method_title' => $order->get_shipping_method(),
         );
 
         // Add user info.
@@ -212,7 +217,7 @@ class OrdersIndex extends Index implements RecordsProvider
             // Deal with guest checkouts.
             $record['customer'] = array(
                 'display_name' => $order->get_formatted_billing_full_name(),
-                'email' => $order->billing_email,
+                'email' => $order->get_billing_email(),
             );
         }
 
