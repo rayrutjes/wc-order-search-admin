@@ -3,8 +3,9 @@
 /**
  * Plugin Name: Algolia WooCommerce Order Search Admin
  * Description: Adds a dropdown to the orders admin screen to find orders as you type
+ * Author: Raymond Rutjes
  * Version: 0.7.0
- * Author Name: Raymond Rutjes
+ * Domain Path:     /languages
  */
 
 define('AOS_VERSION', '0.7.0');
@@ -35,19 +36,19 @@ add_action(
         require_once 'libs/autoload.php';
 
         // Resources
-        require_once 'inc/OrderChangeListener.php';
-        require_once 'inc/OrdersIndex.php';
-        require_once 'inc/Options.php';
-        require_once 'inc/Plugin.php';
+        require_once 'includes/OrderChangeListener.php';
+        require_once 'includes/OrdersIndex.php';
+        require_once 'includes/Options.php';
+        require_once 'includes/Plugin.php';
 
         $plugin = \AlgoliaWooCommerceOrderSearchAdmin\Plugin::initialize(new \AlgoliaWooCommerceOrderSearchAdmin\Options());
 
         if (is_admin()) {
-            require_once 'inc/admin/OptionsPage.php';
-            require_once 'inc/admin/OrdersListPage.php';
-            require_once 'inc/admin/AjaxReindex.php';
-            require_once 'inc/admin/AjaxIndexingOptionsForm.php';
-            require_once 'inc/admin/AjaxAlgoliaAccountSettingsForm.php';
+            require_once 'includes/admin/OptionsPage.php';
+            require_once 'includes/admin/OrdersListPage.php';
+            require_once 'includes/admin/AjaxReindex.php';
+            require_once 'includes/admin/AjaxIndexingOptionsForm.php';
+            require_once 'includes/admin/AjaxAlgoliaAccountSettingsForm.php';
             new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OptionsPage($plugin->getOptions());
             new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OrdersListPage($plugin->getOptions());
             if ($plugin->getOptions()->hasAlgoliaAccountSettings()) {
@@ -59,7 +60,7 @@ add_action(
 
         // WP CLI commands
         if (defined('WP_CLI') && WP_CLI && $plugin->getOptions()->hasAlgoliaAccountSettings()) {
-            require_once 'inc/Commands.php';
+            require_once 'includes/Commands.php';
             $commands = new \AlgoliaWooCommerceOrderSearchAdmin\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
             WP_CLI::add_command('orders', $commands);
         }

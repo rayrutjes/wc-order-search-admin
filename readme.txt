@@ -1,11 +1,11 @@
 === Algolia WooCommerce Order Search Admin ===
-Contributors: rayrutjes, algolia
+Contributors: rayrutjes
 Tags: search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: trunk
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.html
+Stable tag: 0.7.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Search for WooCommerce orders in the admin at the speed of thought with Algolia.
 

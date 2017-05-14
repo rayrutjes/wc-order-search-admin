@@ -1,3 +1,10 @@
-node_modules
-vendor
-.php_cs.cache
+.DS_Store
+Thumbs.db
+wp-cli.local.yml
+node_modules/
+*.sql
+*.tar.gz
+*.zip
+vendor/
+.sass-cache/
+

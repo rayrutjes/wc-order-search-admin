@@ -1,114 +1,140 @@
-# Copyright (C) 2017 WC Orders Search Algolia 0.7.0
-# This file is distributed under the same license as the WC Orders Search Algolia 0.7.0 package.
+# Copyright (C) 2017 Raymond Rutjes
+# This file is distributed under the same license as the Algolia WooCommerce Order Search Admin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WC Orders Search Algolia 0.7.0\n"
+"Project-Id-Version: Algolia WooCommerce Order Search Admin 0.7.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/algolia-woocommerce-order-search-admin\n"
+"POT-Creation-Date: 2017-05-14 14:04:56+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 
-#: algolia-woocommerce-order-search-admin.php:26
+#: algolia-woocommerce-order-search-admin.php:27
 msgid "WC Orders Search Algolia requires the WooCommerce plugin to be active."
 msgstr ""
 
-#: inc/Commands.php:56
+#: includes/Commands.php:56
 msgid "About push the settings for index %s..."
 msgstr ""
 
-#: inc/Commands.php:58
+#: includes/Commands.php:58
 msgid "Correctly pushed settings to the index \"%s\"."
 msgstr ""
 
-#: inc/Commands.php:60
+#: includes/Commands.php:60
 msgid "About to push all orders to Algolia. Please be patient..."
 msgstr ""
 
-#: inc/Commands.php:70
+#: includes/Commands.php:70
 msgid "Indexing WooCommerce orders"
 msgstr ""
 
-#: inc/Commands.php:81
+#: includes/Commands.php:81
 msgid "%d orders indexed in %d seconds!"
 msgstr ""
 
-#: inc/Plugin.php:106
-msgid "You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders."
+#: includes/Plugin.php:106
+msgid ""
+"You are one step away from being able to have fast and relevant search "
+"powered by Algolia for finding WooCommerce orders."
 msgstr ""
 
-#: inc/Plugin.php:107
+#: includes/Plugin.php:107
 msgid "Setup now"
 msgstr ""
 
-#: inc/admin/AjaxAlgoliaAccountSettingsForm.php:49
-msgid "Your Algolia account settings have been saved. You can now hit the \"re-index orders\" button."
+#: includes/admin/AjaxAlgoliaAccountSettingsForm.php:49
+msgid ""
+"Your Algolia account settings have been saved. You can now hit the "
+"\"re-index orders\" button."
 msgstr ""
 
-#: inc/admin/AjaxIndexingOptionsForm.php:49
-msgid "Your indexing options have been saved. If you changed the index name, you will need to re-index your orders."
+#: includes/admin/AjaxIndexingOptionsForm.php:49
+msgid ""
+"Your indexing options have been saved. If you changed the index name, you "
+"will need to re-index your orders."
 msgstr ""
 
-#: inc/admin/OptionsPage.php:52, inc/admin/OptionsPage.php:53
+#. Plugin Name of the plugin/theme
 msgid "Algolia WooCommerce Order Search Admin"
 msgstr ""
 
-#: inc/admin/views/options.php:4
+#: includes/admin/views/options.php:4
 msgid "Setup instructions"
 msgstr ""
 
-#: inc/admin/views/options.php:5
+#: includes/admin/views/options.php:5
 msgid "To power your orders search with this plugin you need to:"
 msgstr ""
 
-#: inc/admin/views/options.php:7
+#: includes/admin/views/options.php:7
 msgid "Create an Algolia account"
 msgstr ""
 
-#: inc/admin/views/options.php:8
+#: includes/admin/views/options.php:8
 msgid "Paste the API keys in the Algolia Account settings section of this page"
 msgstr ""
 
-#: inc/admin/views/options.php:12
+#: includes/admin/views/options.php:12
 msgid "Feel free to re-index every time you think something went wrong."
 msgstr ""
 
-#: inc/admin/views/options.php:15
+#: includes/admin/views/options.php:15
 msgid "Algolia Account settings"
 msgstr ""
 
-#: inc/admin/views/options.php:27
+#: includes/admin/views/options.php:27
 msgid "Algolia Application ID:"
 msgstr ""
 
-#: inc/admin/views/options.php:36
+#: includes/admin/views/options.php:36
 msgid "Algolia Search API key:"
 msgstr ""
 
-#: inc/admin/views/options.php:51
+#: includes/admin/views/options.php:51
 msgid "Algolia Admin API key:"
 msgstr ""
 
-#: inc/admin/views/options.php:62
+#: includes/admin/views/options.php:62
 msgid "Save Algolia account settings"
 msgstr ""
 
-#: inc/admin/views/options.php:69
+#: includes/admin/views/options.php:69
 msgid "Orders indexing settings"
 msgstr ""
 
-#: inc/admin/views/options.php:77
+#: includes/admin/views/options.php:77
 msgid "Orders index name in Algolia:"
 msgstr ""
 
-#: inc/admin/views/options.php:85
+#: includes/admin/views/options.php:85
 msgid "Orders to index per batch:"
 msgstr ""
 
-#: inc/admin/views/options.php:95
+#: includes/admin/views/options.php:95
 msgid "Save orders indexing settings"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds a dropdown to the orders admin screen to find orders as you type"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Raymond Rutjes"
 msgstr ""
