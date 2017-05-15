@@ -4,11 +4,11 @@
  * Plugin Name: Algolia WooCommerce Order Search Admin
  * Description: Adds a dropdown to the orders admin screen to find orders as you type
  * Author: Raymond Rutjes
- * Version: 1.0.0
+ * Version: 1.0.1
  * Domain Path:     /languages
  */
 
-define('AOS_VERSION', '1.0.0');
+define('AOS_VERSION', '1.0.1');
 
 if ( ! defined( 'AOS_FILE' ) ) {
   define( 'AOS_FILE', __FILE__ );

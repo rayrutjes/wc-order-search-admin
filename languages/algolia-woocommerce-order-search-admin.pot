@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Algolia WooCommerce Order Search Admin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Algolia WooCommerce Order Search Admin 1.0.0\n"
+"Project-Id-Version: Algolia WooCommerce Order Search Admin 1.0.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/algolia-woocommerce-order-search-admin\n"
-"POT-Creation-Date: 2017-05-15 12:38:56+00:00\n"
+"POT-Creation-Date: 2017-05-15 21:31:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
