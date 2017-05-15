@@ -37,17 +37,17 @@ class OrdersListPage
             return;
         }
 
-        wp_enqueue_style('aos_orders_search', plugin_dir_url(__FILE__).'../../assets/css/styles.css', array(), AOS_VERSION);
+        wp_enqueue_style('aos_orders_search', plugin_dir_url(AOS_FILE) . 'assets/css/styles.css', array(), AOS_VERSION);
 
         wp_enqueue_script('aos_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', array(), false, true);
         wp_enqueue_script('aos_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js', array(), false, true);
-        wp_enqueue_script('aos_orders_search', plugin_dir_url(__FILE__).'../../assets/js/orders-autocomplete.js', array('aos_algolia', 'aos_autocomplete', 'jquery'), AOS_VERSION, true);
+        wp_enqueue_script('aos_orders_search', plugin_dir_url(AOS_FILE) . 'assets/js/orders-autocomplete.js', array('aos_algolia', 'aos_autocomplete', 'jquery'), AOS_VERSION, true);
 
         wp_localize_script('aos_orders_search', 'aosOptions', array(
             'appId' => $this->options->getAlgoliaAppId(),
             'searchApiKey' => $this->options->getAlgoliaSearchApiKey(),
             'ordersIndexName' => $this->options->getOrdersIndexName(),
-            'poweredByImgUrl' => plugin_dir_url( AOS_FILE ) . 'assets/images/search-by-algolia.svg',
+            'poweredByImgUrl' => plugin_dir_url(AOS_FILE) . 'assets/images/search-by-algolia.svg',
             'debug' => defined('WP_DEBUG') && WP_DEBUG === true,
         ));
     }
