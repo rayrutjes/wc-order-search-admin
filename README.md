@@ -91,5 +91,6 @@ or directly access the plugin settings page under the `Settings` tab
 WARNING: don't leave the page until the progress reaches 100%
 1. Once indexing has finished, head to `WooCommerce -> Orders` and enjoy the orders appearing as you type when using the search input.
 
+## Changelog ##
 
-
+[See changelog for all versions](https://raw.githubusercontent.com/rayrutjes/algolia-woocommerce-order-search-admin/master/CHANGELOG.md).

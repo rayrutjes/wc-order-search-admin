@@ -1,0 +1,40 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/compare/v1.0.0...v1.0.1) (2017-05-15)
+
+
+### Bug Fixes
+
+* **autocomplete:** provide a local version of the powered by image ([7e266c2](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/7e266c2))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/compare/09e860e...v1.0.0) (2017-05-15)
+
+
+### Bug Fixes
+
+* **autocomplete:** clear after suggestion ([66a0387](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/66a0387))
+* **autocomplete:** status icon display ([f81b91b](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/f81b91b))
+* **cli:** fix output of re-indexing command ([0abd254](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/0abd254))
+* **deps:** commit missing deps ([5df6370](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/5df6370))
+* **display:** display status as full text ([eb05c1d](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/eb05c1d))
+* **indexing:** index guest info ([3b855ee](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/3b855ee))
+* **indexing:** remove calls to deprecated WC3 methods ([58b73b4](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/58b73b4))
+* **requires:** prefix file location with absolute path to plugin file ([52aa68f](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/52aa68f))
+* **status-icons:** re-use native css for displaying status icons ([3fa487a](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/3fa487a))
+* **wc2:** make compatible with WooCommerce 2 ([bd7dec4](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/bd7dec4))
+
+
+### Features
+
+* **autocomplete:** add shipping & payment methods ([ede9bbe](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/ede9bbe))
+* **autocomplete:** remove "via" prefixes ([b85e025](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/b85e025))
+* **cli:** clear index before re-pushing orders ([4442a2c](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/4442a2c))
+* **indexing:** clear index before repushing data ([add5796](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/add5796))
+* **indexing:** invite to stay on page if indexing in progress ([a7fd3bf](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/a7fd3bf))
+* **powerdby:** add powered by to dropdown ([24a352b](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/24a352b))
+* **UA:** add user agent to API queries ([09e860e](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/commit/09e860e))
+
+
+
