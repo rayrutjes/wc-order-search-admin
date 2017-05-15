@@ -47,6 +47,7 @@ class AjaxReindex
 
         if ($page === 1) {
             try {
+                $this->ordersIndex->clear();
                 $this->ordersIndex->pushSettings();
             } catch (AlgoliaException $exception) {
                 wp_send_json_error(array(
