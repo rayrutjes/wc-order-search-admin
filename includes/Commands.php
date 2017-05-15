@@ -53,15 +53,15 @@ class Commands extends WP_CLI_Command
      */
     public function reIndex($args, $assoc_args)
     {
-        WP_CLI::line(sprintf(__('About to clear existing orders from index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::log(sprintf(__('About to clear existing orders from index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
         $this->index->clear();
         WP_CLI::success(sprintf(__('Correctly cleared orders from index "%s".', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
 
-        WP_CLI::line(sprintf(__('About push the settings for index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::log(sprintf(__('About push the settings for index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
         $this->index->pushSettings();
         WP_CLI::success(sprintf(__('Correctly pushed settings for index "%s".', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
 
-        WP_CLI::line(__('About to push all orders to Algolia. Please be patient...', 'algolia-woocommerce-order-search-admin'));
+        WP_CLI::log(__('About to push all orders to Algolia. Please be patient...', 'algolia-woocommerce-order-search-admin'));
 
         $start = microtime(true);
 
