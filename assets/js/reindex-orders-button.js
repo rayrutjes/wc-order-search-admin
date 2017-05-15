@@ -2,12 +2,19 @@
   var $ordersReindexButtons = $('.aos-reindex-button');
   var currentPage = 1;
   var totalOrdersIndexed = 0;
+  var inProgress = false;
 
   $ordersReindexButtons.on('click', handleReindexButtonClick);
 
+  $( window ).on('beforeunload', function() {
+    if (inProgress===true) {
+      return 'If you leave now, re-indexing will be aborted.';
+    }
+  });
 
   function handleReindexButtonClick() {
     $ordersReindexButtons.attr('disabled', 'disabled');
+    inProgress = true;
     updateIndexingPourcentage(0);
 
     reIndex();
@@ -61,6 +68,7 @@
   function resetButtons() {
     totalOrdersIndexed = 0;
     currentPage = 1;
+    inProgress = false;
     $ordersReindexButtons.text('Re-index orders');
     $ordersReindexButtons.removeAttr('disabled');
   }
