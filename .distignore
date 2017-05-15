@@ -27,3 +27,8 @@ node_modules
 *.sql
 *.tar.gz
 *.zip
+.sass-cache
+.php_cs
+build
+.styleci.yml
+yarn.lock
