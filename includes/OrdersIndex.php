@@ -190,47 +190,80 @@ class OrdersIndex extends Index implements RecordsProvider
             return array();
         }
 
-        // Prepare dates.
-        $dateCreated = $order->get_date_created();
-        $dateCreatedTimestamp = $dateCreated !== null ? $dateCreated->getTimestamp() : 0;
-        $dateCreatedI18n = $dateCreated !== null ? $dateCreated->date_i18n(get_option('date_format')) : '';
-
-        $record = array(
-            'objectID' => (int) $order->get_id(),
-            'id' => (int) $order->get_id(),
-            'type' => $order->get_type(),
-            'number' => (string) $order->get_order_number(),
-            'status' => $order->get_status(),
-            'status_name' => wc_get_order_status_name($order->get_status()),
-            'date_timestamp' => $dateCreatedTimestamp,
-            'date_formatted' => $dateCreatedI18n,
-            'formatted_order_total' => $order->get_formatted_order_total(),
-            'items_count' => $order->get_item_count(),
-            'payment_method_title' => $order->get_payment_method_title(),
-            'shipping_method_title' => $order->get_shipping_method(),
-        );
-
-        // Add user info.
-        $user = $order->get_user();
-        if ($user) {
-            $record['customer'] = array(
-                'id' => (int) $user->ID,
-                'display_name' => $user->display_name,
-                'email' => $user->user_email,
+        if(version_compare('3', WC_VERSION) > 0) {
+            // We are dealing with WC 2.x
+            $record = array(
+                'objectID' => (int) $order->id,
+                'id' => (int) $order->id,
+                'type' => $order->order_type,
+                'number' => (string) $order->get_order_number(),
+                'status' => $order->get_status(),
+                'status_name' => wc_get_order_status_name($order->get_status()),
+                'date_timestamp' => strtotime($order->order_date),
+                'date_formatted' => date_i18n(get_option('date_format'), strtotime($order->order_date)),
+                'formatted_order_total' => $order->get_formatted_order_total(),
+                'items_count' => $order->get_item_count(),
+                'payment_method_title' => $order->payment_method_title,
+                'shipping_method_title' => $order->shipping_method_title,
             );
+
+            // Add user info.
+            $user = $order->get_user();
+            if ($user) {
+                $record['customer'] = array(
+                    'id' => (int) $user->ID,
+                    'display_name' => $user->display_name,
+                    'email' => $user->user_email,
+                );
+            } else {
+                // Deal with guest checkouts.
+                $record['customer'] = array(
+                    'display_name' => $order->get_formatted_billing_full_name(),
+                    'email' => $order->billing_email,
+                );
+            }
         } else {
-            // Deal with guest checkouts.
-            $record['customer'] = array(
-                'display_name' => $order->get_formatted_billing_full_name(),
-                'email' => $order->get_billing_email(),
+            // We are dealing with WC 3.x
+            $dateCreated = $order->get_date_created();
+            $dateCreatedTimestamp = $dateCreated !== null ? $dateCreated->getTimestamp() : 0;
+            $dateCreatedI18n = $dateCreated !== null ? $dateCreated->date_i18n(get_option('date_format')) : '';
+
+            $record = array(
+                'objectID' => (int) $order->get_id(),
+                'id' => (int) $order->get_id(),
+                'type' => $order->get_type(),
+                'number' => (string) $order->get_order_number(),
+                'status' => $order->get_status(),
+                'status_name' => wc_get_order_status_name($order->get_status()),
+                'date_timestamp' => $dateCreatedTimestamp,
+                'date_formatted' => $dateCreatedI18n,
+                'formatted_order_total' => $order->get_formatted_order_total(),
+                'items_count' => $order->get_item_count(),
+                'payment_method_title' => $order->get_payment_method_title(),
+                'shipping_method_title' => $order->get_shipping_method(),
             );
+
+            // Add user info.
+            $user = $order->get_user();
+            if ($user) {
+                $record['customer'] = array(
+                    'id' => (int) $user->ID,
+                    'display_name' => $user->display_name,
+                    'email' => $user->user_email,
+                );
+            } else {
+                // Deal with guest checkouts.
+                $record['customer'] = array(
+                    'display_name' => $order->get_formatted_billing_full_name(),
+                    'email' => $order->get_billing_email(),
+                );
+            }
         }
 
         // Add items.
         $record['items'] = array();
         foreach ($order->get_items() as $itemId => $item) {
             $product = $order->get_product_from_item($item);
-
             $record['items'][] = array(
                 'id' => (int) $itemId,
                 'name' => apply_filters('woocommerce_order_item_name', esc_html($item['name']), $item, false),
