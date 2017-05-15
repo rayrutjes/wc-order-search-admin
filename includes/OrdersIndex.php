@@ -190,6 +190,11 @@ class OrdersIndex extends Index implements RecordsProvider
             return array();
         }
 
+        // Prepare dates.
+        $dateCreated = $order->get_date_created();
+        $dateCreatedTimestamp = $dateCreated !== null ? $dateCreated->getTimestamp() : 0;
+        $dateCreatedI18n = $dateCreated !== null ? $dateCreated->date_i18n(get_option('date_format')) : '';
+
         $record = array(
             'objectID' => (int) $order->get_id(),
             'id' => (int) $order->get_id(),
@@ -197,8 +202,8 @@ class OrdersIndex extends Index implements RecordsProvider
             'number' => (string) $order->get_order_number(),
             'status' => $order->get_status(),
             'status_name' => wc_get_order_status_name($order->get_status()),
-            'date_timestamp' => strtotime($order->order_date),
-            'date_formatted' => date_i18n(get_option('date_format'), strtotime($order->order_date)),
+            'date_timestamp' => $dateCreatedTimestamp,
+            'date_formatted' => $dateCreatedI18n,
             'formatted_order_total' => $order->get_formatted_order_total(),
             'items_count' => $order->get_item_count(),
             'payment_method_title' => $order->get_payment_method_title(),
