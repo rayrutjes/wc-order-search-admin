@@ -10,6 +10,14 @@
 
 define('AOS_VERSION', '0.7.0');
 
+if ( ! defined( 'AOS_FILE' ) ) {
+  define( 'AOS_FILE', __FILE__ );
+}
+
+if ( ! defined( 'AOS_PATH' ) ) {
+    define( 'AOS_PATH', plugin_dir_path( AOS_FILE ) );
+}
+
 add_action( 'init', function() {
     $locale = apply_filters( 'plugin_locale', get_locale(), 'algolia-woocommerce-order-search-admin' );
 
@@ -33,22 +41,22 @@ add_action(
         };
 
         // Composer dependencies
-        require_once 'libs/autoload.php';
+        require_once AOS_PATH . 'libs/autoload.php';
 
         // Resources
-        require_once 'includes/OrderChangeListener.php';
-        require_once 'includes/OrdersIndex.php';
-        require_once 'includes/Options.php';
-        require_once 'includes/Plugin.php';
+        require_once AOS_PATH . 'includes/OrderChangeListener.php';
+        require_once AOS_PATH . 'includes/OrdersIndex.php';
+        require_once AOS_PATH . 'includes/Options.php';
+        require_once AOS_PATH . 'includes/Plugin.php';
 
         $plugin = \AlgoliaWooCommerceOrderSearchAdmin\Plugin::initialize(new \AlgoliaWooCommerceOrderSearchAdmin\Options());
 
         if (is_admin()) {
-            require_once 'includes/admin/OptionsPage.php';
-            require_once 'includes/admin/OrdersListPage.php';
-            require_once 'includes/admin/AjaxReindex.php';
-            require_once 'includes/admin/AjaxIndexingOptionsForm.php';
-            require_once 'includes/admin/AjaxAlgoliaAccountSettingsForm.php';
+            require_once AOS_PATH . 'includes/admin/OptionsPage.php';
+            require_once AOS_PATH . 'includes/admin/OrdersListPage.php';
+            require_once AOS_PATH . 'includes/admin/AjaxReindex.php';
+            require_once AOS_PATH . 'includes/admin/AjaxIndexingOptionsForm.php';
+            require_once AOS_PATH . 'includes/admin/AjaxAlgoliaAccountSettingsForm.php';
             new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OptionsPage($plugin->getOptions());
             new \AlgoliaWooCommerceOrderSearchAdmin\Admin\OrdersListPage($plugin->getOptions());
             if ($plugin->getOptions()->hasAlgoliaAccountSettings()) {
@@ -60,7 +68,7 @@ add_action(
 
         // WP CLI commands
         if (defined('WP_CLI') && WP_CLI && $plugin->getOptions()->hasAlgoliaAccountSettings()) {
-            require_once 'includes/Commands.php';
+            require_once AOS_PATH . 'includes/Commands.php';
             $commands = new \AlgoliaWooCommerceOrderSearchAdmin\Commands($plugin->getOrdersIndex(), $plugin->getOptions());
             WP_CLI::add_command('orders', $commands);
         }
