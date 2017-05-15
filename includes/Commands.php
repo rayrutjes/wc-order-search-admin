@@ -44,14 +44,15 @@ class Commands extends WP_CLI_Command
      *
      * ## EXAMPLES
      *
-     *     wp orders reIndex
+     *     wp orders reindex
      *
      * @when before_wp_load
+     * @alias re-index
      *
      * @param mixed $args
      * @param mixed $assoc_args
      */
-    public function reIndex($args, $assoc_args)
+    public function reindex($args, $assoc_args)
     {
         WP_CLI::log(sprintf(__('About to clear existing orders from index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
         $this->index->clear();
