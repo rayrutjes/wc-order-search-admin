@@ -146,7 +146,8 @@ module.exports = function( grunt ) {
   grunt.registerTask( 'default', [
     'uglify',
     'css',
-    'makepot'
+    'makepot',
+    'readme'
   ]);
 
   grunt.registerTask( 'css', [
