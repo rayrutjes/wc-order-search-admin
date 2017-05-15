@@ -3,7 +3,7 @@ Contributors: rayrutjes
 Tags: search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 0.7.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,8 @@ Beyond that, make sure you [checkout the pricing](https://www.algolia.com/pricin
 This plugin will create exactly one record per order to index. We index every order that is not flagged as trashed.
 
 == Installation ==
+
+The plugin has been tested with WooCommerce 2.x & 3.x
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory,
 or install the plugin through the WordPress plugins screen directly.

@@ -20,7 +20,7 @@ module.exports = function( grunt ) {
 			},
 			target: {
 				files: {
-					src: [ '*.php', '**/*.php', '!node_modules/**', '!php-tests/**', '!bin/**', '!vendor/**' ]
+					src: [ '*.php', '**/*.php', '!node_modules/**', '!php-tests/**', '!bin/**', '!vendor/**', '!build/**' ]
 				}
 			}
 		},
