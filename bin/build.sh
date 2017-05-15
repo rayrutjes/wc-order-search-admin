@@ -1,3 +1,7 @@
+set -eu
+
+mkdir -p ./build
+
 rsync \
 	--compress \
 	--recursive \
@@ -6,4 +10,8 @@ rsync \
 	--force \
 	--archive \
 	--exclude-from .distignore \
-	. ./build
+	. ./build/algolia-woocommerce-order-search-admin
+
+cd ./build
+zip -r ./algolia-woocommerce-order-search-admin.zip ./algolia-woocommerce-order-search-admin
+
