@@ -2,7 +2,7 @@
   "name": "rayrutjes/algolia-woocommerce-order-search-admin",
   "description": "WordPress plugin that allows for fast searching for orders in admin with Algolia.",
   "type": "wordpress-plugin",
-  "keywords": [],
+  "keywords": ["wordpress", "woocommerce", "order", "search", "algolia", "admin", "autocomplete"],
   "license": "GPL-3",
   "require": {
     "composer/installers": "~1.0"
