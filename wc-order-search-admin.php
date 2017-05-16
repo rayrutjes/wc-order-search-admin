@@ -24,6 +24,12 @@ add_action('init', function () {
     load_plugin_textdomain('wc-order-search-admin', false, plugin_basename(dirname(__FILE__)) . '/languages');
 });
 
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) {
+    $links[] = '<a href="' . admin_url('options-general.php?page=wc_osa_options') . '">' . __('Settings', 'wc-order-search-admin') . '</a>';
+
+    return $links;
+});
+
 add_action(
     'plugins_loaded',
     function () {
