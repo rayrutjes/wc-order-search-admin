@@ -25,7 +25,7 @@
  *
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 /*
  * Contains all the functions related to one index

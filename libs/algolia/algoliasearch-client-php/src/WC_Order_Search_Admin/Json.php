@@ -1,6 +1,6 @@
 <?php
 
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 /**
  * Class Json.

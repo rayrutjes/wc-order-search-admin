@@ -1,5 +1,5 @@
 <?php
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 interface FailingHostsCache
 {

@@ -7,10 +7,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin\Index\Tests;
+namespace WC_Order_Search_Admin\Index\Tests;
 
-use AlgoliaWooCommerceOrderSearchAdmin\Index\IndexSettings;
-use AlgoliaWooCommerceOrderSearchAdmin\Index\SimpleIndex;
+use WC_Order_Search_Admin\Index\IndexSettings;
+use WC_Order_Search_Admin\Index\SimpleIndex;
 
 class SimpleIndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -48,9 +48,9 @@ class SimpleIndexTest extends \PHPUnit_Framework_TestCase
     {
         $this->name = 'name';
         $this->settings = new IndexSettings(array());
-        $this->recordsProvider = $this->getMockBuilder('AlgoliaWooCommerceOrderSearchAdmin\Index\RecordsProvider')->getMock();
-        $this->algoliaClient = $this->getMockBuilder('AlgoliaWooCommerceOrderSearchAdmin\Client')->disableOriginalConstructor()->getMock();
-        $this->algoliaIndex = $this->getMockBuilder('AlgoliaWooCommerceOrderSearchAdmin\Index')->disableOriginalConstructor()->getMock();
+        $this->recordsProvider = $this->getMockBuilder('WC_Order_Search_Admin\Index\RecordsProvider')->getMock();
+        $this->algoliaClient = $this->getMockBuilder('WC_Order_Search_Admin\Client')->disableOriginalConstructor()->getMock();
+        $this->algoliaIndex = $this->getMockBuilder('WC_Order_Search_Admin\Index')->disableOriginalConstructor()->getMock();
 
         $this->algoliaClient->method('initIndex')->with($this->name)->willReturn($this->algoliaIndex);
 

@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
-    'AlgoliaWooCommerceOrderSearchAdmin\\Index\\Tests\\' => array($vendorDir . '/algolia/index/tests'),
-    'AlgoliaWooCommerceOrderSearchAdmin\\Index\\' => array($vendorDir . '/algolia/index/src'),
+    'WC_Order_Search_Admin\\Index\\Tests\\' => array($vendorDir . '/algolia/index/tests'),
+    'WC_Order_Search_Admin\\Index\\' => array($vendorDir . '/algolia/index/src'),
 );

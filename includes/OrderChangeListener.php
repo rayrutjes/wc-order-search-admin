@@ -7,7 +7,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 class OrderChangeListener
 {

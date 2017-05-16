@@ -24,15 +24,15 @@
  *
  */
 
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/AlgoliaException.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Client.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/ClientContext.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Index.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/IndexBrowser.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/PlacesIndex.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/SynonymType.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Version.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/Json.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/FailingHostsCache.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/FileFailingHostsCache.php';
-require_once 'src/AlgoliaWooCommerceOrderSearchAdmin/InMemoryFailingHostsCache.php';
+require_once 'src/WC_Order_Search_Admin/AlgoliaException.php';
+require_once 'src/WC_Order_Search_Admin/Client.php';
+require_once 'src/WC_Order_Search_Admin/ClientContext.php';
+require_once 'src/WC_Order_Search_Admin/Index.php';
+require_once 'src/WC_Order_Search_Admin/IndexBrowser.php';
+require_once 'src/WC_Order_Search_Admin/PlacesIndex.php';
+require_once 'src/WC_Order_Search_Admin/SynonymType.php';
+require_once 'src/WC_Order_Search_Admin/Version.php';
+require_once 'src/WC_Order_Search_Admin/Json.php';
+require_once 'src/WC_Order_Search_Admin/FailingHostsCache.php';
+require_once 'src/WC_Order_Search_Admin/FileFailingHostsCache.php';
+require_once 'src/WC_Order_Search_Admin/InMemoryFailingHostsCache.php';

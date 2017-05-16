@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin\Admin;
+namespace WC_Order_Search_Admin\Admin;
 
-use AlgoliaWooCommerceOrderSearchAdmin\Options;
+use WC_Order_Search_Admin\Options;
 
 class OrdersListPage
 {

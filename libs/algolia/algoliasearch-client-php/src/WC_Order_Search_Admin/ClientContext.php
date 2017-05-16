@@ -25,7 +25,7 @@
  *
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 use Exception;
 
@@ -113,11 +113,11 @@ class ClientContext
         }
 
         if ($this->applicationID == null || mb_strlen($this->applicationID) == 0) {
-            throw new Exception('AlgoliaWooCommerceOrderSearchAdmin requires an applicationID.');
+            throw new Exception('WC_Order_Search_Admin requires an applicationID.');
         }
 
         if ($this->apiKey == null || mb_strlen($this->apiKey) == 0) {
-            throw new Exception('AlgoliaWooCommerceOrderSearchAdmin requires an apiKey.');
+            throw new Exception('WC_Order_Search_Admin requires an apiKey.');
         }
 
         $this->curlMHandle = null;

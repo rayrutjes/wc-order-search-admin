@@ -4,7 +4,7 @@ rm -rf ./libs
 cp -R vendor libs
 rm -rf ./libs/composer/installers
 
-MY_NAMESPACE="AlgoliaWooCommerceOrderSearchAdmin"
+MY_NAMESPACE="WC_Order_Search_Admin"
 
 find ./libs -name "*.php" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;
 find ./libs -name "composer.json" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;

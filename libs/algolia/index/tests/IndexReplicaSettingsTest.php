@@ -7,9 +7,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin\Index\Tests;
+namespace WC_Order_Search_Admin\Index\Tests;
 
-use AlgoliaWooCommerceOrderSearchAdmin\Index\IndexReplicaSettings;
+use WC_Order_Search_Admin\Index\IndexReplicaSettings;
 
 class IndexReplicaSettingsTest extends \PHPUnit_Framework_TestCase
 {

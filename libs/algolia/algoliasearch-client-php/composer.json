@@ -1,12 +1,12 @@
 {
     "name": "algolia/algoliasearch-client-php",
-    "description": "AlgoliaWooCommerceOrderSearchAdmin Search API Client for PHP",
+    "description": "WC_Order_Search_Admin Search API Client for PHP",
     "type": "library",
     "homepage": "https://github.com/algolia/algoliasearch-client-php",
     "license": "MIT",
     "authors": [
         {
-            "name": "AlgoliaWooCommerceOrderSearchAdmin Team",
+            "name": "WC_Order_Search_Admin Team",
             "email": "contact@algolia.com"
         },
         {
@@ -28,8 +28,8 @@
     },
     "autoload": {
         "psr-0": {
-            "AlgoliaWooCommerceOrderSearchAdminWooCommerceOrderSearchAdmin": "src/",
-            "AlgoliaWooCommerceOrderSearchAdminWooCommerceOrderSearchAdmin\\Tests": "tests/"
+            "WC_Order_Search_Admin": "src/",
+            "WC_Order_Search_Admin\\Tests": "tests/"
         }
     }
 }

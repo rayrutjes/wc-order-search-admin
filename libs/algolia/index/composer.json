@@ -19,8 +19,8 @@
   },
   "autoload": {
     "psr-4": {
-      "AlgoliaWooCommerceOrderSearchAdmin\\Index\\": "src/",
-      "AlgoliaWooCommerceOrderSearchAdmin\\Index\\Tests\\": "tests/"
+      "WC_Order_Search_Admin\\Index\\": "src/",
+      "WC_Order_Search_Admin\\Index\\Tests\\": "tests/"
     }
   }
 }

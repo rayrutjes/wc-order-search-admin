@@ -25,7 +25,7 @@
  *
  */
 
-namespace AlgoliaWooCommerceOrderSearchAdmin;
+namespace WC_Order_Search_Admin;
 
 /**
  * Entry point in the PHP API.
@@ -77,10 +77,10 @@ class Client
     public function __construct($applicationID, $apiKey, $hostsArray = null, $options = array())
     {
         if (!function_exists('curl_init')) {
-            throw new \Exception('AlgoliaWooCommerceOrderSearchAdmin requires the CURL PHP extension.');
+            throw new \Exception('WC_Order_Search_Admin requires the CURL PHP extension.');
         }
         if (!function_exists('json_decode')) {
-            throw new \Exception('AlgoliaWooCommerceOrderSearchAdmin requires the JSON PHP extension.');
+            throw new \Exception('WC_Order_Search_Admin requires the JSON PHP extension.');
         }
 
         $this->caInfoPath = __DIR__.'/../../resources/ca-bundle.crt';
@@ -97,7 +97,7 @@ class Client
                     break;
                 case self::FAILING_HOSTS_CACHE:
                     if (! $value instanceof FailingHostsCache) {
-                        throw new \InvalidArgumentException('failingHostsCache must be an instance of \AlgoliaWooCommerceOrderSearchAdmin\FailingHostsCache.');
+                        throw new \InvalidArgumentException('failingHostsCache must be an instance of \WC_Order_Search_Admin\FailingHostsCache.');
                     }
                     break;
                 default:
@@ -1009,7 +1009,7 @@ class Client
         if (!is_array($curlOptions)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    'AlgoliaWooCommerceOrderSearchAdmin requires %s option to be array of valid curl options.',
+                    'WC_Order_Search_Admin requires %s option to be array of valid curl options.',
                     static::CURLOPT
                 )
             );
@@ -1067,7 +1067,7 @@ class Client
     {
         throw new \OutOfBoundsException(
             sprintf(
-                'AlgoliaWooCommerceOrderSearchAdmin %s options keys are invalid. %s given. error message : %s',
+                'WC_Order_Search_Admin %s options keys are invalid. %s given. error message : %s',
                 static::CURLOPT,
                 Json::encode($curlOptions),
                 $errorMsg
