@@ -12,9 +12,6 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
           + getCustomerLine(suggestion)
           + getTotalsLine(suggestion)
           + getMethodsLine(suggestion);
-      },
-      footer: function(){
-        return '<a href="https://www.algolia.com/"><img class="aos-powered-by" src="' + aosOptions.poweredByImgUrl + '"></a>';
       }
     }
   }
