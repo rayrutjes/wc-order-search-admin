@@ -39,9 +39,10 @@ class OrdersListPage
 
         wp_enqueue_style('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/css/styles.css', array(), WC_OSA_VERSION);
 
-        wp_enqueue_script('wc_osa_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', array(), false, true);
-        wp_enqueue_script('wc_osa_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js', array(), false, true);
-        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/orders-autocomplete.js', array('wc_osa_algolia', 'wc_osa_autocomplete', 'jquery'), WC_OSA_VERSION, true);
+        $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+        wp_enqueue_script('wc_osa_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch' . $suffix . '.js', array(), false, true);
+        wp_enqueue_script('wc_osa_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete' . $suffix . '.js', array(), false, true);
+        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/orders-autocomplete' . $suffix . '.js', array('wc_osa_algolia', 'wc_osa_autocomplete', 'jquery'), WC_OSA_VERSION, true);
 
         wp_localize_script('wc_osa_orders_search', 'aosOptions', array(
             'appId'           => $this->options->getAlgoliaAppId(),

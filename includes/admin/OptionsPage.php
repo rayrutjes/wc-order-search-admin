@@ -36,8 +36,9 @@ class OptionsPage
             return;
         }
 
-        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/reindex-orders-button.js', array('jquery'), WC_OSA_VERSION, true);
-        wp_enqueue_script('wc_osa_ajax_forms', plugin_dir_url(WC_OSA_FILE) . 'assets/js/ajax-forms.js', array('jquery'), WC_OSA_VERSION, true);
+        $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/reindex-orders-button' . $suffix . '.js', array('jquery'), WC_OSA_VERSION, true);
+        wp_enqueue_script('wc_osa_ajax_forms', plugin_dir_url(WC_OSA_FILE) . 'assets/js/ajax-forms' . $suffix . '.js', array('jquery'), WC_OSA_VERSION, true);
     }
 
     public function register_page_in_menu()
