@@ -91,6 +91,21 @@ or directly access the plugin settings page under the `Settings` tab
 WARNING: don't leave the page until the progress reaches 100%
 1. Once indexing has finished, head to `WooCommerce -> Orders` and enjoy the orders appearing as you type when using the search input.
 
+## Screenshots ##
+
+### 1. The slick autocomplete search results dropdown. ###
+![The slick autocomplete search results dropdown.](http://ps.w.org/algolia-woocommerce-order-search-admin/assets/screenshot-1.png)
+
+### 2. Setup instructions steps. ###
+![Setup instructions steps.](http://ps.w.org/algolia-woocommerce-order-search-admin/assets/screenshot-2.png)
+
+### 3. Algolia account settings. ###
+![Algolia account settings.](http://ps.w.org/algolia-woocommerce-order-search-admin/assets/screenshot-3.png)
+
+### 4. Indexing settings. ###
+![Indexing settings.](http://ps.w.org/algolia-woocommerce-order-search-admin/assets/screenshot-4.png)
+
+
 ## Changelog ##
 
 [See changelog for all versions](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/blob/master/CHANGELOG.md).
