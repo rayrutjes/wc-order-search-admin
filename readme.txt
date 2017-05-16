@@ -1,4 +1,4 @@
-=== Algolia WooCommerce Order Search Admin ===
+=== WooCommerce Order Search Admin powered by Algolia ===
 Contributors: rayrutjes
 Tags: search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax
 Requires at least: 4.6
@@ -100,4 +100,4 @@ WARNING: don't leave the page until the progress reaches 100%
 
 == Changelog ==
 
-[See changelog for all versions](https://github.com/rayrutjes/algolia-woocommerce-order-search-admin/blob/master/CHANGELOG.md).
+[See changelog for all versions](https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md).

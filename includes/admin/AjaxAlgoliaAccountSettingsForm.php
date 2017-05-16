@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -27,7 +27,7 @@ class AjaxAlgoliaAccountSettingsForm
     {
         $this->options = $options;
 
-        add_action('wp_ajax_aos_save_algolia_settings', array($this, 'saveAlgoliaAccountSettings'));
+        add_action('wp_ajax_wc_osa_save_algolia_settings', array($this, 'saveAlgoliaAccountSettings'));
     }
 
     public function saveAlgoliaAccountSettings()
@@ -46,7 +46,7 @@ class AjaxAlgoliaAccountSettingsForm
 
         $response = array(
             'success' => true,
-            'message' => __('Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'algolia-woocommerce-order-search-admin'),
+            'message' => __('Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'wc-order-search-admin'),
         );
 
         wp_send_json($response);

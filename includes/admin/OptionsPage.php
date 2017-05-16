@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -32,27 +32,21 @@ class OptionsPage
     public function enqueue_scripts()
     {
         $screen = get_current_screen();
-        if ($screen->id !== 'settings_page_aos_options') {
+        if ($screen->id !== 'settings_page_wc_osa_options') {
             return;
         }
 
-        wp_enqueue_script('aos_orders_search', plugin_dir_url(__FILE__).'../../assets/js/reindex-orders-button.js', array('jquery'), AOS_VERSION, true);
-        wp_enqueue_script('aos_ajax_forms', plugin_dir_url(__FILE__).'../../assets/js/ajax-forms.js', array('jquery'), AOS_VERSION, true);
-
-        /*wp_localize_script( 'aos_orders_search', 'aosOptions', array(
-            'appId' => $this->options->getAlgoliaAppId(),
-            'searchApiKey' => $this->options->getAlgoliaSearchApiKey(),
-            'ordersIndexName' => $this->options->getOrdersIndexName(),
-        ) );*/
+        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/reindex-orders-button.js', array('jquery'), WC_OSA_VERSION, true);
+        wp_enqueue_script('wc_osa_ajax_forms', plugin_dir_url(WC_OSA_FILE) . 'assets/js/ajax-forms.js', array('jquery'), WC_OSA_VERSION, true);
     }
 
     public function register_page_in_menu()
     {
         add_options_page(
-            __('Algolia WooCommerce Order Search Admin', 'algolia-woocommerce-order-search-admin'),
-            __('Algolia WooCommerce Order Search Admin', 'algolia-woocommerce-order-search-admin'),
+            __('WooCommerce Order Search Admin', 'wc-order-search-admin'),
+            __('WooCommerce Order Search Admin', 'wc-order-search-admin'),
             'manage_options',
-            'aos_options',
+            'wc_osa_options',
             array($this, 'render_page')
         );
     }

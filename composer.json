@@ -1,5 +1,5 @@
 {
-  "name": "rayrutjes/algolia-woocommerce-order-search-admin",
+  "name": "rayrutjes/wc-order-search-admin",
   "description": "WordPress plugin that allows for fast searching for orders in admin with Algolia.",
   "type": "wordpress-plugin",
   "keywords": ["wordpress", "woocommerce", "order", "search", "algolia", "admin", "autocomplete"],
@@ -26,6 +26,6 @@
     "post-update-cmd": "bin/scope-deps.sh"
   },
   "extra": {
-    "installer-name": "algolia-woocommerce-order-search-admin"
+    "installer-name": "wc-order-search-admin"
   }
 }

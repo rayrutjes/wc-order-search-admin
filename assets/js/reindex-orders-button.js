@@ -26,7 +26,7 @@
 
   function reIndex() {
     var data = {
-      'action': 'aos_reindex',
+      'action': 'wc_osa_reindex',
       'page': currentPage
     };
 

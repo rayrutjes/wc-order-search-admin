@@ -57,11 +57,11 @@ $blue: #00AEFF;
     border-bottom: 1px solid rgba(red($blue),green($blue),blue($blue), 1);
 }
 
-.aos-order__number {
+.wc-osa__number {
     font-weight: bold;
 }
 
-.aos-order__date {
+.wc-osa__date {
     color: #9D9DBD;
 }
 
@@ -74,19 +74,13 @@ $blue: #00AEFF;
     position: relative !important;
 }
 
-.aa-dropdown-menu img.aos-powered-by{
-    width: 130px;
-    float: right;
-    margin: 10px;
-}
-
-.aos-order__total,
-.aos-order__payment-method {
+.wc-osa__total,
+.wc-osa__payment-method {
     float: right;
 }
 
-.aos-order__shipping-method,
-.aos-order__payment-method{
+.wc-osa__shipping-method,
+.wc-osa__payment-method{
     color: #9D9DBD;
 }
 

@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -25,7 +25,7 @@ class AjaxIndexingOptionsForm
     {
         $this->options = $options;
 
-        add_action('wp_ajax_aos_save_indexing_options', array($this, 'saveIndexingOptions'));
+        add_action('wp_ajax_wc_osa_save_indexing_options', array($this, 'saveIndexingOptions'));
     }
 
     public function saveIndexingOptions()
@@ -46,7 +46,7 @@ class AjaxIndexingOptionsForm
 
         $response = array(
             'success' => true,
-            'message' => __('Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'algolia-woocommerce-order-search-admin'),
+            'message' => __('Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'wc-order-search-admin'),
         );
 
         wp_send_json($response);

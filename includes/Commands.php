@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -54,15 +54,15 @@ class Commands extends WP_CLI_Command
      */
     public function reindex($args, $assoc_args)
     {
-        WP_CLI::log(sprintf(__('About to clear existing orders from index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::log(sprintf(__('About to clear existing orders from index %s...', 'wc-order-search-admin'), $this->index->getName()));
         $this->index->clear();
-        WP_CLI::success(sprintf(__('Correctly cleared orders from index "%s".', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::success(sprintf(__('Correctly cleared orders from index "%s".', 'wc-order-search-admin'), $this->index->getName()));
 
-        WP_CLI::log(sprintf(__('About push the settings for index %s...', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::log(sprintf(__('About push the settings for index %s...', 'wc-order-search-admin'), $this->index->getName()));
         $this->index->pushSettings();
-        WP_CLI::success(sprintf(__('Correctly pushed settings for index "%s".', 'algolia-woocommerce-order-search-admin'), $this->index->getName()));
+        WP_CLI::success(sprintf(__('Correctly pushed settings for index "%s".', 'wc-order-search-admin'), $this->index->getName()));
 
-        WP_CLI::log(__('About to push all orders to Algolia. Please be patient...', 'algolia-woocommerce-order-search-admin'));
+        WP_CLI::log(__('About to push all orders to Algolia. Please be patient...', 'wc-order-search-admin'));
 
         $start = microtime(true);
 
@@ -72,7 +72,7 @@ class Commands extends WP_CLI_Command
 
         $totalRecordsCount = $this->index->reIndex(false, $perPage, function ($records, $page, $totalPages) use ($self) {
             if (null === $self->progress) {
-                $self->progress = WP_CLI\Utils\make_progress_bar(__('Indexing WooCommerce orders', 'algolia-woocommerce-order-search-admin'), $totalPages);
+                $self->progress = WP_CLI\Utils\make_progress_bar(__('Indexing WooCommerce orders', 'wc-order-search-admin'), $totalPages);
             }
             $self->progress->tick();
         });
@@ -83,6 +83,6 @@ class Commands extends WP_CLI_Command
 
         $elapsed = microtime(true) - $start;
 
-        WP_CLI::success(sprintf(__('%d orders indexed in %d seconds!', 'algolia-woocommerce-order-search-admin'), $totalRecordsCount, $elapsed));
+        WP_CLI::success(sprintf(__('%d orders indexed in %d seconds!', 'wc-order-search-admin'), $totalRecordsCount, $elapsed));
     }
 }

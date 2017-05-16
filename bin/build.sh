@@ -10,8 +10,8 @@ rsync \
 	--force \
 	--archive \
 	--exclude-from .distignore \
-	. ./build/algolia-woocommerce-order-search-admin
+	. ./build/wc-order-search-admin
 
 cd ./build
-zip -r ./algolia-woocommerce-order-search-admin.zip ./algolia-woocommerce-order-search-admin
+zip -r ./wc-order-search-admin.zip ./wc-order-search-admin
 

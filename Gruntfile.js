@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'algolia-woocommerce-order-search-admin',
+				textdomain: 'wc-order-search-admin',
 			},
 			target: {
 				files: {
@@ -120,8 +120,8 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					mainFile: 'algolia-woocommerce-order-search-admin.php',
-					potFilename: 'algolia-woocommerce-order-search-admin.pot',
+					mainFile: 'wc-order-search-admin.php',
+					potFilename: 'wc-order-search-admin.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

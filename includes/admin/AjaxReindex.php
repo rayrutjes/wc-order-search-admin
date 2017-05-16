@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -33,7 +33,7 @@ class AjaxReindex
     {
         $this->options = $options;
 
-        add_action('wp_ajax_aos_reindex', array($this, 'reIndex'));
+        add_action('wp_ajax_wc_osa_reindex', array($this, 'reIndex'));
         $this->ordersIndex = $ordersIndex;
     }
 
@@ -69,8 +69,8 @@ class AjaxReindex
 
         $response = array(
             'recordsPushedCount' => $recordsPushedCount,
-            'totalPagesCount' => $totalPages,
-            'finished' => $page >= $totalPages,
+            'totalPagesCount'    => $totalPages,
+            'finished'           => $page >= $totalPages,
         );
 
         wp_send_json($response);

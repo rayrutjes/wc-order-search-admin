@@ -1,8 +1,8 @@
 <?php
 $header = <<<'EOF'
-This file is part of Algolia Orders Search for WooCommerce library.
+This file is part of WooCommerce Order Search Admin plugin for WordPress.
 (c) Raymond Rutjes <raymond.rutjes@gmail.com>
-This source file is subject to the MIT license that is bundled
+This source file is subject to the GPLv2 license that is bundled
 with this source code in the file LICENSE.
 EOF;
 return PhpCsFixer\Config::create()
@@ -21,11 +21,13 @@ return PhpCsFixer\Config::create()
         'psr4' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'concat_space' => array('spacing' => 'one'),
+        'binary_operator_spaces' => array('align_double_arrow' => true),
     ))
     ->setFinder(
         PhpCsFixer\Finder::create()
         ->in(__DIR__)
         ->exclude('libs')
-        ->notPath('algolia-woocommerce-order-search-admin.php')
+        ->exclude('node_modules')
     )
 ;

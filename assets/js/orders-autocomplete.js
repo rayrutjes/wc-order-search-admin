@@ -21,15 +21,15 @@ autocomplete('#post-search-input', { hint: false, openOnFocus: true, debug: aosO
 jQuery('#post-search-input').focus();
 
 function getStatusLine(suggestion) {
-  return '<div class="aos-order__line">'
-  + '<span class="aos-order__status">' + suggestion._highlightResult.status_name.value + '</span>'
+  return '<div class="wc-osa__line">'
+  + '<span class="wc-osa__status">' + suggestion._highlightResult.status_name.value + '</span>'
   + '</div>';
 }
 
 function getNumberLine(suggestion) {
-  return '<div class="aos-order__line">'
-    + '<span class="aos-order__number">#' + suggestion._highlightResult.number.value + '</span> - '
-    + '<span class="aos-order__date">' + suggestion.date_formatted + '</span>'
+  return '<div class="wc-osa__line">'
+    + '<span class="wc-osa__number">#' + suggestion._highlightResult.number.value + '</span> - '
+    + '<span class="wc-osa__date">' + suggestion.date_formatted + '</span>'
     + '</div>';
 }
 
@@ -43,24 +43,24 @@ function getCustomerLine(suggestion) {
 }
 
 function getTotalsLine(suggestion) {
-  return '<div class="aos-order__line">'
-    + '<span class="aos-order__items">' + suggestion.items_count + ' item(s)</span>'
-    + '<span class="aos-order__total">' + suggestion.formatted_order_total + '</span>'
+  return '<div class="wc-osa__line">'
+    + '<span class="wc-osa__items">' + suggestion.items_count + ' item(s)</span>'
+    + '<span class="wc-osa__total">' + suggestion.formatted_order_total + '</span>'
     + '</div>';
 }
 
 function getMethodsLine(suggestion) {
   var html = '';
   if(suggestion.shipping_method_title) {
-    html += '<span class="aos-order__shipping-method">' + suggestion.shipping_method_title + '</span>';
+    html += '<span class="wc-osa__shipping-method">' + suggestion.shipping_method_title + '</span>';
   }
   if(suggestion.payment_method_title) {
-    html += '<span class="aos-order__payment-method">' + suggestion.payment_method_title + '</span>';
+    html += '<span class="wc-osa__payment-method">' + suggestion.payment_method_title + '</span>';
   }
 
   if(html.length === 0) {
     return '';
   }
 
-  return '<div class="aos-order__line">'+ html + '</div>';
+  return '<div class="wc-osa__line">'+ html + '</div>';
 }

@@ -37,10 +37,10 @@ class Plugin
 
         $algoliaClient = new Client($options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey());
 
-        $integrationName = 'algolia-woocommerce-order-search-admin';
-        $ua = '; '.$integrationName.' integration ('.AOS_VERSION.')'
-            .'; PHP ('.phpversion().')'
-            .'; Wordpress ('.$wp_version.')';
+        $integrationName = 'wc-order-search-admin';
+        $ua = '; ' . $integrationName . ' integration (' . WC_OSA_VERSION . ')'
+            . '; PHP (' . phpversion() . ')'
+            . '; Wordpress (' . $wp_version . ')';
 
         Version::$custom_value = $ua;
 
@@ -99,12 +99,12 @@ class Plugin
     public function configureAlgoliaSettingsNotice()
     {
         $screen = get_current_screen();
-        if ($screen->id === 'settings_page_aos_options') {
+        if ($screen->id === 'settings_page_wc_osa_options') {
             return;
         } ?>
         <div class="notice notice-success">
-            <p><?php esc_html_e('You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.', 'algolia-woocommerce-order-search-admin'); ?></p>
-            <p><a href="options-general.php?page=aos_options" class="button button-primary"><?php esc_html_e('Setup now', 'algolia-woocommerce-order-search-admin'); ?></a></p>
+            <p><?php esc_html_e('You are one step away from being able to have fast and relevant search powered by Algolia for finding WooCommerce orders.', 'wc-order-search-admin'); ?></p>
+            <p><a href="options-general.php?page=wc_osa_options" class="button button-primary"><?php esc_html_e('Setup now', 'wc-order-search-admin'); ?></a></p>
         </div>
         <?php
 

@@ -1,11 +1,11 @@
 # Copyright (C) 2017 Raymond Rutjes
-# This file is distributed under the same license as the Algolia WooCommerce Order Search Admin package.
+# This file is distributed under the same license as the WooCommerce Order Search Admin powered by Algolia package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Algolia WooCommerce Order Search Admin 1.0.1\n"
+"Project-Id-Version: WooCommerce Order Search Admin powered by Algolia 1.0.1\n"
 "Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/algolia-woocommerce-order-search-admin\n"
-"POT-Creation-Date: 2017-05-15 21:31:21+00:00\n"
+"https://wordpress.org/support/plugin/wc-order-search-admin\n"
+"POT-Creation-Date: 2017-05-16 21:26:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,10 +24,6 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
-
-#: algolia-woocommerce-order-search-admin.php:35
-msgid "WC Orders Search Algolia requires the WooCommerce plugin to be active."
-msgstr ""
 
 #: includes/Commands.php:57
 msgid "About to clear existing orders from index %s..."
@@ -79,8 +75,8 @@ msgid ""
 "will need to re-index your orders."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Algolia WooCommerce Order Search Admin"
+#: includes/admin/OptionsPage.php:46 includes/admin/OptionsPage.php:47
+msgid "WooCommerce Order Search Admin"
 msgstr ""
 
 #: includes/admin/views/options.php:4
@@ -139,8 +135,18 @@ msgstr ""
 msgid "Save orders indexing settings"
 msgstr ""
 
+#: wc-order-search-admin.php:34
+msgid "WooCommerce Order Search Admin requires the WooCommerce plugin to be active."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Order Search Admin powered by Algolia"
+msgstr ""
+
 #. Description of the plugin/theme
-msgid "Adds a dropdown to the orders admin screen to find orders as you type"
+msgid ""
+"Search for WooCommerce orders in the admin at the speed of thought with "
+"Algolia."
 msgstr ""
 
 #. Author of the plugin/theme

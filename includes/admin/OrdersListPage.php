@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -37,17 +37,17 @@ class OrdersListPage
             return;
         }
 
-        wp_enqueue_style('aos_orders_search', plugin_dir_url(AOS_FILE) . 'assets/css/styles.css', array(), AOS_VERSION);
+        wp_enqueue_style('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/css/styles.css', array(), WC_OSA_VERSION);
 
-        wp_enqueue_script('aos_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', array(), false, true);
-        wp_enqueue_script('aos_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js', array(), false, true);
-        wp_enqueue_script('aos_orders_search', plugin_dir_url(AOS_FILE) . 'assets/js/orders-autocomplete.js', array('aos_algolia', 'aos_autocomplete', 'jquery'), AOS_VERSION, true);
+        wp_enqueue_script('wc_osa_algolia', 'https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js', array(), false, true);
+        wp_enqueue_script('wc_osa_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js', array(), false, true);
+        wp_enqueue_script('wc_osa_orders_search', plugin_dir_url(WC_OSA_FILE) . 'assets/js/orders-autocomplete.js', array('wc_osa_algolia', 'wc_osa_autocomplete', 'jquery'), WC_OSA_VERSION, true);
 
-        wp_localize_script('aos_orders_search', 'aosOptions', array(
-            'appId' => $this->options->getAlgoliaAppId(),
-            'searchApiKey' => $this->options->getAlgoliaSearchApiKey(),
+        wp_localize_script('wc_osa_orders_search', 'aosOptions', array(
+            'appId'           => $this->options->getAlgoliaAppId(),
+            'searchApiKey'    => $this->options->getAlgoliaSearchApiKey(),
             'ordersIndexName' => $this->options->getOrdersIndexName(),
-            'debug' => defined('WP_DEBUG') && WP_DEBUG === true,
+            'debug'           => defined('WP_DEBUG') && WP_DEBUG === true,
         ));
     }
 }

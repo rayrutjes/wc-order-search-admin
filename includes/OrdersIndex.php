@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Algolia Orders Search for WooCommerce library.
+ * This file is part of WooCommerce Order Search Admin plugin for WordPress.
  * (c) Raymond Rutjes <raymond.rutjes@gmail.com>
- * This source file is subject to the MIT license that is bundled
+ * This source file is subject to the GPLv2 license that is bundled
  * with this source code in the file LICENSE.
  */
 
@@ -73,7 +73,7 @@ class OrdersIndex extends Index implements RecordsProvider
     {
         $query = $this->newQuery(array(
             'posts_per_page' => $perPage,
-            'paged' => $page,
+            'paged'          => $page,
         ));
 
         return $this->getRecordsForQuery($query);
@@ -168,7 +168,7 @@ class OrdersIndex extends Index implements RecordsProvider
     private function newQuery(array $args = array())
     {
         $defaultArgs = array(
-            'post_type' => wc_get_order_types(),
+            'post_type'   => wc_get_order_types(),
             'post_status' => array_keys(wc_get_order_statuses()),
         );
 
@@ -185,25 +185,25 @@ class OrdersIndex extends Index implements RecordsProvider
      */
     private function getRecordsForOrder(\WC_Abstract_Order $order)
     {
-        if( ! $order instanceof \WC_Order) {
+        if (!$order instanceof \WC_Order) {
             // Only support default order type for now.
             return array();
         }
 
-        if(version_compare('3', WC_VERSION) > 0) {
+        if (version_compare('3', WC_VERSION) > 0) {
             // We are dealing with WC 2.x
             $record = array(
-                'objectID' => (int) $order->id,
-                'id' => (int) $order->id,
-                'type' => $order->order_type,
-                'number' => (string) $order->get_order_number(),
-                'status' => $order->get_status(),
-                'status_name' => wc_get_order_status_name($order->get_status()),
-                'date_timestamp' => strtotime($order->order_date),
-                'date_formatted' => date_i18n(get_option('date_format'), strtotime($order->order_date)),
+                'objectID'              => (int) $order->id,
+                'id'                    => (int) $order->id,
+                'type'                  => $order->order_type,
+                'number'                => (string) $order->get_order_number(),
+                'status'                => $order->get_status(),
+                'status_name'           => wc_get_order_status_name($order->get_status()),
+                'date_timestamp'        => strtotime($order->order_date),
+                'date_formatted'        => date_i18n(get_option('date_format'), strtotime($order->order_date)),
                 'formatted_order_total' => $order->get_formatted_order_total(),
-                'items_count' => $order->get_item_count(),
-                'payment_method_title' => $order->payment_method_title,
+                'items_count'           => $order->get_item_count(),
+                'payment_method_title'  => $order->payment_method_title,
                 'shipping_method_title' => $order->shipping_method_title,
             );
 
@@ -211,15 +211,15 @@ class OrdersIndex extends Index implements RecordsProvider
             $user = $order->get_user();
             if ($user) {
                 $record['customer'] = array(
-                    'id' => (int) $user->ID,
+                    'id'           => (int) $user->ID,
                     'display_name' => $user->display_name,
-                    'email' => $user->user_email,
+                    'email'        => $user->user_email,
                 );
             } else {
                 // Deal with guest checkouts.
                 $record['customer'] = array(
                     'display_name' => $order->get_formatted_billing_full_name(),
-                    'email' => $order->billing_email,
+                    'email'        => $order->billing_email,
                 );
             }
         } else {
@@ -229,17 +229,17 @@ class OrdersIndex extends Index implements RecordsProvider
             $dateCreatedI18n = $dateCreated !== null ? $dateCreated->date_i18n(get_option('date_format')) : '';
 
             $record = array(
-                'objectID' => (int) $order->get_id(),
-                'id' => (int) $order->get_id(),
-                'type' => $order->get_type(),
-                'number' => (string) $order->get_order_number(),
-                'status' => $order->get_status(),
-                'status_name' => wc_get_order_status_name($order->get_status()),
-                'date_timestamp' => $dateCreatedTimestamp,
-                'date_formatted' => $dateCreatedI18n,
+                'objectID'              => (int) $order->get_id(),
+                'id'                    => (int) $order->get_id(),
+                'type'                  => $order->get_type(),
+                'number'                => (string) $order->get_order_number(),
+                'status'                => $order->get_status(),
+                'status_name'           => wc_get_order_status_name($order->get_status()),
+                'date_timestamp'        => $dateCreatedTimestamp,
+                'date_formatted'        => $dateCreatedI18n,
                 'formatted_order_total' => $order->get_formatted_order_total(),
-                'items_count' => $order->get_item_count(),
-                'payment_method_title' => $order->get_payment_method_title(),
+                'items_count'           => $order->get_item_count(),
+                'payment_method_title'  => $order->get_payment_method_title(),
                 'shipping_method_title' => $order->get_shipping_method(),
             );
 
@@ -247,15 +247,15 @@ class OrdersIndex extends Index implements RecordsProvider
             $user = $order->get_user();
             if ($user) {
                 $record['customer'] = array(
-                    'id' => (int) $user->ID,
+                    'id'           => (int) $user->ID,
                     'display_name' => $user->display_name,
-                    'email' => $user->user_email,
+                    'email'        => $user->user_email,
                 );
             } else {
                 // Deal with guest checkouts.
                 $record['customer'] = array(
                     'display_name' => $order->get_formatted_billing_full_name(),
-                    'email' => $order->get_billing_email(),
+                    'email'        => $order->get_billing_email(),
                 );
             }
         }
@@ -265,10 +265,10 @@ class OrdersIndex extends Index implements RecordsProvider
         foreach ($order->get_items() as $itemId => $item) {
             $product = $order->get_product_from_item($item);
             $record['items'][] = array(
-                'id' => (int) $itemId,
+                'id'   => (int) $itemId,
                 'name' => apply_filters('woocommerce_order_item_name', esc_html($item['name']), $item, false),
-                'qty' => (int) $item['qty'],
-                'sku' => $product instanceof \WC_Product ? $product->get_sku() : '',
+                'qty'  => (int) $item['qty'],
+                'sku'  => $product instanceof \WC_Product ? $product->get_sku() : '',
             );
         }
 
