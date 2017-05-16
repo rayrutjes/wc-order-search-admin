@@ -54,7 +54,7 @@ terminal.
 
 Here is how to use it:
 
-`wp orders reIndex`
+`wp orders reindex`
 
 Please note that at no point your are forced to use the command line tool, and that the admin settings screen
 of the plugin also allows you to re-index all your orders.
