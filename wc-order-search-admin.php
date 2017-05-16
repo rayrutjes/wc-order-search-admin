@@ -2,8 +2,10 @@
 
 /**
  * Plugin Name: WooCommerce Order Search Admin powered by Algolia
+ * Plugin URI:  https://github.com/rayrutjes/wc-order-search-admin
  * Description: Search for WooCommerce orders in the admin at the speed of thought with Algolia.
  * Author:      Raymond Rutjes
+ * Author URI:  https://github.com/rayrutjes/
  * Version:     1.0.1
  * Domain Path: /languages.
  */
