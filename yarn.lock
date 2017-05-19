@@ -466,9 +466,9 @@ grunt-wp-i18n@~0.5.0:
     underscore "~1.8.2"
     underscore.string "~3.0.3"
 
-grunt-wp-readme-to-markdown@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-wp-readme-to-markdown/-/grunt-wp-readme-to-markdown-1.0.0.tgz#749ffd803b584d50bd64e73a7a1a91873e9d8cfb"
+grunt-wp-readme-to-markdown@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/grunt-wp-readme-to-markdown/-/grunt-wp-readme-to-markdown-2.0.1.tgz#406cd5e98988580dc1d16e805c4e2e6092568552"
 
 grunt@~0.4.5:
   version "0.4.5"

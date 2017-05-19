@@ -1,3 +1,23 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.0.1...v1.1.0) (2017-05-19)
+
+
+### Bug Fixes
+
+* **autocomplete:** remove powered by logo from search results ([83ea8c7](https://github.com/rayrutjes/wc-order-search-admin/commit/83ea8c7))
+
+
+### Features
+
+* **settings:** add a link to settings page on plugins list ([8e16881](https://github.com/rayrutjes/wc-order-search-admin/commit/8e16881))
+
+
+### Performance Improvements
+
+* **js:** use minified versions of JS files ([d77e5b5](https://github.com/rayrutjes/wc-order-search-admin/commit/d77e5b5))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.0.0...v1.0.1) (2017-05-15)
 

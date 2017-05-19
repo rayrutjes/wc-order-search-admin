@@ -1,9 +1,9 @@
 # WooCommerce Order Search Admin powered by Algolia #
-**Contributors:** rayrutjes  
+**Contributors:** [rayrutjes](https://profiles.wordpress.org/rayrutjes)  
 **Tags:** search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax  
 **Requires at least:** 4.6  
 **Tested up to:** 4.7  
-**Stable tag:** 1.0.1  
+**Stable tag:** 1.1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -94,16 +94,16 @@ WARNING: don't leave the page until the progress reaches 100%
 ## Screenshots ##
 
 ### 1. The slick autocomplete search results dropdown. ###
-![The slick autocomplete search results dropdown.](http://ps.w.org/woocommerce-order-search-admin-powered-by-algolia/assets/screenshot-1.png)
+![The slick autocomplete search results dropdown.](https://ps.w.org/wc-order-search-admin/assets/screenshot-1.png)
 
 ### 2. Setup instructions steps. ###
-![Setup instructions steps.](http://ps.w.org/woocommerce-order-search-admin-powered-by-algolia/assets/screenshot-2.png)
+![Setup instructions steps.](https://ps.w.org/wc-order-search-admin/assets/screenshot-2.png)
 
 ### 3. Algolia account settings. ###
-![Algolia account settings.](http://ps.w.org/woocommerce-order-search-admin-powered-by-algolia/assets/screenshot-3.png)
+![Algolia account settings.](https://ps.w.org/wc-order-search-admin/assets/screenshot-3.png)
 
 ### 4. Indexing settings. ###
-![Indexing settings.](http://ps.w.org/woocommerce-order-search-admin-powered-by-algolia/assets/screenshot-4.png)
+![Indexing settings.](https://ps.w.org/wc-order-search-admin/assets/screenshot-4.png)
 
 
 ## Changelog ##

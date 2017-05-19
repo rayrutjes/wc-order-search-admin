@@ -29,7 +29,10 @@ module.exports = function( grunt ) {
 			your_target: {
 				files: {
 					'README.md': 'readme.txt'
-				}
+				},
+        options: {
+          screenshot_url: "https://ps.w.org/wc-order-search-admin/assets/{screenshot}.png"
+        }
 			},
 		},
 
