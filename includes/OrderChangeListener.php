@@ -41,15 +41,25 @@ class OrderChangeListener
         }
 
         $order = wc_get_order($postId);
-        $this->ordersIndex->pushRecordsForOrder($order);
+        try {
+            $this->ordersIndex->pushRecordsForOrder($order);
+        } catch (AlgoliaException $exception) {
+            error_log($exception->getMessage());
+        }
     }
 
     public function deleteOrderRecords($postId)
     {
         $post = get_post($postId);
 
-        if ($post->post_type === 'shop_order') {
+        if ($post->post_type !== 'shop_order') {
+            return;
+        }
+
+        try {
             $this->ordersIndex->deleteRecordsByOrderId($post->ID);
+        } catch (AlgoliaException $exception) {
+            error_log($exception->getMessage());
         }
     }
 }
