@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.1.0...v1.1.1) (2017-06-22)
+
+
+### Bug Fixes
+
+* **admin:** catch Algolia sync errors ([272ec7f](https://github.com/rayrutjes/wc-order-search-admin/commit/272ec7f))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.0.1...v1.1.0) (2017-05-19)
 
