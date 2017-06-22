@@ -19,7 +19,7 @@ readonly PACKAGE_VERSION=$(< package.json grep version \
   | sed 's/[",]//g' \
   | tr -d '[:space:]')
 
-./sync-wp-org.sh \
+./bin/sync-wp-org.sh \
 	--plugin-name="wc-order-search-admin" \
 	--git-repo="https://github.com/rayrutjes/wc-order-search-admin" \
 	--svn-user=rayrutjes
