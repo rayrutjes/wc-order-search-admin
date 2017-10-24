@@ -27,6 +27,10 @@
 
 namespace WC_Order_Search_Admin;
 
+
+use WC_Order_Search_Admin\Iterators\RuleIterator;
+use WC_Order_Search_Admin\Iterators\SynonymIterator;
+
 /*
  * Contains all the functions related to one index
  * You should use Client.initIndex(indexName) to retrieve this object
@@ -383,7 +387,22 @@ class Index
         return $this->batch($requests);
     }
 
+    public function deleteBy(array $args)
+    {
+        return $this->client->request(
+            $this->context,
+            'POST',
+            '/1/indexes/'.$this->urlIndexName.'/deleteByQuery',
+            null,
+            array('params' => $this->client->buildQuery($args)),
+            $this->context->writeHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
     /**
+     * @deprecated use `deleteBy()` instead.
      * Delete all objects matching a query.
      *
      * @param string $query        the query string
@@ -617,7 +636,8 @@ class Index
                 'page' => 0,
                 'attributesToRetrieve' => array(),
                 'attributesToHighlight' => array(),
-                'attributesToSnippet' => array()
+                'attributesToSnippet' => array(),
+                'analytics' => false
             );
 
             $additionalParams['facetFilters'] = $this->getAlgoliaFiltersArrayWithoutCurrentRefinement($facetFilters, $facetName . ':');
@@ -1494,6 +1514,16 @@ class Index
     }
 
     /**
+     * @param int $batchSize
+     *
+     * @return SynonymIterator
+     */
+    public function initSynonymIterator($batchSize = 1000)
+    {
+        return new SynonymIterator($this, $batchSize);
+    }
+
+    /**
      * @deprecated Please use searchForFacetValues instead
      * @param $facetName
      * @param $facetQuery
@@ -1503,6 +1533,152 @@ class Index
     public function searchFacet($facetName, $facetQuery, $query = array())
     {
         return $this->searchForFacetValues($facetName, $facetQuery, $query);
+    }
+
+    /**
+     * @param $params
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function searchRules(array $params = array())
+    {
+        return $this->client->request(
+            $this->context,
+            'POST',
+            '/1/indexes/'.$this->urlIndexName.'/rules/search',
+            null,
+            $params,
+            $this->context->readHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param $objectID
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function getRule($objectID)
+    {
+        return $this->client->request(
+            $this->context,
+            'GET',
+            '/1/indexes/'.$this->urlIndexName.'/rules/'.urlencode($objectID),
+            null,
+            null,
+            $this->context->readHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param $objectID
+     * @param $forwardToReplicas
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function deleteRule($objectID, $forwardToReplicas = false)
+    {
+        return $this->client->request(
+            $this->context,
+            'DELETE',
+            '/1/indexes/'.$this->urlIndexName.'/rules/'.urlencode($objectID).'?forwardToReplicas='.($forwardToReplicas ? 'true' : 'false'),
+            null,
+            null,
+            $this->context->writeHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param bool $forwardToReplicas
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function clearRules($forwardToReplicas = false)
+    {
+        return $this->client->request(
+            $this->context,
+            'POST',
+            '/1/indexes/'.$this->urlIndexName.'/rules/clear?forwardToReplicas='.($forwardToReplicas ? 'true' : 'false'),
+            null,
+            null,
+            $this->context->writeHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param $rules
+     * @param bool $forwardToReplicas
+     * @param bool $clearExistingRules
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function batchRules($rules, $forwardToReplicas = false, $clearExistingRules = false)
+    {
+        return $this->client->request(
+            $this->context,
+            'POST',
+            '/1/indexes/'.$this->urlIndexName.'/rules/batch?clearExistingRules='.($clearExistingRules ? 'true' : 'false')
+            .'&forwardToReplicas='.($forwardToReplicas ? 'true' : 'false'),
+            null,
+            $rules,
+            $this->context->writeHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param $objectID
+     * @param $content
+     * @param bool $forwardToReplicas
+     *
+     * @return mixed
+     *
+     * @throws AlgoliaException
+     */
+    public function saveRule($objectID, $content, $forwardToReplicas = false)
+    {
+        if (!isset($content['objectID'])) {
+            $content['objectID'] = $objectID;
+        }
+
+        return $this->client->request(
+            $this->context,
+            'PUT',
+            '/1/indexes/'.$this->urlIndexName.'/rules/'.urlencode($objectID).'?forwardToReplicas='.($forwardToReplicas ? 'true' : 'false'),
+            null,
+            $content,
+            $this->context->writeHostsArray,
+            $this->context->connectTimeout,
+            $this->context->readTimeout
+        );
+    }
+
+    /**
+     * @param int $batchSize
+     *
+     * @return RuleIterator
+     */
+    public function initRuleIterator($batchSize = 500)
+    {
+        return new RuleIterator($this, $batchSize);
     }
 
     /**
@@ -1521,6 +1697,6 @@ class Index
             return call_user_func_array(array($this, 'doBcBrowse'), $arguments);
         }
 
-        return;
+        throw new \BadMethodCallException(sprintf('No method named %s was found.', $name));
     }
 }

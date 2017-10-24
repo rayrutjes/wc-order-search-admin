@@ -29,7 +29,7 @@ namespace WC_Order_Search_Admin;
 
 class Version
 {
-    const VALUE = '1.17.0';
+    const VALUE = '1.22.0';
 
     public static $custom_value = '';
 

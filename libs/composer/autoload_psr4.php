@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPCompatibility\\' => array($vendorDir . '/wimg/php-compatibility/PHPCompatibility'),
+    'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
     'WC_Order_Search_Admin\\Index\\Tests\\' => array($vendorDir . '/algolia/index/tests'),
     'WC_Order_Search_Admin\\Index\\' => array($vendorDir . '/algolia/index/src'),
