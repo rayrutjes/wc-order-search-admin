@@ -12,43 +12,43 @@ namespace WC_Order_Search_Admin\Admin;
 use WC_Order_Search_Admin\Options;
 use WC_Order_Search_Admin\OrdersIndex;
 
-class AjaxAlgoliaAccountSettingsForm
-{
-    /**
-     * @var Options
-     */
-    private $options;
+class AjaxAlgoliaAccountSettingsForm {
 
-    /**
-     * @param OrdersIndex $ordersIndex
-     * @param Options     $options
-     */
-    public function __construct(Options $options)
-    {
-        $this->options = $options;
+	/**
+	 * @var Options
+	 */
+	private $options;
 
-        add_action('wp_ajax_wc_osa_save_algolia_settings', array($this, 'saveAlgoliaAccountSettings'));
-    }
+	/**
+	 * @param OrdersIndex $ordersIndex
+	 * @param Options     $options
+	 */
+	public function __construct( Options $options ) {
+		$this->options = $options;
 
-    public function saveAlgoliaAccountSettings()
-    {
-        if (!isset($_POST['app_id']) || !isset($_POST['search_api_key']) || !isset($_POST['admin_api_key'])) {
-            wp_die('Hacker');
-        }
+		add_action( 'wp_ajax_wc_osa_save_algolia_settings', array( $this, 'saveAlgoliaAccountSettings' ) );
+	}
 
-        try {
-            $this->options->setAlgoliaAccountSettings($_POST['app_id'], $_POST['search_api_key'], $_POST['admin_api_key']);
-        } catch (\InvalidArgumentException $exception) {
-            wp_send_json_error(array(
-                'message' => $exception->getMessage(),
-            ));
-        }
+	public function saveAlgoliaAccountSettings() {
+		if ( ! isset( $_POST['app_id'] ) || ! isset( $_POST['search_api_key'] ) || ! isset( $_POST['admin_api_key'] ) ) {
+			wp_die( 'Hacker' );
+		}
 
-        $response = array(
-            'success' => true,
-            'message' => __('Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'wc-order-search-admin'),
-        );
+		try {
+			$this->options->setAlgoliaAccountSettings( $_POST['app_id'], $_POST['search_api_key'], $_POST['admin_api_key'] );
+		} catch ( \InvalidArgumentException $exception ) {
+			wp_send_json_error(
+				array(
+					'message' => $exception->getMessage(),
+				)
+			);
+		}
 
-        wp_send_json($response);
-    }
+		$response = array(
+			'success' => true,
+			'message' => __( 'Your Algolia account settings have been saved. You can now hit the "re-index orders" button.', 'wc-order-search-admin' ),
+		);
+
+		wp_send_json( $response );
+	}
 }

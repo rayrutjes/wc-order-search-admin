@@ -13,285 +13,280 @@ use WC_Order_Search_Admin\Index\Index;
 use WC_Order_Search_Admin\Index\IndexSettings;
 use WC_Order_Search_Admin\Index\RecordsProvider;
 
-class OrdersIndex extends Index implements RecordsProvider
-{
-    /**
-     * @var string
-     */
-    private $name;
+class OrdersIndex extends Index implements RecordsProvider {
 
-    /**
-     * @var Client
-     */
-    private $client;
+	/**
+	 * @var string
+	 */
+	private $name;
 
-    /**
-     * @param string $name
-     * @param Client $client
-     */
-    public function __construct($name, Client $client)
-    {
-        $this->name = $name;
-        $this->client = $client;
-    }
+	/**
+	 * @var Client
+	 */
+	private $client;
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * @param string $name
+	 * @param Client $client
+	 */
+	public function __construct( $name, Client $client ) {
+		$this->name = $name;
+		$this->client = $client;
+	}
 
-    /**
-     * @param string $orderId
-     */
-    public function deleteRecordsByOrderId($orderId)
-    {
-        $this->getAlgoliaIndex()->deleteObject((string) $orderId);
-    }
+	/**
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * @param int $perPage
-     *
-     * @return int
-     */
-    public function getTotalPagesCount($perPage)
-    {
-        $results = $this->newQuery(array('posts_per_page' => (int) $perPage));
+	/**
+	 * @param string $order_id
+	 */
+	public function deleteRecordsByOrderId( $order_id ) {
+		$this->getAlgoliaIndex()->deleteObject( (string) $order_id );
+	}
 
-        return (int) $results->max_num_pages;
-    }
+	/**
+	 * @param int $per_page
+	 *
+	 * @return int
+	 */
+	public function getTotalPagesCount( $per_page ) {
+		$results = $this->newQuery(
+			array(
+				'posts_per_page' => (int) $per_page,
+			)
+		);
 
-    /**
-     * @param int $page
-     * @param int $perPage
-     *
-     * @return array
-     */
-    public function getRecords($page, $perPage)
-    {
-        $query = $this->newQuery(array(
-            'posts_per_page' => $perPage,
-            'paged'          => $page,
-        ));
+		return (int) $results->max_num_pages;
+	}
 
-        return $this->getRecordsForQuery($query);
-    }
+	/**
+	 * @param int $page
+	 * @param int $per_page
+	 *
+	 * @return array
+	 */
+	public function getRecords( $page, $per_page ) {
+		$query = $this->newQuery(
+			array(
+				'posts_per_page' => $per_page,
+				'paged'          => $page,
+			)
+		);
 
-    /**
-     * @param \WC_Abstract_Order $order
-     *
-     * @return int
-     */
-    public function pushRecordsForOrder(\WC_Abstract_Order $order)
-    {
-        $records = $this->getRecordsForOrder($order);
-        $totalRecordsCount = count($records);
-        if ($totalRecordsCount === 0) {
-            return 0;
-        }
+		return $this->getRecordsForQuery( $query );
+	}
 
-        $this->getAlgoliaIndex()->addObjects($records);
+	/**
+	 * @param \WC_Abstract_Order $order
+	 *
+	 * @return int
+	 */
+	public function pushRecordsForOrder( \WC_Abstract_Order $order ) {
+		$records = $this->getRecordsForOrder( $order );
+		$total_records_count = count( $records );
+		if ( 0 === $total_records_count ) {
+			return 0;
+		}
 
-        return $totalRecordsCount;
-    }
+		$this->getAlgoliaIndex()->addObjects( $records );
 
-    /**
-     * @param mixed $id
-     *
-     * @return array
-     */
-    public function getRecordsForId($id)
-    {
-        $factory = new \WC_Order_Factory();
-        $order = $factory->get_order($id);
+		return $total_records_count;
+	}
 
-        if (!$order instanceof \WC_Abstract_Order) {
-            return array();
-        }
+	/**
+	 * @param mixed $id
+	 *
+	 * @return array
+	 */
+	public function getRecordsForId( $id ) {
+		$factory = new \WC_Order_Factory();
+		$order = $factory->get_order( $id );
 
-        return $this->getRecordsForOrder($order);
-    }
+		if ( ! $order instanceof \WC_Abstract_Order ) {
+			return array();
+		}
 
-    /**
-     * @return RecordsProvider
-     */
-    protected function getRecordsProvider()
-    {
-        return $this;
-    }
+		return $this->getRecordsForOrder( $order );
+	}
 
-    /**
-     * @return IndexSettings
-     */
-    protected function getSettings()
-    {
-        return new IndexSettings(array(
-            'searchableAttributes' => array(
-                'id',
-                'number',
-                'customer.display_name',
-                'customer.email',
-                'items.sku',
-                'status_name',
-            ),
-            'disableTypoToleranceOnAttributes' => array(
-                'id',
-                'number',
-                'items.sku',
-            ),
-            'customRanking' => array(
-                'desc(date_timestamp)',
-            ),
-            'attributesForFaceting' => array(
-                'customer.display_name',
-                'type',
-                'items.sku',
-            ),
-        ));
-    }
+	/**
+	 * @return RecordsProvider
+	 */
+	protected function getRecordsProvider() {
+		return $this;
+	}
 
-    /**
-     * @return Client
-     */
-    protected function getAlgoliaClient()
-    {
-        return $this->client;
-    }
+	/**
+	 * @return IndexSettings
+	 */
+	protected function getSettings() {
+		return new IndexSettings(
+			array(
+				'searchableAttributes' => array(
+					'id',
+					'number',
+					'customer.display_name',
+					'customer.email',
+					'items.sku',
+					'status_name',
+				),
+				'disableTypoToleranceOnAttributes' => array(
+					'id',
+					'number',
+					'items.sku',
+				),
+				'customRanking' => array(
+					'desc(date_timestamp)',
+				),
+				'attributesForFaceting' => array(
+					'customer.display_name',
+					'type',
+					'items.sku',
+				),
+			)
+		);
+	}
 
-    /**
-     * @param array $args
-     *
-     * @return \WP_Query
-     */
-    private function newQuery(array $args = array())
-    {
-        $defaultArgs = array(
-            'post_type'   => wc_get_order_types(),
-            'post_status' => array_keys(wc_get_order_statuses()),
-        );
+	/**
+	 * @return Client
+	 */
+	protected function getAlgoliaClient() {
+		return $this->client;
+	}
 
-        $args = array_merge($defaultArgs, $args);
-        $query = new \WP_Query($args);
+	/**
+	 * @param array $args
+	 *
+	 * @return \WP_Query
+	 */
+	private function newQuery( array $args = array() ) {
+		$default_args = array(
+			'post_type'   => wc_get_order_types(),
+			'post_status' => array_keys( wc_get_order_statuses() ),
+		);
 
-        return $query;
-    }
+		$args = array_merge( $default_args, $args );
+		$query = new \WP_Query( $args );
 
-    /**
-     * @param \WC_Abstract_Order $order
-     *
-     * @return array
-     */
-    private function getRecordsForOrder(\WC_Abstract_Order $order)
-    {
-        if (!$order instanceof \WC_Order) {
-            // Only support default order type for now.
-            return array();
-        }
+		return $query;
+	}
 
-        if (version_compare('3', WC_VERSION) > 0) {
-            // We are dealing with WC 2.x
-            $record = array(
-                'objectID'              => (int) $order->id,
-                'id'                    => (int) $order->id,
-                'type'                  => $order->order_type,
-                'number'                => (string) $order->get_order_number(),
-                'status'                => $order->get_status(),
-                'status_name'           => wc_get_order_status_name($order->get_status()),
-                'date_timestamp'        => strtotime($order->order_date),
-                'date_formatted'        => date_i18n(get_option('date_format'), strtotime($order->order_date)),
-                'formatted_order_total' => $order->get_formatted_order_total(),
-                'items_count'           => $order->get_item_count(),
-                'payment_method_title'  => $order->payment_method_title,
-                'shipping_method_title' => $order->shipping_method_title,
-            );
+	/**
+	 * @param \WC_Abstract_Order $order
+	 *
+	 * @return array
+	 */
+	private function getRecordsForOrder( \WC_Abstract_Order $order ) {
+		if ( ! $order instanceof \WC_Order ) {
+			// Only support default order type for now.
+			return array();
+		}
 
-            // Add user info.
-            $user = $order->get_user();
-            if ($user) {
-                $record['customer'] = array(
-                    'id'           => (int) $user->ID,
-                    'display_name' => $user->display_name,
-                    'email'        => $user->user_email,
-                );
-            } else {
-                // Deal with guest checkouts.
-                $record['customer'] = array(
-                    'display_name' => $order->get_formatted_billing_full_name(),
-                    'email'        => $order->billing_email,
-                );
-            }
-        } else {
-            // We are dealing with WC 3.x
-            $dateCreated = $order->get_date_created();
-            $dateCreatedTimestamp = $dateCreated !== null ? $dateCreated->getTimestamp() : 0;
-            $dateCreatedI18n = $dateCreated !== null ? $dateCreated->date_i18n(get_option('date_format')) : '';
+		if ( version_compare( '3', WC_VERSION ) > 0 ) {
+			// We are dealing with WC 2.x
+			$record = array(
+				'objectID'              => (int) $order->id,
+				'id'                    => (int) $order->id,
+				'type'                  => $order->order_type,
+				'number'                => (string) $order->get_order_number(),
+				'status'                => $order->get_status(),
+				'status_name'           => wc_get_order_status_name( $order->get_status() ),
+				'date_timestamp'        => strtotime( $order->order_date ),
+				'date_formatted'        => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
+				'formatted_order_total' => $order->get_formatted_order_total(),
+				'items_count'           => $order->get_item_count(),
+				'payment_method_title'  => $order->payment_method_title,
+				'shipping_method_title' => $order->shipping_method_title,
+			);
 
-            $record = array(
-                'objectID'              => (int) $order->get_id(),
-                'id'                    => (int) $order->get_id(),
-                'type'                  => $order->get_type(),
-                'number'                => (string) $order->get_order_number(),
-                'status'                => $order->get_status(),
-                'status_name'           => wc_get_order_status_name($order->get_status()),
-                'date_timestamp'        => $dateCreatedTimestamp,
-                'date_formatted'        => $dateCreatedI18n,
-                'formatted_order_total' => $order->get_formatted_order_total(),
-                'items_count'           => $order->get_item_count(),
-                'payment_method_title'  => $order->get_payment_method_title(),
-                'shipping_method_title' => $order->get_shipping_method(),
-            );
+			// Add user info.
+			$user = $order->get_user();
+			if ( $user ) {
+				$record['customer'] = array(
+					'id'           => (int) $user->ID,
+					'display_name' => $user->display_name,
+					'email'        => $user->user_email,
+				);
+			} else {
+				// Deal with guest checkouts.
+				$record['customer'] = array(
+					'display_name' => $order->get_formatted_billing_full_name(),
+					'email'        => $order->billing_email,
+				);
+			}
+		} else {
+			// We are dealing with WC 3.x
+			$date_created = $order->get_date_created();
+			$date_created_timestamp = null !== $date_created ? $date_created->getTimestamp() : 0;
+			$date_created_i18n = null !== $date_created ? $date_created->date_i18n( get_option( 'date_format' ) ) : '';
 
-            // Add user info.
-            $user = $order->get_user();
-            if ($user) {
-                $record['customer'] = array(
-                    'id'           => (int) $user->ID,
-                    'display_name' => $user->display_name,
-                    'email'        => $user->user_email,
-                );
-            } else {
-                // Deal with guest checkouts.
-                $record['customer'] = array(
-                    'display_name' => $order->get_formatted_billing_full_name(),
-                    'email'        => $order->get_billing_email(),
-                );
-            }
-        }
+			$record = array(
+				'objectID'              => (int) $order->get_id(),
+				'id'                    => (int) $order->get_id(),
+				'type'                  => $order->get_type(),
+				'number'                => (string) $order->get_order_number(),
+				'status'                => $order->get_status(),
+				'status_name'           => wc_get_order_status_name( $order->get_status() ),
+				'date_timestamp'        => $date_created_timestamp,
+				'date_formatted'        => $date_created_i18n,
+				'formatted_order_total' => $order->get_formatted_order_total(),
+				'items_count'           => $order->get_item_count(),
+				'payment_method_title'  => $order->get_payment_method_title(),
+				'shipping_method_title' => $order->get_shipping_method(),
+			);
 
-        // Add items.
-        $record['items'] = array();
-        foreach ($order->get_items() as $itemId => $item) {
-            $product = $order->get_product_from_item($item);
-            $record['items'][] = array(
-                'id'   => (int) $itemId,
-                'name' => apply_filters('woocommerce_order_item_name', esc_html($item['name']), $item, false),
-                'qty'  => (int) $item['qty'],
-                'sku'  => $product instanceof \WC_Product ? $product->get_sku() : '',
-            );
-        }
+			// Add user info.
+			$user = $order->get_user();
+			if ( $user ) {
+				$record['customer'] = array(
+					'id'           => (int) $user->ID,
+					'display_name' => $user->display_name,
+					'email'        => $user->user_email,
+				);
+			} else {
+				// Deal with guest checkouts.
+				$record['customer'] = array(
+					'display_name' => $order->get_formatted_billing_full_name(),
+					'email'        => $order->get_billing_email(),
+				);
+			}
+		}
 
-        return array($record);
-    }
+		// Add items.
+		$record['items'] = array();
+		foreach ( $order->get_items() as $item_id => $item ) {
+			$product = $order->get_product_from_item( $item );
+			$record['items'][] = array(
+				'id'   => (int) $item_id,
+				'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
+				'qty'  => (int) $item['qty'],
+				'sku'  => $product instanceof \WC_Product ? $product->get_sku() : '',
+			);
+		}
 
-    /**
-     * @param \WP_Query $query
-     *
-     * @return array
-     */
-    private function getRecordsForQuery(\WP_Query $query)
-    {
-        $records = array();
-        $factory = new \WC_Order_Factory();
-        foreach ($query->posts as $post) {
-            $order = $factory->get_order($post);
-            if (!$order instanceof \WC_Abstract_Order) {
-                continue;
-            }
-            $records = array_merge($records, $this->getRecordsForOrder($order));
-        }
+		return array( $record );
+	}
 
-        return $records;
-    }
+	/**
+	 * @param \WP_Query $query
+	 *
+	 * @return array
+	 */
+	private function getRecordsForQuery( \WP_Query $query ) {
+		$records = array();
+		$factory = new \WC_Order_Factory();
+		foreach ( $query->posts as $post ) {
+			$order = $factory->get_order( $post );
+			if ( ! $order instanceof \WC_Abstract_Order ) {
+				continue;
+			}
+			$records = array_merge( $records, $this->getRecordsForOrder( $order ) );
+		}
+
+		return $records;
+	}
 }

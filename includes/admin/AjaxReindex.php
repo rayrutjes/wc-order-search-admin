@@ -13,66 +13,68 @@ use WC_Order_Search_Admin\AlgoliaException;
 use WC_Order_Search_Admin\Options;
 use WC_Order_Search_Admin\OrdersIndex;
 
-class AjaxReindex
-{
-    /**
-     * @var OrdersIndex
-     */
-    private $ordersIndex;
+class AjaxReindex {
 
-    /**
-     * @var Options
-     */
-    private $options;
+	/**
+	 * @var OrdersIndex
+	 */
+	private $orders_index;
 
-    /**
-     * @param OrdersIndex $ordersIndex
-     * @param Options     $options
-     */
-    public function __construct(OrdersIndex $ordersIndex, Options $options)
-    {
-        $this->options = $options;
+	/**
+	 * @var Options
+	 */
+	private $options;
 
-        add_action('wp_ajax_wc_osa_reindex', array($this, 'reIndex'));
-        $this->ordersIndex = $ordersIndex;
-    }
+	/**
+	 * @param OrdersIndex $orders_index
+	 * @param Options     $options
+	 */
+	public function __construct( OrdersIndex $orders_index, Options $options ) {
+		$this->options = $options;
 
-    public function reIndex()
-    {
-        if (isset($_POST['page'])) {
-            $page = (int) $_POST['page'];
-        } else {
-            $page = 1;
-        }
+		add_action( 'wp_ajax_wc_osa_reindex', array( $this, 'reIndex' ) );
+		$this->orders_index = $orders_index;
+	}
 
-        if ($page === 1) {
-            try {
-                $this->ordersIndex->clear();
-                $this->ordersIndex->pushSettings();
-            } catch (AlgoliaException $exception) {
-                wp_send_json_error(array(
-                    'message' => $exception->getMessage(),
-                ));
-            }
-        }
+	public function reIndex() {
+		if ( isset( $_POST['page'] ) ) {
+			$page = (int) $_POST['page'];
+		} else {
+			$page = 1;
+		}
 
-        $perPage = $this->options->getOrdersToIndexPerBatchCount();
-        $totalPages = $this->ordersIndex->getTotalPagesCount($this->options->getOrdersToIndexPerBatchCount());
+		if ( 1 === $page ) {
+			try {
+				$this->orders_index->clear();
+				$this->orders_index->pushSettings();
+			} catch ( AlgoliaException $exception ) {
+				wp_send_json_error(
+					array(
+						'message' => $exception->getMessage(),
+					)
+				);
+			}
+		}
 
-        try {
-            $recordsPushedCount = $this->ordersIndex->pushRecords($page, $perPage);
-        } catch (AlgoliaException $exception) {
-            wp_send_json_error(array(
-                'message' => $exception->getMessage(),
-            ));
-        }
+		$per_page = $this->options->getOrdersToIndexPerBatchCount();
+		$total_pages = $this->orders_index->getTotalPagesCount( $this->options->getOrdersToIndexPerBatchCount() );
 
-        $response = array(
-            'recordsPushedCount' => $recordsPushedCount,
-            'totalPagesCount'    => $totalPages,
-            'finished'           => $page >= $totalPages,
-        );
+		try {
+			$records_pushed_count = $this->orders_index->pushRecords( $page, $per_page );
+		} catch ( AlgoliaException $exception ) {
+			wp_send_json_error(
+				array(
+					'message' => $exception->getMessage(),
+				)
+			);
+		}
 
-        wp_send_json($response);
-    }
+		$response = array(
+			'recordsPushedCount' => $records_pushed_count,
+			'totalPagesCount'    => $total_pages,
+			'finished'           => $page >= $total_pages,
+		);
+
+		wp_send_json( $response );
+	}
 }

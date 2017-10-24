@@ -9,85 +9,77 @@
 
 namespace WC_Order_Search_Admin;
 
-class Options
-{
-    public function hasAlgoliaAccountSettings()
-    {
-        return !empty($this->getAlgoliaAppId())
-            && !empty($this->getAlgoliaSearchApiKey())
-            && !empty($this->getAlgoliaAdminApiKey());
-    }
+class Options {
 
-    public function clearAlgoliaAccountSettings()
-    {
-        update_option('wc_osa_alg_app_id', '');
-        update_option('wc_osa_alg_search_api_key', '');
-        update_option('wc_osa_alg_admin_api_key', '');
-    }
+	public function hasAlgoliaAccountSettings() {
+		$app_id = $this->getAlgoliaAppId();
+		$search_api_key = $this->getAlgoliaSearchApiKey();
+		$admin_api_key = $this->getAlgoliaAdminApiKey();
+		return ! empty( $app_id )
+			&& ! empty( $search_api_key )
+			&& ! empty( $admin_api_key );
+	}
 
-    public function getAlgoliaAppId()
-    {
-        return get_option('wc_osa_alg_app_id', '');
-    }
+	public function clearAlgoliaAccountSettings() {
+		update_option( 'wc_osa_alg_app_id', '' );
+		update_option( 'wc_osa_alg_search_api_key', '' );
+		update_option( 'wc_osa_alg_admin_api_key', '' );
+	}
 
-    public function getAlgoliaSearchApiKey()
-    {
-        return get_option('wc_osa_alg_search_api_key', '');
-    }
+	public function getAlgoliaAppId() {
+		return get_option( 'wc_osa_alg_app_id', '' );
+	}
 
-    public function getAlgoliaAdminApiKey()
-    {
-        return get_option('wc_osa_alg_admin_api_key', '');
-    }
+	public function getAlgoliaSearchApiKey() {
+		return get_option( 'wc_osa_alg_search_api_key', '' );
+	}
 
-    public function setAlgoliaAccountSettings($appId, $searchKey, $adminKey)
-    {
-        $appId = trim($appId);
-        $this->assertNotEmpty($appId, 'Algolia application ID');
-        $searchKey = trim($searchKey);
-        $this->assertNotEmpty($searchKey, 'Algolia search only API key');
-        $adminKey = trim($adminKey);
-        $this->assertNotEmpty($adminKey, 'Algolia admin API key');
+	public function getAlgoliaAdminApiKey() {
+		return get_option( 'wc_osa_alg_admin_api_key', '' );
+	}
 
-        update_option('wc_osa_alg_app_id', $appId);
-        update_option('wc_osa_alg_search_api_key', $searchKey);
-        update_option('wc_osa_alg_admin_api_key', $adminKey);
-    }
+	public function setAlgoliaAccountSettings( $app_id, $search_key, $admin_key ) {
+		$app_id = trim( $app_id );
+		$this->assertNotEmpty( $app_id, 'Algolia application ID' );
+		$search_key = trim( $search_key );
+		$this->assertNotEmpty( $search_key, 'Algolia search only API key' );
+		$admin_key = trim( $admin_key );
+		$this->assertNotEmpty( $admin_key, 'Algolia admin API key' );
 
-    public function getOrdersIndexName()
-    {
-        return get_option('wc_osa_orders_index_name', 'wc_orders');
-    }
+		update_option( 'wc_osa_alg_app_id', $app_id );
+		update_option( 'wc_osa_alg_search_api_key', $search_key );
+		update_option( 'wc_osa_alg_admin_api_key', $admin_key );
+	}
 
-    public function setOrdersIndexName($ordersIndexName)
-    {
-        $ordersIndexName = trim((string) $ordersIndexName);
-        $this->assertNotEmpty($ordersIndexName, 'Orders index name');
-        update_option('wc_osa_orders_index_name', $ordersIndexName);
-    }
+	public function getOrdersIndexName() {
+		return get_option( 'wc_osa_orders_index_name', 'wc_orders' );
+	}
 
-    /**
-     * @return int
-     */
-    public function getOrdersToIndexPerBatchCount()
-    {
-        return (int) get_option('wc_osa_orders_per_batch', 500);
-    }
+	public function setOrdersIndexName( $orders_index_name ) {
+		$orders_index_name = trim( (string) $orders_index_name );
+		$this->assertNotEmpty( $orders_index_name, 'Orders index name' );
+		update_option( 'wc_osa_orders_index_name', $orders_index_name );
+	}
 
-    public function setOrdersToIndexPerBatchCount($perBatch)
-    {
-        $perBatch = (int) $perBatch;
-        if ($perBatch <= 0) {
-            $perBatch = 500;
-        }
+	/**
+	 * @return int
+	 */
+	public function getOrdersToIndexPerBatchCount() {
+		return (int) get_option( 'wc_osa_orders_per_batch', 500 );
+	}
 
-        update_option('wc_osa_orders_per_batch', $perBatch);
-    }
+	public function setOrdersToIndexPerBatchCount( $per_batch ) {
+		$per_batch = (int) $per_batch;
+		if ( $per_batch <= 0 ) {
+			$per_batch = 500;
+		}
 
-    private function assertNotEmpty($value, $attributeName)
-    {
-        if (strlen($value) === 0) {
-            throw new \InvalidArgumentException($attributeName . ' should not be empty.');
-        }
-    }
+		update_option( 'wc_osa_orders_per_batch', $per_batch );
+	}
+
+	private function assertNotEmpty( $value, $attribute_name ) {
+		if ( strlen( $value ) === 0 ) {
+			throw new \InvalidArgumentException( $attribute_name . ' should not be empty.' );
+		}
+	}
 }

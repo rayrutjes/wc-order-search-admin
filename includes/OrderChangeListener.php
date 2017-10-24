@@ -9,57 +9,54 @@
 
 namespace WC_Order_Search_Admin;
 
-class OrderChangeListener
-{
-    /**
-     * @var OrdersIndex
-     */
-    private $ordersIndex;
+class OrderChangeListener {
 
-    /**
-     * @param OrdersIndex $ordersIndex
-     */
-    public function __construct(OrdersIndex $ordersIndex)
-    {
-        $this->ordersIndex = $ordersIndex;
-        add_action('save_post', array($this, 'pushOrderRecords'), 10, 2);
-        add_action('before_delete_post', array($this, 'deleteOrderRecords'));
-        add_action('wp_trash_post', array($this, 'deleteOrderRecords'));
-    }
+	/**
+	 * @var OrdersIndex
+	 */
+	private $orders_index;
 
-    /**
-     * @param mixed $postId
-     * @param mixed $post
-     */
-    public function pushOrderRecords($postId, $post)
-    {
-        if ('shop_order' !== $post->post_type
-            || 'auto-draft' === $post->post_status
-            || 'trash' === $post->post_status
-        ) {
-            return;
-        }
+	/**
+	 * @param OrdersIndex $orders_index
+	 */
+	public function __construct( OrdersIndex $orders_index ) {
+		$this->orders_index = $orders_index;
+		add_action( 'save_post', array( $this, 'pushOrderRecords' ), 10, 2 );
+		add_action( 'before_delete_post', array( $this, 'deleteOrderRecords' ) );
+		add_action( 'wp_trash_post', array( $this, 'deleteOrderRecords' ) );
+	}
 
-        $order = wc_get_order($postId);
-        try {
-            $this->ordersIndex->pushRecordsForOrder($order);
-        } catch (AlgoliaException $exception) {
-            error_log($exception->getMessage());
-        }
-    }
+	/**
+	 * @param mixed $post_id
+	 * @param mixed $post
+	 */
+	public function pushOrderRecords( $post_id, $post ) {
+		if ( 'shop_order' !== $post->post_type
+			|| 'auto-draft' === $post->post_status
+			|| 'trash' === $post->post_status
+		) {
+			return;
+		}
 
-    public function deleteOrderRecords($postId)
-    {
-        $post = get_post($postId);
+		$order = wc_get_order( $post_id );
+		try {
+			$this->orders_index->pushRecordsForOrder( $order );
+		} catch ( AlgoliaException $exception ) {
+			error_log( $exception->getMessage() );
+		}
+	}
 
-        if ($post->post_type !== 'shop_order') {
-            return;
-        }
+	public function deleteOrderRecords( $post_id ) {
+		$post = get_post( $post_id );
 
-        try {
-            $this->ordersIndex->deleteRecordsByOrderId($post->ID);
-        } catch (AlgoliaException $exception) {
-            error_log($exception->getMessage());
-        }
-    }
+		if ( 'shop_order' !== $post->post_type ) {
+			return;
+		}
+
+		try {
+			$this->orders_index->deleteRecordsByOrderId( $post->ID );
+		} catch ( AlgoliaException $exception ) {
+			error_log( $exception->getMessage() );
+		}
+	}
 }

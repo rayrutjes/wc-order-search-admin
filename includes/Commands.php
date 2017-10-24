@@ -12,77 +12,82 @@ namespace WC_Order_Search_Admin;
 use WP_CLI;
 use WP_CLI_Command;
 
-class Commands extends WP_CLI_Command
-{
-    /**
-     * @var OrdersIndex
-     */
-    private $index;
+class Commands extends WP_CLI_Command {
 
-    /**
-     * @var Options
-     */
-    private $options;
+	/**
+	 * @var OrdersIndex
+	 */
+	private $index;
 
-    /**
-     * @var \cli\progress\Bar
-     */
-    private $progress;
+	/**
+	 * @var Options
+	 */
+	private $options;
 
-    /**
-     * @param OrdersIndex $index
-     * @param Options     $options
-     */
-    public function __construct(OrdersIndex $index, Options $options)
-    {
-        $this->index = $index;
-        $this->options = $options;
-    }
+	/**
+	 * @var \cli\progress\Bar
+	 */
+	private $progress;
 
-    /**
-     * ReIndex all orders in Algolia.
-     *
-     * ## EXAMPLES
-     *
-     *     wp orders reindex
-     *
-     * @when before_wp_load
-     * @alias re-index
-     *
-     * @param mixed $args
-     * @param mixed $assoc_args
-     */
-    public function reindex($args, $assoc_args)
-    {
-        WP_CLI::log(sprintf(__('About to clear existing orders from index %s...', 'wc-order-search-admin'), $this->index->getName()));
-        $this->index->clear();
-        WP_CLI::success(sprintf(__('Correctly cleared orders from index "%s".', 'wc-order-search-admin'), $this->index->getName()));
+	/**
+	 * @param OrdersIndex $index
+	 * @param Options     $options
+	 */
+	public function __construct( OrdersIndex $index, Options $options ) {
+		$this->index = $index;
+		$this->options = $options;
+	}
 
-        WP_CLI::log(sprintf(__('About push the settings for index %s...', 'wc-order-search-admin'), $this->index->getName()));
-        $this->index->pushSettings();
-        WP_CLI::success(sprintf(__('Correctly pushed settings for index "%s".', 'wc-order-search-admin'), $this->index->getName()));
+	/**
+	 * ReIndex all orders in Algolia.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp orders reindex
+	 *
+	 * @when before_wp_load
+	 * @alias re-index
+	 *
+	 * @param mixed $args
+	 * @param mixed $assoc_args
+	 */
+	public function reindex( $args, $assoc_args ) {
+		/* translators: placeholder will contain the index name. */
+		WP_CLI::log( sprintf( __( 'About to clear existing orders from index %s...', 'wc-order-search-admin' ), $this->index->getName() ) );
+		$this->index->clear();
+		/* translators: placeholder will contain the index name. */
+		WP_CLI::success( sprintf( __( 'Correctly cleared orders from index "%s".', 'wc-order-search-admin' ), $this->index->getName() ) );
 
-        WP_CLI::log(__('About to push all orders to Algolia. Please be patient...', 'wc-order-search-admin'));
+		/* translators: placeholder will contain the index name. */
+		WP_CLI::log( sprintf( __( 'About push the settings for index %s...', 'wc-order-search-admin' ), $this->index->getName() ) );
+		$this->index->pushSettings();
+		/* translators: placeholder will contain the index name. */
+		WP_CLI::success( sprintf( __( 'Correctly pushed settings for index "%s".', 'wc-order-search-admin' ), $this->index->getName() ) );
 
-        $start = microtime(true);
+		WP_CLI::log( __( 'About to push all orders to Algolia. Please be patient...', 'wc-order-search-admin' ) );
 
-        $perPage = $this->options->getOrdersToIndexPerBatchCount();
+		$start = microtime( true );
 
-        $self = $this;
+		$per_page = $this->options->getOrdersToIndexPerBatchCount();
 
-        $totalRecordsCount = $this->index->reIndex(false, $perPage, function ($records, $page, $totalPages) use ($self) {
-            if (null === $self->progress) {
-                $self->progress = WP_CLI\Utils\make_progress_bar(__('Indexing WooCommerce orders', 'wc-order-search-admin'), $totalPages);
-            }
-            $self->progress->tick();
-        });
+		$self = $this;
 
-        if (null !== $this->progress) {
-            $this->progress->finish();
-        }
+		$total_records_count = $this->index->reIndex(
+			false, $per_page, function ( $records, $page, $total_pages ) use ( $self ) {
+				if ( null === $self->progress ) {
+					$self->progress = WP_CLI\Utils\make_progress_bar( __( 'Indexing WooCommerce orders', 'wc-order-search-admin' ), $total_pages );
+				}
+				$self->progress->tick();
+			}
+		);
 
-        $elapsed = microtime(true) - $start;
+		if ( null !== $this->progress ) {
+			$this->progress->finish();
+		}
 
-        WP_CLI::success(sprintf(__('%d orders indexed in %d seconds!', 'wc-order-search-admin'), $totalRecordsCount, $elapsed));
-    }
+		$elapsed = microtime( true ) - $start;
+
+		/* translators: 1st placeholder will contain the total number of orders indexed and second placeholder indicates the processing time in seconds. */
+		WP_CLI::success( sprintf( __( '%1$d orders indexed in %2$d seconds!', 'wc-order-search-admin' ), $total_records_count, $elapsed ) );
+	}
 }

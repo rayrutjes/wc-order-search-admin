@@ -11,44 +11,44 @@ namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\Options;
 
-class AjaxIndexingOptionsForm
-{
-    /**
-     * @var Options
-     */
-    private $options;
+class AjaxIndexingOptionsForm {
 
-    /**
-     * @param Options $options
-     */
-    public function __construct(Options $options)
-    {
-        $this->options = $options;
+	/**
+	 * @var Options
+	 */
+	private $options;
 
-        add_action('wp_ajax_wc_osa_save_indexing_options', array($this, 'saveIndexingOptions'));
-    }
+	/**
+	 * @param Options $options
+	 */
+	public function __construct( Options $options ) {
+		$this->options = $options;
 
-    public function saveIndexingOptions()
-    {
-        if (!isset($_POST['orders_index_name']) || !isset($_POST['orders_per_batch'])) {
-            wp_die('Hacker');
-        }
+		add_action( 'wp_ajax_wc_osa_save_indexing_options', array( $this, 'saveIndexingOptions' ) );
+	}
 
-        try {
-            $this->options->setOrdersIndexName($_POST['orders_index_name']);
-        } catch (\InvalidArgumentException $exception) {
-            wp_send_json_error(array(
-                'message' => $exception->getMessage(),
-            ));
-        }
+	public function saveIndexingOptions() {
+		if ( ! isset( $_POST['orders_index_name'] ) || ! isset( $_POST['orders_per_batch'] ) ) {
+			wp_die( 'Hacker' );
+		}
 
-        $this->options->setOrdersToIndexPerBatchCount($_POST['orders_per_batch']);
+		try {
+			$this->options->setOrdersIndexName( $_POST['orders_index_name'] );
+		} catch ( \InvalidArgumentException $exception ) {
+			wp_send_json_error(
+				array(
+					'message' => $exception->getMessage(),
+				)
+			);
+		}
 
-        $response = array(
-            'success' => true,
-            'message' => __('Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'wc-order-search-admin'),
-        );
+		$this->options->setOrdersToIndexPerBatchCount( $_POST['orders_per_batch'] );
 
-        wp_send_json($response);
-    }
+		$response = array(
+			'success' => true,
+			'message' => __( 'Your indexing options have been saved. If you changed the index name, you will need to re-index your orders.', 'wc-order-search-admin' ),
+		);
+
+		wp_send_json( $response );
+	}
 }
