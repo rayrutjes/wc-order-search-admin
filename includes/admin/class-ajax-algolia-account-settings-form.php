@@ -10,9 +10,9 @@
 namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\Options;
-use WC_Order_Search_Admin\OrdersIndex;
+use WC_Order_Search_Admin\Orders_Index;
 
-class AjaxAlgoliaAccountSettingsForm {
+class Ajax_Algolia_Account_Settings_Form {
 
 	/**
 	 * @var Options
@@ -20,7 +20,7 @@ class AjaxAlgoliaAccountSettingsForm {
 	private $options;
 
 	/**
-	 * @param OrdersIndex $ordersIndex
+	 * @param Orders_Index $ordersIndex
 	 * @param Options     $options
 	 */
 	public function __construct( Options $options ) {
@@ -29,13 +29,13 @@ class AjaxAlgoliaAccountSettingsForm {
 		add_action( 'wp_ajax_wc_osa_save_algolia_settings', array( $this, 'saveAlgoliaAccountSettings' ) );
 	}
 
-	public function saveAlgoliaAccountSettings() {
+	public function save_algolia_account_settings() {
 		if ( ! isset( $_POST['app_id'] ) || ! isset( $_POST['search_api_key'] ) || ! isset( $_POST['admin_api_key'] ) ) {
 			wp_die( 'Hacker' );
 		}
 
 		try {
-			$this->options->setAlgoliaAccountSettings( $_POST['app_id'], $_POST['search_api_key'], $_POST['admin_api_key'] );
+			$this->options->set_algolia_account_settings( $_POST['app_id'], $_POST['search_api_key'], $_POST['admin_api_key'] );
 		} catch ( \InvalidArgumentException $exception ) {
 			wp_send_json_error(
 				array(

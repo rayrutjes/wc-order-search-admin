@@ -11,12 +11,12 @@ namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\AlgoliaException;
 use WC_Order_Search_Admin\Options;
-use WC_Order_Search_Admin\OrdersIndex;
+use WC_Order_Search_Admin\Orders_Index;
 
-class AjaxReindex {
+class Ajax_Reindex {
 
 	/**
-	 * @var OrdersIndex
+	 * @var Orders_Index
 	 */
 	private $orders_index;
 
@@ -26,17 +26,17 @@ class AjaxReindex {
 	private $options;
 
 	/**
-	 * @param OrdersIndex $orders_index
+	 * @param Orders_Index $orders_index
 	 * @param Options     $options
 	 */
-	public function __construct( OrdersIndex $orders_index, Options $options ) {
+	public function __construct( Orders_Index $orders_index, Options $options ) {
 		$this->options = $options;
 
 		add_action( 'wp_ajax_wc_osa_reindex', array( $this, 'reIndex' ) );
 		$this->orders_index = $orders_index;
 	}
 
-	public function reIndex() {
+	public function re_index() {
 		if ( isset( $_POST['page'] ) ) {
 			$page = (int) $_POST['page'];
 		} else {
@@ -56,8 +56,8 @@ class AjaxReindex {
 			}
 		}
 
-		$per_page = $this->options->getOrdersToIndexPerBatchCount();
-		$total_pages = $this->orders_index->getTotalPagesCount( $this->options->getOrdersToIndexPerBatchCount() );
+		$per_page = $this->options->get_orders_to_index_per_batch_count();
+		$total_pages = $this->orders_index->getTotalPagesCount( $this->options->get_orders_to_index_per_batch_count() );
 
 		try {
 			$records_pushed_count = $this->orders_index->pushRecords( $page, $per_page );

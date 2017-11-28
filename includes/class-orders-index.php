@@ -13,7 +13,7 @@ use WC_Order_Search_Admin\Index\Index;
 use WC_Order_Search_Admin\Index\IndexSettings;
 use WC_Order_Search_Admin\Index\RecordsProvider;
 
-class OrdersIndex extends Index implements RecordsProvider {
+class Orders_Index extends Index implements RecordsProvider {
 
 	/**
 	 * @var string
@@ -181,6 +181,10 @@ class OrdersIndex extends Index implements RecordsProvider {
 	 * @return array
 	 */
 	private function getRecordsForOrder( \WC_Abstract_Order $order ) {
+		if ( ! defined( 'WC_VERSION' ) ) {
+			return array();
+		}
+
 		if ( ! $order instanceof \WC_Order ) {
 			// Only support default order type for now.
 			return array();

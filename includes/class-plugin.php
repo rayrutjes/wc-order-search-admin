@@ -28,13 +28,13 @@ class Plugin {
 		global $wp_version;
 
 		$this->options = $options;
-		if ( ! $this->options->hasAlgoliaAccountSettings() ) {
+		if ( ! $this->options->has_algolia_account_settings() ) {
 			add_action( 'admin_notices', array( $this, 'configureAlgoliaSettingsNotice' ) );
 
 			return;
 		}
 
-		$algolia_client = new Client( $options->getAlgoliaAppId(), $options->getAlgoliaAdminApiKey() );
+		$algolia_client = new Client( $options->get_algolia_app_id(), $options->get_algolia_admin_api_key() );
 
 		$integration_name = 'wc-order-search-admin';
 		$ua = '; ' . $integration_name . ' integration (' . WC_OSA_VERSION . ')'
@@ -43,8 +43,8 @@ class Plugin {
 
 		Version::$custom_value = $ua;
 
-		$this->orders_index = new OrdersIndex( $options->getOrdersIndexName(), $algolia_client );
-		new OrderChangeListener( $this->orders_index );
+		$this->orders_index = new Orders_Index( $options->get_orders_index_name(), $algolia_client );
+		new Order_Change_Listener( $this->orders_index );
 	}
 
 	/**
@@ -65,7 +65,7 @@ class Plugin {
 	/**
 	 * @return Plugin
 	 */
-	public static function getInstance() {
+	public static function get_instance() {
 		if ( null === self::$instance ) {
 			throw new \LogicException( 'Plugin::initialize must be called first!' );
 		}
@@ -76,14 +76,14 @@ class Plugin {
 	/**
 	 * @return Options
 	 */
-	public function getOptions() {
+	public function get_options() {
 		return $this->options;
 	}
 
 	/**
-	 * @return OrdersIndex
+	 * @return Orders_Index
 	 */
-	public function getOrdersIndex() {
+	public function get_orders_index() {
 		if ( null === $this->orders_index ) {
 			throw new \LogicException( 'Orders index has not be initialized.' );
 		}
@@ -91,7 +91,7 @@ class Plugin {
 		return $this->orders_index;
 	}
 
-	public function configureAlgoliaSettingsNotice() {
+	public function configure_algolia_settings_notice() {
 		$screen = get_current_screen();
 		if ( 'settings_page_wc_osa_options' === $screen->id ) {
 			return;

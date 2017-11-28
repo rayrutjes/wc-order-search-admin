@@ -11,7 +11,7 @@ namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\Options;
 
-class OrdersListPage {
+class Orders_List_Page {
 
 	/**
 	 * @var Options
@@ -44,9 +44,9 @@ class OrdersListPage {
 
 		wp_localize_script(
 			'wc_osa_orders_search', 'aosOptions', array(
-				'appId'           => $this->options->getAlgoliaAppId(),
-				'searchApiKey'    => $this->options->getAlgoliaSearchApiKey(),
-				'ordersIndexName' => $this->options->getOrdersIndexName(),
+				'appId'           => $this->options->get_algolia_app_id(),
+				'searchApiKey'    => $this->options->get_algolia_search_api_key(),
+				'ordersIndexName' => $this->options->get_orders_index_name(),
 				'debug'           => defined( 'WP_DEBUG' ) && WP_DEBUG === true,
 			)
 		);

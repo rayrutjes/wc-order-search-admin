@@ -58,32 +58,32 @@ add_action(
 		require_once WC_OSA_PATH . 'libs/autoload.php';
 
 		// Resources
-		require_once WC_OSA_PATH . 'includes/OrderChangeListener.php';
-		require_once WC_OSA_PATH . 'includes/OrdersIndex.php';
-		require_once WC_OSA_PATH . 'includes/Options.php';
-		require_once WC_OSA_PATH . 'includes/Plugin.php';
+		require_once WC_OSA_PATH . 'includes/class-order-change-listener.php';
+		require_once WC_OSA_PATH . 'includes/class-orders-index.php';
+		require_once WC_OSA_PATH . 'includes/class-options.php';
+		require_once WC_OSA_PATH . 'includes/class-plugin.php';
 
 		$plugin = \WC_Order_Search_Admin\Plugin::initialize( new \WC_Order_Search_Admin\Options() );
 
 		if ( is_admin() ) {
-			require_once WC_OSA_PATH . 'includes/admin/OptionsPage.php';
-			require_once WC_OSA_PATH . 'includes/admin/OrdersListPage.php';
-			require_once WC_OSA_PATH . 'includes/admin/AjaxReindex.php';
-			require_once WC_OSA_PATH . 'includes/admin/AjaxIndexingOptionsForm.php';
-			require_once WC_OSA_PATH . 'includes/admin/AjaxAlgoliaAccountSettingsForm.php';
-			new \WC_Order_Search_Admin\Admin\OptionsPage( $plugin->getOptions() );
-			new \WC_Order_Search_Admin\Admin\OrdersListPage( $plugin->getOptions() );
-			if ( $plugin->getOptions()->hasAlgoliaAccountSettings() ) {
-				new \WC_Order_Search_Admin\Admin\AjaxReindex( $plugin->getOrdersIndex(), $plugin->getOptions() );
+			require_once WC_OSA_PATH . 'includes/admin/class-options-page.php';
+			require_once WC_OSA_PATH . 'includes/admin/class-orders-list-page.php';
+			require_once WC_OSA_PATH . 'includes/admin/class-ajax-reindex.php';
+			require_once WC_OSA_PATH . 'includes/admin/class-ajax-indexing-options-form.php';
+			require_once WC_OSA_PATH . 'includes/admin/class-ajax-algolia-account-settings-form.php';
+			new \WC_Order_Search_Admin\Admin\Options_Page( $plugin->get_options() );
+			new \WC_Order_Search_Admin\Admin\Orders_List_Page( $plugin->get_options() );
+			if ( $plugin->get_options()->has_algolia_account_settings() ) {
+				new \WC_Order_Search_Admin\Admin\Ajax_Reindex( $plugin->get_orders_index(), $plugin->get_options() );
 			}
-			new \WC_Order_Search_Admin\Admin\AjaxIndexingOptionsForm( $plugin->getOptions() );
-			new \WC_Order_Search_Admin\Admin\AjaxAlgoliaAccountSettingsForm( $plugin->getOptions() );
+			new \WC_Order_Search_Admin\Admin\Ajax_Indexing_Options_Form( $plugin->get_options() );
+			new \WC_Order_Search_Admin\Admin\Ajax_Algolia_Account_Settings_Form( $plugin->get_options() );
 		}
 
 		// WP CLI commands
-		if ( defined( 'WP_CLI' ) && WP_CLI && $plugin->getOptions()->hasAlgoliaAccountSettings() ) {
-			require_once WC_OSA_PATH . 'includes/Commands.php';
-			$commands = new \WC_Order_Search_Admin\Commands( $plugin->getOrdersIndex(), $plugin->getOptions() );
+		if ( defined( 'WP_CLI' ) && WP_CLI && $plugin->get_options()->has_algolia_account_settings() ) {
+			require_once WC_OSA_PATH . 'includes/class-commands.php';
+			$commands = new \WC_Order_Search_Admin\Commands( $plugin->get_orders_index(), $plugin->get_options() );
 			WP_CLI::add_command( 'orders', $commands );
 		}
 	}

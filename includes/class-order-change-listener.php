@@ -9,17 +9,17 @@
 
 namespace WC_Order_Search_Admin;
 
-class OrderChangeListener {
+class Order_Change_Listener {
 
 	/**
-	 * @var OrdersIndex
+	 * @var Orders_Index
 	 */
 	private $orders_index;
 
 	/**
-	 * @param OrdersIndex $orders_index
+	 * @param Orders_Index $orders_index
 	 */
-	public function __construct( OrdersIndex $orders_index ) {
+	public function __construct( Orders_Index $orders_index ) {
 		$this->orders_index = $orders_index;
 		add_action( 'save_post', array( $this, 'pushOrderRecords' ), 10, 2 );
 		add_action( 'before_delete_post', array( $this, 'deleteOrderRecords' ) );
@@ -30,7 +30,7 @@ class OrderChangeListener {
 	 * @param mixed $post_id
 	 * @param mixed $post
 	 */
-	public function pushOrderRecords( $post_id, $post ) {
+	public function push_order_records( $post_id, $post ) {
 		if ( 'shop_order' !== $post->post_type
 			|| 'auto-draft' === $post->post_status
 			|| 'trash' === $post->post_status
@@ -42,11 +42,11 @@ class OrderChangeListener {
 		try {
 			$this->orders_index->pushRecordsForOrder( $order );
 		} catch ( AlgoliaException $exception ) {
-			error_log( $exception->getMessage() );
+			error_log( $exception->getMessage() ); // @codingStandardsIgnoreLine
 		}
 	}
 
-	public function deleteOrderRecords( $post_id ) {
+	public function delete_order_records( $post_id ) {
 		$post = get_post( $post_id );
 
 		if ( 'shop_order' !== $post->post_type ) {
@@ -56,7 +56,7 @@ class OrderChangeListener {
 		try {
 			$this->orders_index->deleteRecordsByOrderId( $post->ID );
 		} catch ( AlgoliaException $exception ) {
-			error_log( $exception->getMessage() );
+			error_log( $exception->getMessage() ); // @codingStandardsIgnoreLine
 		}
 	}
 }

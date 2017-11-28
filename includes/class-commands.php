@@ -15,7 +15,7 @@ use WP_CLI_Command;
 class Commands extends WP_CLI_Command {
 
 	/**
-	 * @var OrdersIndex
+	 * @var Orders_Index
 	 */
 	private $index;
 
@@ -30,10 +30,10 @@ class Commands extends WP_CLI_Command {
 	private $progress;
 
 	/**
-	 * @param OrdersIndex $index
+	 * @param Orders_Index $index
 	 * @param Options     $options
 	 */
-	public function __construct( OrdersIndex $index, Options $options ) {
+	public function __construct( Orders_Index $index, Options $options ) {
 		$this->index = $index;
 		$this->options = $options;
 	}
@@ -68,7 +68,7 @@ class Commands extends WP_CLI_Command {
 
 		$start = microtime( true );
 
-		$per_page = $this->options->getOrdersToIndexPerBatchCount();
+		$per_page = $this->options->get_orders_to_index_per_batch_count();
 
 		$self = $this;
 

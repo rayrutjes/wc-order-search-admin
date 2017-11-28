@@ -11,7 +11,7 @@ namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\Options;
 
-class AjaxIndexingOptionsForm {
+class Ajax_Indexing_Options_Form {
 
 	/**
 	 * @var Options
@@ -27,13 +27,13 @@ class AjaxIndexingOptionsForm {
 		add_action( 'wp_ajax_wc_osa_save_indexing_options', array( $this, 'saveIndexingOptions' ) );
 	}
 
-	public function saveIndexingOptions() {
+	public function save_indexing_options() {
 		if ( ! isset( $_POST['orders_index_name'] ) || ! isset( $_POST['orders_per_batch'] ) ) {
 			wp_die( 'Hacker' );
 		}
 
 		try {
-			$this->options->setOrdersIndexName( $_POST['orders_index_name'] );
+			$this->options->set_orders_index_name( $_POST['orders_index_name'] );
 		} catch ( \InvalidArgumentException $exception ) {
 			wp_send_json_error(
 				array(
@@ -42,7 +42,7 @@ class AjaxIndexingOptionsForm {
 			);
 		}
 
-		$this->options->setOrdersToIndexPerBatchCount( $_POST['orders_per_batch'] );
+		$this->options->set_orders_to_index_per_batch_count( $_POST['orders_per_batch'] );
 
 		$response = array(
 			'success' => true,

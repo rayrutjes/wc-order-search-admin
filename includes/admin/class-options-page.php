@@ -11,7 +11,7 @@ namespace WC_Order_Search_Admin\Admin;
 
 use WC_Order_Search_Admin\Options;
 
-class OptionsPage {
+class Options_Page {
 
 	/**
 	 * @var Options
