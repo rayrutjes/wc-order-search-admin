@@ -19,13 +19,12 @@ readonly PACKAGE_VERSION=$(< package.json grep version \
   | sed 's/[",]//g' \
   | tr -d '[:space:]')
 
+git tag "v$PACKAGE_VERSION"
+git push --tags
+
 ./bin/sync-wp-org.sh \
 	--plugin-name="wc-order-search-admin" \
 	--git-repo="https://github.com/rayrutjes/wc-order-search-admin" \
 	--svn-user=rayrutjes
-
-git tag "v$PACKAGE_VERSION"
-
-git push --tags
 
 echo "Pushed package to wordpress.org, and also pushed 'v$PACKAGE_VERSION' tag to git repository."
