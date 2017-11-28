@@ -27,8 +27,8 @@ return array(
 			->in( 'vendor' ),*/
 		Finder::create()->append(
 			array(
-			    'vendor/algolia',
-                'vendor/composer',
+				'vendor/algolia',
+				'vendor/composer',
 				'composer.json',
 			)
 		),
