@@ -10,3 +10,5 @@ vendor/
 .sass-cache/
 build/
 .php_cs.cache
+git
+svn
