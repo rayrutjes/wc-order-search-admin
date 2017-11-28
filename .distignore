@@ -32,3 +32,5 @@ build
 .styleci.yml
 yarn.lock
 scoper.inc.php
+phpcs.xml.dist
+libs/vendor/composer/installers
