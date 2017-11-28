@@ -1,6 +1,7 @@
 set -eu
 
 mkdir -p ./build
+rm -rf ./vendor
 
 rsync \
 	--compress \
