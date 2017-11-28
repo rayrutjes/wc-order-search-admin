@@ -30,6 +30,7 @@ class Ajax_Algolia_Account_Settings_Form {
 	}
 
 	public function save_algolia_account_settings() {
+		check_ajax_referer( 'save_algolia_account_settings_nonce' );
 		if ( ! isset( $_POST['app_id'] ) || ! isset( $_POST['search_api_key'] ) || ! isset( $_POST['admin_api_key'] ) ) {
 			wp_die( 'Hacker' );
 		}

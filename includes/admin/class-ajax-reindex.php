@@ -37,6 +37,7 @@ class Ajax_Reindex {
 	}
 
 	public function re_index() {
+		check_ajax_referer( 're_index_nonce' );
 		if ( isset( $_POST['page'] ) ) {
 			$page = (int) $_POST['page'];
 		} else {

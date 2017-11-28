@@ -28,6 +28,7 @@ class Ajax_Indexing_Options_Form {
 	}
 
 	public function save_indexing_options() {
+		check_ajax_referer( 'save_indexing_options_nonce' );
 		if ( ! isset( $_POST['orders_index_name'] ) || ! isset( $_POST['orders_per_batch'] ) ) {
 			wp_die( 'Hacker' );
 		}

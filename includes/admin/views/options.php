@@ -6,7 +6,7 @@
 	<ol>
 		<li><?php esc_html_e( 'Create an Algolia account', 'wc-order-search-admin' ); ?></li>
 		<li><?php esc_html_e( 'Paste the API keys in the Algolia Account settings section of this page', 'wc-order-search-admin' ); ?></li>
-		<li>Hit this <button class="aos-reindex-button button button-primary">Re-index orders</button> button</li>
+		<li>Hit this <button class="aos-reindex-button button button-primary" data-nonce="<?php echo esc_attr( wp_create_nonce( 're_index_nonce' ) ); ?>">Re-index orders</button> button</li>
 	</ol>
 	<p>Once you are all set, the search input on your <a href="edit.php?post_type=shop_order">orders list page</a> will be powered by the plugin.</p>
 	<p><?php esc_html_e( 'Feel free to re-index every time you think something went wrong.', 'wc-order-search-admin' ); ?></p>
@@ -20,6 +20,7 @@
 
 	<form method="post" class="aos-ajax-form">
 		<input type="hidden" name="action" value="wc_osa_save_algolia_settings">
+		<?php wp_nonce_field( 'save_algolia_account_settings_nonce' ); ?>
 		<table class="form-table">
 			<tbody>
 				<tr>
@@ -70,6 +71,7 @@
 
 	<form method="post" class="aos-ajax-form">
 		<input type="hidden" name="action" value="wc_osa_save_indexing_options">
+		<?php wp_nonce_field( 'save_indexing_options_nonce' ); ?>
 		<table class="form-table">
 			<tbody>
 			<tr>
