@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2013 Algolia
  * http://www.algolia.com/
@@ -20,23 +21,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- *
  */
 
-require_once 'src/WC_Order_Search_Admin/AlgoliaException.php';
-require_once 'src/WC_Order_Search_Admin/AlgoliaConnectionException.php';
-require_once 'src/WC_Order_Search_Admin/Client.php';
-require_once 'src/WC_Order_Search_Admin/ClientContext.php';
-require_once 'src/WC_Order_Search_Admin/Index.php';
-require_once 'src/WC_Order_Search_Admin/IndexBrowser.php';
-require_once 'src/WC_Order_Search_Admin/PlacesIndex.php';
-require_once 'src/WC_Order_Search_Admin/SynonymType.php';
-require_once 'src/WC_Order_Search_Admin/Version.php';
-require_once 'src/WC_Order_Search_Admin/Json.php';
-require_once 'src/WC_Order_Search_Admin/FailingHostsCache.php';
-require_once 'src/WC_Order_Search_Admin/FileFailingHostsCache.php';
-require_once 'src/WC_Order_Search_Admin/InMemoryFailingHostsCache.php';
-require_once 'src/WC_Order_Search_Admin/Iterators/AlgoliaIterator.php';
-require_once 'src/WC_Order_Search_Admin/Iterators/RuleIterator.php';
-require_once 'src/WC_Order_Search_Admin/Iterators/SynonymIterator.php';
+namespace WC_Order_Search_Admin;
+
+class AlgoliaConnectionException extends AlgoliaException
+{
+}

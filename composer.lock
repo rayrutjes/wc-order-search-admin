@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "346233886cac78f4831398220aca0c4e",
-    "content-hash": "8d7fbef83c45c64dec02c5c0031addb0",
+    "hash": "a618bffd612ef9ddabeb5ce5e7f89b22",
+    "content-hash": "c3c6be7795cb5ac7ba025ede803f7c6a",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
                 "shasum": ""
             },
             "require": {
@@ -64,6 +64,7 @@
                 "Hurad",
                 "ImageCMS",
                 "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
                 "Maya",
@@ -87,6 +88,7 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
@@ -103,6 +105,7 @@
                 "mediawiki",
                 "modulework",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -119,22 +122,22 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-04-24 06:37:16"
+            "time": "2017-08-09 07:53:48"
         }
     ],
     "packages-dev": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "1.17.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "470c5cc20ae879e0a5f692227b416c26d10a6fba"
+                "reference": "627e43858977dfa7b3ceeb5aac9d683e89f2eea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/470c5cc20ae879e0a5f692227b416c26d10a6fba",
-                "reference": "470c5cc20ae879e0a5f692227b416c26d10a6fba",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/627e43858977dfa7b3ceeb5aac9d683e89f2eea7",
+                "reference": "627e43858977dfa7b3ceeb5aac9d683e89f2eea7",
                 "shasum": ""
             },
             "require": {
@@ -148,8 +151,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "AlgoliaSearch": "src/",
-                    "AlgoliaSearch\\Tests": "tests/"
+                    "AlgoliaSearch": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -172,7 +174,7 @@
             ],
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
-            "time": "2017-04-03 07:54:23"
+            "time": "2017-10-17 07:08:44"
         },
         {
             "name": "algolia/index",
@@ -217,6 +219,217 @@
                 "issues": "https://github.com/algolia/php-index/issues"
             },
             "time": "2017-02-20 08:28:03"
+        },
+        {
+            "name": "dealerdirect/phpcodesniffer-composer-installer",
+            "version": "v0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DealerDirect/phpcodesniffer-composer-installer.git",
+                "reference": "63c0ec0ac286d31651d3c70e5bf76ad87db3ba23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DealerDirect/phpcodesniffer-composer-installer/zipball/63c0ec0ac286d31651d3c70e5bf76ad87db3ba23",
+                "reference": "63c0ec0ac286d31651d3c70e5bf76ad87db3ba23",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": "^5.3|^7",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "require-dev": {
+                "composer/composer": "*",
+                "wimg/php-compatibility": "^8.0"
+            },
+            "suggest": {
+                "dealerdirect/qa-tools": "All the PHP QA tools you'll need"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck Nijhof",
+                    "email": "f.nijhof@dealerdirect.nl",
+                    "homepage": "http://workingatdealerdirect.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
+            "homepage": "http://workingatdealerdirect.eu",
+            "keywords": [
+                "PHPCodeSniffer",
+                "PHP_CodeSniffer",
+                "code quality",
+                "codesniffer",
+                "composer",
+                "installer",
+                "phpcs",
+                "plugin",
+                "qa",
+                "quality",
+                "standard",
+                "standards",
+                "style guide",
+                "stylecheck",
+                "tests"
+            ],
+            "time": "2017-09-18 07:49:36"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "d667e245d5dcd4d7bf80f26f2c947d476b66213e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d667e245d5dcd4d7bf80f26f2c947d476b66213e",
+                "reference": "d667e245d5dcd4d7bf80f26f2c947d476b66213e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2017-10-16 22:40:25"
+        },
+        {
+            "name": "wimg/php-compatibility",
+            "version": "8.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wimg/PHPCompatibility.git",
+                "reference": "4c4385fb891dff0501009670f988d4fe36785249"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wimg/PHPCompatibility/zipball/4c4385fb891dff0501009670f988d4fe36785249",
+                "reference": "4c4385fb891dff0501009670f988d4fe36785249",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.2 || ^3.0.2"
+            },
+            "conflict": {
+                "squizlabs/php_codesniffer": "2.6.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0"
+            },
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-4": {
+                    "PHPCompatibility\\": "PHPCompatibility/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Wim Godden",
+                    "role": "lead"
+                }
+            ],
+            "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP version compatibility.",
+            "homepage": "http://techblog.wimgodden.be/tag/codesniffer/",
+            "keywords": [
+                "compatibility",
+                "phpcs",
+                "standards"
+            ],
+            "time": "2017-08-07 19:39:05"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "0.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "reference": "1f64b1a0b5b789822d0303436ee4e30e0135e4dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/1f64b1a0b5b789822d0303436ee4e30e0135e4dc",
+                "reference": "1f64b1a0b5b789822d0303436ee4e30e0135e4dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.9.0 || ^3.0.2"
+            },
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "wordpress"
+            ],
+            "time": "2017-08-05 16:08:58"
         }
     ],
     "aliases": [],

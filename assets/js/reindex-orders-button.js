@@ -15,19 +15,20 @@
   function handleReindexButtonClick() {
     $ordersReindexButtons.attr('disabled', 'disabled');
     inProgress = true;
-    updateIndexingPourcentage(0);
+    updateIndexingPercentage(0);
 
-    reIndex();
+    reIndex($ordersReindexButtons.data('nonce'));
   }
 
-  function updateIndexingPourcentage(amount) {
+  function updateIndexingPercentage(amount) {
     $ordersReindexButtons.text('Processing, please be patient ... ' + amount + '%');
   }
 
-  function reIndex() {
+  function reIndex(nonce) {
     var data = {
       'action': 'wc_osa_reindex',
-      'page': currentPage
+      'page': currentPage,
+      '_wpnonce': nonce
     };
 
     $.post(ajaxurl, data, function(response) {
@@ -47,11 +48,11 @@
       totalOrdersIndexed += response.recordsPushedCount;
 
       progress = Math.round((currentPage / response.totalPagesCount)*100);
-      updateIndexingPourcentage(progress);
+      updateIndexingPercentage(progress);
 
       if(response.finished !== true) {
         currentPage++;
-        reIndex();
+        reIndex(nonce);
       } else {
         handleReIndexFinish();
       }

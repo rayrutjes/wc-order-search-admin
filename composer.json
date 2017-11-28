@@ -9,7 +9,10 @@
   },
   "require-dev": {
     "algolia/index": "dev-master",
-    "algolia/algoliasearch-client-php": "^1.14"
+    "algolia/algoliasearch-client-php": "^1.14",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "wimg/php-compatibility": "*",
+    "wp-coding-standards/wpcs": "*"
   },
   "repositories": [
     {
@@ -23,7 +26,9 @@
   },
   "scripts": {
     "post-install-cmd": "bin/scope-deps.sh",
-    "post-update-cmd": "bin/scope-deps.sh"
+    "post-update-cmd": "bin/scope-deps.sh",
+    "lint": "vendor/bin/phpcs",
+    "lint:fix": "vendor/bin/phpcbf"
   },
   "extra": {
     "installer-name": "wc-order-search-admin"
