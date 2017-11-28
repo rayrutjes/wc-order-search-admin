@@ -1,3 +1,19 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.1.1...v1.2.0) (2017-11-28)
+
+
+### Bug Fixes
+
+* correct all method names according to new naming policy ([5b9f8bf](https://github.com/rayrutjes/wc-order-search-admin/commit/5b9f8bf))
+* rely on first and last names instead of display name ([8dea457](https://github.com/rayrutjes/wc-order-search-admin/commit/8dea457))
+
+
+### Features
+
+* protect against CSRF with nonces ([6483ad8](https://github.com/rayrutjes/wc-order-search-admin/commit/6483ad8))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.1.0...v1.1.1) (2017-06-22)
 

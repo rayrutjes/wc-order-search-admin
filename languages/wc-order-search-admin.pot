@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WooCommerce Order Search Admin powered by Algolia package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Order Search Admin powered by Algolia 1.1.1\n"
+"Project-Id-Version: WooCommerce Order Search Admin powered by Algolia 1.2.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/wc-order-search-admin\n"
-"POT-Creation-Date: 2017-06-22 11:18:16+00:00\n"
+"POT-Creation-Date: 2017-11-28 16:37:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,57 +25,20 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/Commands.php:57
-msgid "About to clear existing orders from index %s..."
-msgstr ""
-
-#: includes/Commands.php:59
-msgid "Correctly cleared orders from index \"%s\"."
-msgstr ""
-
-#: includes/Commands.php:61
-msgid "About push the settings for index %s..."
-msgstr ""
-
-#: includes/Commands.php:63
-msgid "Correctly pushed settings for index \"%s\"."
-msgstr ""
-
-#: includes/Commands.php:65
-msgid "About to push all orders to Algolia. Please be patient..."
-msgstr ""
-
-#: includes/Commands.php:75
-msgid "Indexing WooCommerce orders"
-msgstr ""
-
-#: includes/Commands.php:86
-msgid "%d orders indexed in %d seconds!"
-msgstr ""
-
-#: includes/Plugin.php:106
-msgid ""
-"You are one step away from being able to have fast and relevant search "
-"powered by Algolia for finding WooCommerce orders."
-msgstr ""
-
-#: includes/Plugin.php:107
-msgid "Setup now"
-msgstr ""
-
-#: includes/admin/AjaxAlgoliaAccountSettingsForm.php:49
+#: includes/admin/class-ajax-algolia-account-settings-form.php:50
 msgid ""
 "Your Algolia account settings have been saved. You can now hit the "
 "\"re-index orders\" button."
 msgstr ""
 
-#: includes/admin/AjaxIndexingOptionsForm.php:49
+#: includes/admin/class-ajax-indexing-options-form.php:50
 msgid ""
 "Your indexing options have been saved. If you changed the index name, you "
 "will need to re-index your orders."
 msgstr ""
 
-#: includes/admin/OptionsPage.php:47 includes/admin/OptionsPage.php:48
+#: includes/admin/class-options-page.php:44
+#: includes/admin/class-options-page.php:45
 msgid "WooCommerce Order Search Admin"
 msgstr ""
 
@@ -103,43 +66,87 @@ msgstr ""
 msgid "Algolia Account settings"
 msgstr ""
 
-#: includes/admin/views/options.php:27
+#: includes/admin/views/options.php:28
 msgid "Algolia Application ID:"
 msgstr ""
 
-#: includes/admin/views/options.php:36
+#: includes/admin/views/options.php:37
 msgid "Algolia Search API key:"
 msgstr ""
 
-#: includes/admin/views/options.php:51
+#: includes/admin/views/options.php:52
 msgid "Algolia Admin API key:"
 msgstr ""
 
-#: includes/admin/views/options.php:62
+#: includes/admin/views/options.php:63
 msgid "Save Algolia account settings"
 msgstr ""
 
-#: includes/admin/views/options.php:69
+#: includes/admin/views/options.php:70
 msgid "Orders indexing settings"
 msgstr ""
 
-#: includes/admin/views/options.php:77
+#: includes/admin/views/options.php:79
 msgid "Orders index name in Algolia:"
 msgstr ""
 
-#: includes/admin/views/options.php:85
+#: includes/admin/views/options.php:87
 msgid "Orders to index per batch:"
 msgstr ""
 
-#: includes/admin/views/options.php:95
+#: includes/admin/views/options.php:97
 msgid "Save orders indexing settings"
 msgstr ""
 
-#: wc-order-search-admin.php:30
+#: includes/class-commands.php:56
+#. translators: placeholder will contain the index name.
+msgid "About to clear existing orders from index %s..."
+msgstr ""
+
+#: includes/class-commands.php:59
+#. translators: placeholder will contain the index name.
+msgid "Correctly cleared orders from index \"%s\"."
+msgstr ""
+
+#: includes/class-commands.php:62
+#. translators: placeholder will contain the index name.
+msgid "About push the settings for index %s..."
+msgstr ""
+
+#: includes/class-commands.php:65
+#. translators: placeholder will contain the index name.
+msgid "Correctly pushed settings for index \"%s\"."
+msgstr ""
+
+#: includes/class-commands.php:67
+msgid "About to push all orders to Algolia. Please be patient..."
+msgstr ""
+
+#: includes/class-commands.php:78
+msgid "Indexing WooCommerce orders"
+msgstr ""
+
+#: includes/class-commands.php:91
+#. translators: 1st placeholder will contain the total number of orders indexed
+#. and second placeholder indicates the processing time in seconds.
+msgid "%1$d orders indexed in %2$d seconds!"
+msgstr ""
+
+#: includes/class-plugin.php:103
+msgid ""
+"You are one step away from being able to have fast and relevant search "
+"powered by Algolia for finding WooCommerce orders."
+msgstr ""
+
+#: includes/class-plugin.php:104
+msgid "Setup now"
+msgstr ""
+
+#: wc-order-search-admin.php:33
 msgid "Settings"
 msgstr ""
 
-#: wc-order-search-admin.php:42
+#: wc-order-search-admin.php:47
 msgid "WooCommerce Order Search Admin requires the WooCommerce plugin to be active."
 msgstr ""
 
