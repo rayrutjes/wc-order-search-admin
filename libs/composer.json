@@ -1,0 +1,42 @@
+{
+    "name": "rayrutjes\/wc-order-search-admin",
+    "description": "WordPress plugin that allows for fast searching for orders in admin with Algolia.",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "wordpress",
+        "woocommerce",
+        "order",
+        "search",
+        "algolia",
+        "admin",
+        "autocomplete"
+    ],
+    "license": "GPL-3",
+    "require": {
+        "composer\/installers": "~1.0"
+    },
+    "require-dev": {
+        "algolia\/index": "dev-master",
+        "algolia\/algoliasearch-client-php": "^1.14",
+        "dealerdirect\/phpcodesniffer-composer-installer": "*",
+        "wimg\/php-compatibility": "*",
+        "wp-coding-standards\/wpcs": "*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:algolia\/php-index.git"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": "vendor\/bin\/phpcs",
+        "lint:fix": "vendor\/bin\/phpcbf"
+    },
+    "extra": {
+        "installer-name": "wc-order-search-admin"
+    }
+}

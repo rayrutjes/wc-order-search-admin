@@ -1,0 +1,8 @@
+<?php
+
+namespace WC_Order_Search_Admin\Composer\Installers;
+
+class LavaLiteInstaller extends \WC_Order_Search_Admin\Composer\Installers\BaseInstaller
+{
+    protected $locations = array('package' => 'packages/{$vendor}/{$name}/', 'theme' => 'public/themes/{$name}/');
+}

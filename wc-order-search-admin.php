@@ -55,7 +55,8 @@ add_action(
 		}
 
 		// Composer dependencies
-		require_once WC_OSA_PATH . 'libs/autoload.php';
+		require_once WC_OSA_PATH . 'libs/vendor/algolia/algoliasearch-client-php/algoliasearch.php';
+		require_once WC_OSA_PATH . 'libs/vendor/autoload.php';
 
 		// Resources
 		require_once WC_OSA_PATH . 'includes/class-order-change-listener.php';

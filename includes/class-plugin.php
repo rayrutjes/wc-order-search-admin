@@ -9,6 +9,9 @@
 
 namespace WC_Order_Search_Admin;
 
+use WC_Order_Search_Admin\AlgoliaSearch\Client;
+use WC_Order_Search_Admin\AlgoliaSearch\Version;
+
 class Plugin {
 
 	/**

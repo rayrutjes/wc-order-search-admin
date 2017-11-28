@@ -6,12 +6,7 @@ node_modules/
 *.tar.gz
 *.zip
 vendor/
+!libs/vendor
 .sass-cache/
 build/
 .php_cs.cache
-
-libs/bin
-libs/dealerdirect/
-libs/squizlabs/
-libs/wimg/
-libs/wp-coding-standards/
