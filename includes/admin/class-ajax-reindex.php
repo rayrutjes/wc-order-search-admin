@@ -32,7 +32,7 @@ class Ajax_Reindex {
 	public function __construct( Orders_Index $orders_index, Options $options ) {
 		$this->options = $options;
 
-		add_action( 'wp_ajax_wc_osa_reindex', array( $this, 'reIndex' ) );
+		add_action( 'wp_ajax_wc_osa_reindex', array( $this, 're_index' ) );
 		$this->orders_index = $orders_index;
 	}
 

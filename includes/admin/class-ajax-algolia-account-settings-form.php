@@ -26,7 +26,7 @@ class Ajax_Algolia_Account_Settings_Form {
 	public function __construct( Options $options ) {
 		$this->options = $options;
 
-		add_action( 'wp_ajax_wc_osa_save_algolia_settings', array( $this, 'saveAlgoliaAccountSettings' ) );
+		add_action( 'wp_ajax_wc_osa_save_algolia_settings', array( $this, 'save_algolia_account_settings' ) );
 	}
 
 	public function save_algolia_account_settings() {

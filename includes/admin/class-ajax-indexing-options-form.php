@@ -24,7 +24,7 @@ class Ajax_Indexing_Options_Form {
 	public function __construct( Options $options ) {
 		$this->options = $options;
 
-		add_action( 'wp_ajax_wc_osa_save_indexing_options', array( $this, 'saveIndexingOptions' ) );
+		add_action( 'wp_ajax_wc_osa_save_indexing_options', array( $this, 'save_indexing_options' ) );
 	}
 
 	public function save_indexing_options() {

@@ -27,7 +27,7 @@
 						<label><?php esc_html_e( 'Algolia Application ID:', 'wc-order-search-admin' ); ?> </label>
 					</th>
 					<td>
-						<input type="text" class="regular-text" name="app_id" value="<?php echo esc_attr( $this->options->getAlgoliaAppId() ); ?>">
+						<input type="text" class="regular-text" name="app_id" value="<?php echo esc_attr( $this->options->get_algolia_app_id() ); ?>">
 						<p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
 					</td>
 				</tr>
@@ -36,11 +36,11 @@
 						<label><?php esc_html_e( 'Algolia Search API key:', 'wc-order-search-admin' ); ?></label>
 					</th>
 					<td>
-						<input type="text" class="regular-text" name="search_api_key" value="<?php echo esc_attr( $this->options->getAlgoliaSearchApiKey() ); ?>">
+						<input type="text" class="regular-text" name="search_api_key" value="<?php echo esc_attr( $this->options->get_algolia_search_api_key() ); ?>">
 						<p class="description">
 							You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.
 							<br>
-							For maximum security, this key should only have "search" permission on the "<?php echo esc_attr( $this->options->getOrdersIndexName() ); ?>" index.
+							For maximum security, this key should only have "search" permission on the "<?php echo esc_attr( $this->options->get_orders_index_name() ); ?>" index.
 							<br>
 							Read more about permissions in the <a href="https://www.algolia.com/doc/guides/security/api-keys/" target="_blank">Algolia guide about API keys</a>.
 						</p>
@@ -51,7 +51,7 @@
 						<label><?php esc_html_e( 'Algolia Admin API key:', 'wc-order-search-admin' ); ?></label>
 					</th>
 					<td>
-						<input type="password" class="regular-text" name="admin_api_key" value="<?php echo esc_attr( $this->options->getAlgoliaAdminApiKey() ); ?>">
+						<input type="password" class="regular-text" name="admin_api_key" value="<?php echo esc_attr( $this->options->get_algolia_admin_api_key() ); ?>">
 						<p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
 					</td>
 				</tr>
@@ -77,7 +77,7 @@
 					<label><?php esc_html_e( 'Orders index name in Algolia:', 'wc-order-search-admin' ); ?></label>
 				</th>
 				<td>
-					<input type="text" class="regular-text" name="orders_index_name" value="<?php echo esc_attr( $this->options->getOrdersIndexName() ); ?>">
+					<input type="text" class="regular-text" name="orders_index_name" value="<?php echo esc_attr( $this->options->get_orders_index_name() ); ?>">
 				</td>
 			</tr>
 			<tr>
@@ -85,7 +85,7 @@
 					<label><?php esc_html_e( 'Orders to index per batch:', 'wc-order-search-admin' ); ?></label>
 				</th>
 				<td>
-					<input type="number" name="orders_per_batch"  value="<?php echo esc_attr( $this->options->getOrdersToIndexPerBatchCount() ); ?>">
+					<input type="number" name="orders_per_batch"  value="<?php echo esc_attr( $this->options->get_orders_to_index_per_batch_count() ); ?>">
 				</td>
 			</tr>
 			</tbody>
