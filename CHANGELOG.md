@@ -1,3 +1,18 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.0...v1.2.1) (2017-11-28)
+
+
+### Bug Fixes
+
+* translation file ([5aefa19](https://github.com/rayrutjes/wc-order-search-admin/commit/5aefa19))
+
+
+### Features
+
+* add support for WordPress 4.9 ([b894440](https://github.com/rayrutjes/wc-order-search-admin/commit/b894440))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.1.1...v1.2.0) (2017-11-28)
 
