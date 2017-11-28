@@ -2,6 +2,10 @@
 
 set -eu
 
+rm -rf git
+rm -rf svn
+rm -rf build
+
 readonly CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ "$CURRENT_BRANCH" != master ]; then
   echo "You must be on 'master' branch to release, aborting..."
