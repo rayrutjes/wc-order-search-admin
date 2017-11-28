@@ -2,7 +2,7 @@
 **Contributors:** [rayrutjes](https://profiles.wordpress.org/rayrutjes)  
 **Tags:** search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax  
 **Requires at least:** 4.6  
-**Tested up to:** 4.8  
+**Tested up to:** 4.9  
 **Stable tag:** 1.2.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
