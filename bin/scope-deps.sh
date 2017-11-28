@@ -1,17 +1,6 @@
 #!/usr/bin/env bash
 
-rm -rf ./libs
-cp -R vendor libs
-rm -rf ./libs/composer/installers
+set -eu
 
-MY_NAMESPACE="WC_Order_Search_Admin"
-
-find ./libs -name "*.php" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;
-find ./libs -name "composer.json" -exec sed -i "s/AlgoliaSearch/${MY_NAMESPACE}/g" {} \;
-mv ./libs/algolia/algoliasearch-client-php/src/AlgoliaSearch ./libs/algolia/algoliasearch-client-php/src/${MY_NAMESPACE} 2>/dev/null
-
-find ./libs -name "*.php" -exec sed -i "s/Algolia\\\Index/${MY_NAMESPACE}\\\Index/g" {} \;
-find ./libs -name "autoload_psr4.php" -exec sed -i "s/Algolia/${MY_NAMESPACE}/g" {} \;
-find ./libs -name "composer.json" -exec sed -i "s/Algolia/${MY_NAMESPACE}/g" {} \;
-
-php ./bin/name.php
+bin/php-scoper add-prefix --output-dir="libs" --prefix="WC_Order_Search_Admin" --force
+composer dump-autoload --working-dir="libs" --classmap-authoritative

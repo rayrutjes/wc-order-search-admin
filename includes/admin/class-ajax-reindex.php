@@ -9,7 +9,7 @@
 
 namespace WC_Order_Search_Admin\Admin;
 
-use WC_Order_Search_Admin\AlgoliaException;
+use WC_Order_Search_Admin\AlgoliaSearch\AlgoliaException;
 use WC_Order_Search_Admin\Options;
 use WC_Order_Search_Admin\Orders_Index;
 

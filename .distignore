@@ -32,3 +32,4 @@ node_modules
 build
 .styleci.yml
 yarn.lock
+scoper.inc.php

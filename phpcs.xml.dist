@@ -3,6 +3,7 @@
  <description>The coding standard for the Algolia plugin for WordPress.</description>
 
  <file>wc-order-search-admin.php</file>
+ <file>scoper.inc.php</file>
  <file>includes</file>
  
  <exclude-pattern>libs</exclude-pattern>

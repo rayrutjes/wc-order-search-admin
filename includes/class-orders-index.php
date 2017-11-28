@@ -9,9 +9,10 @@
 
 namespace WC_Order_Search_Admin;
 
-use WC_Order_Search_Admin\Index\Index;
-use WC_Order_Search_Admin\Index\IndexSettings;
-use WC_Order_Search_Admin\Index\RecordsProvider;
+use WC_Order_Search_Admin\Algolia\Index\Index;
+use WC_Order_Search_Admin\Algolia\Index\IndexSettings;
+use WC_Order_Search_Admin\Algolia\Index\RecordsProvider;
+use WC_Order_Search_Admin\AlgoliaSearch\Client;
 
 class Orders_Index extends Index implements RecordsProvider {
 
