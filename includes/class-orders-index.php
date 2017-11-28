@@ -212,7 +212,7 @@ class Orders_Index extends Index implements RecordsProvider {
 			if ( $user ) {
 				$record['customer'] = array(
 					'id'           => (int) $user->ID,
-					'display_name' => $user->display_name,
+					'display_name' => $user->first_name . ' ' . $user->last_name,
 					'email'        => $user->user_email,
 				);
 			} else {
@@ -248,7 +248,7 @@ class Orders_Index extends Index implements RecordsProvider {
 			if ( $user ) {
 				$record['customer'] = array(
 					'id'           => (int) $user->ID,
-					'display_name' => $user->display_name,
+					'display_name' => $user->first_name . ' ' . $user->last_name,
 					'email'        => $user->user_email,
 				);
 			} else {
