@@ -9,6 +9,8 @@
 
 namespace WC_Order_Search_Admin;
 
+use WC_Order_Search_Admin\AlgoliaSearch\AlgoliaException;
+
 class Order_Change_Listener {
 
 	/**
@@ -21,9 +23,9 @@ class Order_Change_Listener {
 	 */
 	public function __construct( Orders_Index $orders_index ) {
 		$this->orders_index = $orders_index;
-		add_action( 'save_post', array( $this, 'pushOrderRecords' ), 10, 2 );
-		add_action( 'before_delete_post', array( $this, 'deleteOrderRecords' ) );
-		add_action( 'wp_trash_post', array( $this, 'deleteOrderRecords' ) );
+		add_action( 'save_post', array( $this, 'push_order_records' ), 10, 2 );
+		add_action( 'before_delete_post', array( $this, 'delete_order_records' ) );
+		add_action( 'wp_trash_post', array( $this, 'delete_order_records' ) );
 	}
 
 	/**
