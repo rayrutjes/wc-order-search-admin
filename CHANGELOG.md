@@ -1,3 +1,13 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.2...v1.2.3) (2017-12-02)
+
+
+### Bug Fixes
+
+* properly trigger order synchronization when created edited or trashed ([d2ab9e9](https://github.com/rayrutjes/wc-order-search-admin/commit/d2ab9e9))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.1...v1.2.2) (2017-11-28)
 
