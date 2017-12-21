@@ -194,7 +194,9 @@ class Orders_Index extends Index implements RecordsProvider {
 			return array();
 		}
 
-		if ( version_compare( '3', WC_VERSION ) > 0 ) {
+		$is_wc_3 = version_compare( '3', WC_VERSION ) <= 0;
+
+		if ( ! $is_wc_3 ) {
 			// We are dealing with WC 2.x
 			$record = array(
 				'objectID'              => (int) $order->id,
@@ -209,25 +211,6 @@ class Orders_Index extends Index implements RecordsProvider {
 				'items_count'           => $order->get_item_count(),
 				'payment_method_title'  => $order->payment_method_title,
 				'shipping_method_title' => $order->shipping_method_title,
-			);
-
-			// Add user info.
-			$user = $order->get_user();
-			if ( $user ) {
-				$record['customer'] = array(
-					'id'           => (int) $user->ID,
-					'display_name' => $user->first_name . ' ' . $user->last_name,
-					'email'        => $user->user_email,
-				);
-			}
-
-			$record['billing'] = array(
-				'display_name' => $order->get_formatted_billing_full_name(),
-				'email'        => $order->billing_email,
-			);
-
-			$record['shipping'] = array(
-				'display_name' => $order->get_formatted_shipping_full_name(),
 			);
 		} else {
 			// We are dealing with WC 3.x
@@ -249,27 +232,26 @@ class Orders_Index extends Index implements RecordsProvider {
 				'payment_method_title'  => $order->get_payment_method_title(),
 				'shipping_method_title' => $order->get_shipping_method(),
 			);
+		}
 
-			// Add user info.
-			$user = $order->get_user();
-			if ( $user ) {
-				// Only available if not a guest checkout.
-				$record['customer'] = array(
-					'id'           => (int) $user->ID,
-					'display_name' => $user->first_name . ' ' . $user->last_name,
-					'email'        => $user->user_email,
-				);
-			}
-
-			$record['billing'] = array(
-				'display_name' => $order->get_formatted_billing_full_name(),
-				'email'        => $order->get_billing_email(),
-			);
-
-			$record['shipping'] = array(
-				'display_name' => $order->get_formatted_shipping_full_name(),
+		// Add user info.
+		$user = $order->get_user();
+		if ( $user ) {
+			$record['customer'] = array(
+				'id'           => (int) $user->ID,
+				'display_name' => $user->first_name . ' ' . $user->last_name,
+				'email'        => $user->user_email,
 			);
 		}
+
+		$record['billing'] = array(
+			'display_name' => $order->get_formatted_billing_full_name(),
+			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
+		);
+
+		$record['shipping'] = array(
+			'display_name' => $order->get_formatted_shipping_full_name(),
+		);
 
 		// Add items.
 		$record['items'] = array();
