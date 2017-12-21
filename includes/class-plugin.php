@@ -32,7 +32,7 @@ class Plugin {
 
 		$this->options = $options;
 		if ( ! $this->options->has_algolia_account_settings() ) {
-			add_action( 'admin_notices', array( $this, 'configureAlgoliaSettingsNotice' ) );
+			add_action( 'admin_notices', array( $this, 'configure_algolia_settings_notice' ) );
 
 			return;
 		}
