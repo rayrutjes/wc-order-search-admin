@@ -132,6 +132,9 @@ class Orders_Index extends Index implements RecordsProvider {
 					'number',
 					'customer.display_name',
 					'customer.email',
+					'billing.display_name',
+					'billing.email',
+					'shipping.display_name',
 					'items.sku',
 					'status_name',
 				),
@@ -216,13 +219,16 @@ class Orders_Index extends Index implements RecordsProvider {
 					'display_name' => $user->first_name . ' ' . $user->last_name,
 					'email'        => $user->user_email,
 				);
-			} else {
-				// Deal with guest checkouts.
-				$record['customer'] = array(
-					'display_name' => $order->get_formatted_billing_full_name(),
-					'email'        => $order->billing_email,
-				);
 			}
+
+			$record['billing'] = array(
+				'display_name' => $order->get_formatted_billing_full_name(),
+				'email'        => $order->billing_email,
+			);
+
+			$record['shipping'] = array(
+				'display_name' => $order->get_formatted_shipping_full_name(),
+			);
 		} else {
 			// We are dealing with WC 3.x
 			$date_created = $order->get_date_created();
@@ -247,18 +253,22 @@ class Orders_Index extends Index implements RecordsProvider {
 			// Add user info.
 			$user = $order->get_user();
 			if ( $user ) {
+				// Only available if not a guest checkout.
 				$record['customer'] = array(
 					'id'           => (int) $user->ID,
 					'display_name' => $user->first_name . ' ' . $user->last_name,
 					'email'        => $user->user_email,
 				);
-			} else {
-				// Deal with guest checkouts.
-				$record['customer'] = array(
-					'display_name' => $order->get_formatted_billing_full_name(),
-					'email'        => $order->get_billing_email(),
-				);
 			}
+
+			$record['billing'] = array(
+				'display_name' => $order->get_formatted_billing_full_name(),
+				'email'        => $order->get_billing_email(),
+			);
+
+			$record['shipping'] = array(
+				'display_name' => $order->get_formatted_shipping_full_name(),
+			);
 		}
 
 		// Add items.
