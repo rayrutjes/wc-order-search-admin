@@ -1,3 +1,19 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.3...v1.3.0) (2017-12-21)
+
+
+### Bug Fixes
+
+* correct admin notice callback ([f425467](https://github.com/rayrutjes/wc-order-search-admin/commit/f425467))
+
+
+### Features
+
+* make shipping and billing information searchable ([760c440](https://github.com/rayrutjes/wc-order-search-admin/commit/760c440))
+* **autocomplete:** display the best matching full name and email ([27bba44](https://github.com/rayrutjes/wc-order-search-admin/commit/27bba44))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.2...v1.2.3) (2017-12-02)
 
