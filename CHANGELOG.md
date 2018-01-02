@@ -1,3 +1,22 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.3.0...v1.4.0) (2018-01-02)
+
+
+### Bug Fixes
+
+* properly display no results when there is none ([cbb809d](https://github.com/rayrutjes/wc-order-search-admin/commit/cbb809d))
+
+
+### Features
+
+* display error message if an error occurs ([a5c5b4c](https://github.com/rayrutjes/wc-order-search-admin/commit/a5c5b4c))
+* display user friendly error message when backend search is not working ([66f6bd1](https://github.com/rayrutjes/wc-order-search-admin/commit/66f6bd1))
+* do not open search input dropdown on focus ([394aadd](https://github.com/rayrutjes/wc-order-search-admin/commit/394aadd))
+* power search in the backend with Algolia ([7d9a2b5](https://github.com/rayrutjes/wc-order-search-admin/commit/7d9a2b5))
+* select the search input content by default ([44c93ab](https://github.com/rayrutjes/wc-order-search-admin/commit/44c93ab))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.2.3...v1.3.0) (2017-12-21)
 
