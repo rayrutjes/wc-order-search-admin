@@ -40,7 +40,7 @@ class Plugin {
 		$algolia_client = new Client( $options->get_algolia_app_id(), $options->get_algolia_admin_api_key() );
 
 		$integration_name = 'wc-order-search-admin';
-		$ua = '; ' . $integration_name . ' integration (' . WC_OSA_VERSION . ')'
+		$ua               = '; ' . $integration_name . ' integration (' . WC_OSA_VERSION . ')'
 			. '; PHP (' . phpversion() . ')'
 			. '; WordPress (' . $wp_version . ')';
 

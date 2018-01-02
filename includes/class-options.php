@@ -12,9 +12,9 @@ namespace WC_Order_Search_Admin;
 class Options {
 
 	public function has_algolia_account_settings() {
-		$app_id = $this->get_algolia_app_id();
+		$app_id         = $this->get_algolia_app_id();
 		$search_api_key = $this->get_algolia_search_api_key();
-		$admin_api_key = $this->get_algolia_admin_api_key();
+		$admin_api_key  = $this->get_algolia_admin_api_key();
 		return ! empty( $app_id )
 			&& ! empty( $search_api_key )
 			&& ! empty( $admin_api_key );

@@ -34,7 +34,7 @@ class Commands extends WP_CLI_Command {
 	 * @param Options     $options
 	 */
 	public function __construct( Orders_Index $index, Options $options ) {
-		$this->index = $index;
+		$this->index   = $index;
 		$this->options = $options;
 	}
 

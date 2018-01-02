@@ -84,7 +84,7 @@ class Orders_List_Page {
 		$posts_per_page = (int) get_option( 'posts_per_page' );
 
 		$client = new Client( $this->options->get_algolia_app_id(), $this->options->get_algolia_search_api_key() );
-		$index = $client->initIndex( $this->options->get_orders_index_name() );
+		$index  = $client->initIndex( $this->options->get_orders_index_name() );
 
 		try {
 			$results = $index->search(
@@ -114,7 +114,7 @@ class Orders_List_Page {
 		// Store the total number of hits, so that we can hook into the `found_posts`.
 		// This is useful for pagination.
 		$this->nb_hits = $results['nbHits'];
-		$post_ids = array();
+		$post_ids      = array();
 		foreach ( $results['hits'] as $result ) {
 			$post_ids[] = $result['id'];
 		}

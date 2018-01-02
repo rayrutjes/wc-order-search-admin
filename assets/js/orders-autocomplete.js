@@ -23,6 +23,7 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
           + getStatusLine(suggestion)
           + getNumberLine(suggestion)
           + getCustomerLine(suggestion)
+          + getPhoneLine(suggestion)
           + getTotalsLine(suggestion)
           + getMethodsLine(suggestion);
       }
@@ -48,6 +49,16 @@ function getNumberLine(suggestion) {
 
 function getCustomerLine(suggestion) {
   return getDisplayName(suggestion) + ' (' + getEmail(suggestion) + ')';
+}
+
+function getPhoneLine(suggestion) {
+  if (typeof suggestion.billing !== 'undefined' && typeof suggestion.billing.phone !== 'undefined' && suggestion._highlightResult.billing.phone.matchLevel !== 'none') {
+    return '<div class="wc-osa__line">'
+      + '<span class="wc-osa__phone">' + suggestion._highlightResult.billing.phone.value + '</span>'
+      + '</div>';
+  }
+
+  return '';
 }
 
 function getDisplayName(suggestion) {
