@@ -9,7 +9,7 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
       }, function() {
         callback([]);
         jQuery(".wc-order-search-admin-error").hide();
-        jQuery("#wpbody-content").prepend( ""
+        jQuery(".wp-header-end").after( ""
           + '<div class="wc-order-search-admin-error notice notice-error is-dismissible">'
           + '<p><b>WooCommerce Orders Search Admin:</b> An error occurred while fetching results from Algolia.</p>'
           + '<p>If you are offline, this is expected. If you are online, you might want to <a href="options-general.php?page=wc_osa_options">take a look at your configured Algolia credentials</a>.</p>'
