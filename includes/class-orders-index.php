@@ -31,7 +31,7 @@ class Orders_Index extends Index implements RecordsProvider {
 	 * @param Client $client
 	 */
 	public function __construct( $name, Client $client ) {
-		$this->name = $name;
+		$this->name   = $name;
 		$this->client = $client;
 	}
 
@@ -87,7 +87,7 @@ class Orders_Index extends Index implements RecordsProvider {
 	 * @return int
 	 */
 	public function pushRecordsForOrder( \WC_Abstract_Order $order ) {
-		$records = $this->getRecordsForOrder( $order );
+		$records             = $this->getRecordsForOrder( $order );
 		$total_records_count = count( $records );
 		if ( 0 === $total_records_count ) {
 			return 0;
@@ -105,7 +105,7 @@ class Orders_Index extends Index implements RecordsProvider {
 	 */
 	public function getRecordsForId( $id ) {
 		$factory = new \WC_Order_Factory();
-		$order = $factory->get_order( $id );
+		$order   = $factory->get_order( $id );
 
 		if ( ! $order instanceof \WC_Abstract_Order ) {
 			return array();
@@ -127,7 +127,7 @@ class Orders_Index extends Index implements RecordsProvider {
 	protected function getSettings() {
 		return new IndexSettings(
 			array(
-				'searchableAttributes' => array(
+				'searchableAttributes'             => array(
 					'id',
 					'number',
 					'customer.display_name',
@@ -136,17 +136,19 @@ class Orders_Index extends Index implements RecordsProvider {
 					'billing.email',
 					'shipping.display_name',
 					'items.sku',
+					'billing.phone',
 					'status_name',
 				),
 				'disableTypoToleranceOnAttributes' => array(
 					'id',
 					'number',
 					'items.sku',
+					'billing.phone',
 				),
-				'customRanking' => array(
+				'customRanking'                    => array(
 					'desc(date_timestamp)',
 				),
-				'attributesForFaceting' => array(
+				'attributesForFaceting'            => array(
 					'customer.display_name',
 					'type',
 					'items.sku',
@@ -173,7 +175,7 @@ class Orders_Index extends Index implements RecordsProvider {
 			'post_status' => array_keys( wc_get_order_statuses() ),
 		);
 
-		$args = array_merge( $default_args, $args );
+		$args  = array_merge( $default_args, $args );
 		$query = new \WP_Query( $args );
 
 		return $query;
@@ -214,9 +216,9 @@ class Orders_Index extends Index implements RecordsProvider {
 			);
 		} else {
 			// We are dealing with WC 3.x
-			$date_created = $order->get_date_created();
+			$date_created           = $order->get_date_created();
 			$date_created_timestamp = null !== $date_created ? $date_created->getTimestamp() : 0;
-			$date_created_i18n = null !== $date_created ? $date_created->date_i18n( get_option( 'date_format' ) ) : '';
+			$date_created_i18n      = null !== $date_created ? $date_created->date_i18n( get_option( 'date_format' ) ) : '';
 
 			$record = array(
 				'objectID'              => (int) $order->get_id(),
@@ -247,6 +249,7 @@ class Orders_Index extends Index implements RecordsProvider {
 		$record['billing'] = array(
 			'display_name' => $order->get_formatted_billing_full_name(),
 			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
+			'phone'        => $this->normalize_phone_number( $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone ),
 		);
 
 		$record['shipping'] = array(
@@ -256,7 +259,7 @@ class Orders_Index extends Index implements RecordsProvider {
 		// Add items.
 		$record['items'] = array();
 		foreach ( $order->get_items() as $item_id => $item ) {
-			$product = $order->get_product_from_item( $item );
+			$product           = $order->get_product_from_item( $item );
 			$record['items'][] = array(
 				'id'   => (int) $item_id,
 				'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
@@ -266,6 +269,10 @@ class Orders_Index extends Index implements RecordsProvider {
 		}
 
 		return array( $record );
+	}
+
+	private function normalize_phone_number( $phone ) {
+		return preg_replace( '/[^\d+]/', '', $phone );
 	}
 
 	/**

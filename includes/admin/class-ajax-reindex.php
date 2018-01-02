@@ -57,7 +57,7 @@ class Ajax_Reindex {
 			}
 		}
 
-		$per_page = $this->options->get_orders_to_index_per_batch_count();
+		$per_page    = $this->options->get_orders_to_index_per_batch_count();
 		$total_pages = $this->orders_index->getTotalPagesCount( $this->options->get_orders_to_index_per_batch_count() );
 
 		try {

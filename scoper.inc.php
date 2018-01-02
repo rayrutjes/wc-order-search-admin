@@ -8,7 +8,7 @@ return array(
 	// following configuration key.
 	//
 	// For more see: https://github.com/humbug/php-scoper#finders-and-paths
-	'finders' => array(
+	'finders'                    => array(
 		/*Finder::create()
 			->files()
 			->ignoreVCS( true )
@@ -40,7 +40,7 @@ return array(
 	// heart contents.
 	//
 	// For more see: https://github.com/humbug/php-scoper#patchers
-	'patchers' => array(
+	'patchers'                   => array(
 		function ( $file_path, $prefix, $content ) {
 			// Change the content here.
 
@@ -70,7 +70,7 @@ return array(
 	// that this does not work with functions or constants neither with classes belonging to the global namespace.
 	//
 	// Fore more see https://github.com/humbug/php-scoper#whitelist
-	'whitelist' => array(
+	'whitelist'                  => array(
 		'PHPUnit\Framework\TestCase',
 	),
 );

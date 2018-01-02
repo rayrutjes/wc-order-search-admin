@@ -1,5 +1,5 @@
 <div class="wrap">
-    <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 	<h2><?php esc_html_e( 'Setup instructions', 'wc-order-search-admin' ); ?></h2>
 	<p><?php esc_html_e( 'To power your orders search with this plugin you need to:', 'wc-order-search-admin' ); ?></p>
