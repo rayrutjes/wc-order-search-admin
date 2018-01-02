@@ -109,6 +109,13 @@ class Orders_List_Page {
 			$post_ids[] = $result['id'];
 		}
 
+		// Make sure there are not results by tricking WordPress in trying to find
+		// a non existing post ID.
+		// Otherwise, the query returns all the results.
+		if ( empty( $post_ids ) ) {
+			$post_ids = array( -1 );
+		}
+
 		$query->set( 'posts_per_page', $posts_per_page );
 		$query->set( 'offset', 0 );
 		$query->set( 'post__in', $post_ids );
