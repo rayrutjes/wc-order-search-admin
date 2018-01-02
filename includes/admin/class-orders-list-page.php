@@ -9,6 +9,7 @@
 
 namespace WC_Order_Search_Admin\Admin;
 
+use WC_Order_Search_Admin\AlgoliaSearch\Client;
 use WC_Order_Search_Admin\Options;
 
 class Orders_List_Page {
@@ -19,19 +20,30 @@ class Orders_List_Page {
 	private $options;
 
 	/**
+	 * @var int
+	 */
+	private $nb_hits;
+
+	/**
 	 * OrdersListPage constructor.
 	 *
 	 * @param Options $options
 	 */
 	public function __construct( Options $options ) {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
 
 		$this->options = $options;
 	}
 
-	public function enqueue_scripts() {
+	public function is_current_screen() {
 		$screen = get_current_screen();
-		if ( 'edit-shop_order' !== $screen->id ) {
+
+		return 'edit-shop_order' === $screen->id;
+	}
+
+	public function enqueue_scripts() {
+		if ( ! $this->is_current_screen() ) {
 			return;
 		}
 
@@ -50,5 +62,97 @@ class Orders_List_Page {
 				'debug'           => defined( 'WP_DEBUG' ) && WP_DEBUG === true,
 			)
 		);
+	}
+
+	/**
+	 * We force the WP_Query to only return records according to Algolia's ranking.
+	 *
+	 * @param \WP_Query $query
+	 */
+	public function pre_get_posts( \WP_Query $query ) {
+		if ( ! $this->should_filter_query( $query ) ) {
+			return;
+		}
+		$current_page = 1;
+		if ( get_query_var( 'paged' ) ) {
+			$current_page = get_query_var( 'paged' );
+		} elseif ( get_query_var( 'page' ) ) {
+			$current_page = get_query_var( 'page' );
+		}
+
+		$posts_per_page = (int) get_option( 'posts_per_page' );
+
+		$client = new Client( $this->options->get_algolia_app_id(), $this->options->get_algolia_search_api_key() );
+		$index = $client->initIndex( $this->options->get_orders_index_name() );
+
+		try {
+			$results = $index->search(
+				$query->query['s'], array(
+					'attributesToRetrieve' => 'id',
+					'hitsPerPage'          => $posts_per_page,
+					'page'                 => $current_page - 1, // Algolia pages are zero indexed.
+				)
+			);
+		} catch ( \AlgoliaSearch\AlgoliaException $exception ) {
+			// Todo: display a user friendly message in the admin.
+			return;
+		}
+
+		add_filter( 'found_posts', array( $this, 'found_posts' ), 10, 2 );
+		add_filter( 'posts_search', array( $this, 'posts_search' ), 10, 2 );
+
+		// Store the total number of hits, so that we can hook into the `found_posts`.
+		// This is useful for pagination.
+		$this->nb_hits = $results['nbHits'];
+		$post_ids = array();
+		foreach ( $results['hits'] as $result ) {
+			$post_ids[] = $result['id'];
+		}
+
+		$query->set( 'posts_per_page', $posts_per_page );
+		$query->set( 'offset', 0 );
+		$query->set( 'post__in', $post_ids );
+		$query->set( 'orderby', 'post__in' ); // Make sure we preserve Algolia's ranking.
+	}
+
+	/**
+	 * Determines if we should filter the query passed as argument.
+	 *
+	 * @param \WP_Query $query
+	 *
+	 * @return bool
+	 */
+	private function should_filter_query( \WP_Query $query ) {
+		return $this->is_current_screen()
+			&& $query->is_admin
+			&& $query->is_search()
+			&& $query->is_main_query();
+	}
+
+	/**
+	 * This hook returns the actual real number of results available in Algolia.
+	 *
+	 * @param int      $found_posts
+	 * @param \WP_Query $query
+	 *
+	 * @return int
+	 */
+	public function found_posts( $found_posts, \WP_Query $query ) {
+		return $this->should_filter_query( $query ) ? $this->nb_hits : $found_posts;
+	}
+
+	/**
+	 * Filter the search SQL that is used in the WHERE clause of WP_Query.
+	 * Removes the where Like part of the queries as we consider Algolia as being the source of truth.
+	 * We don't want to filter by anything but the actual list of post_ids resulting
+	 * from the Algolia search.
+	 *
+	 * @param string   $search
+	 * @param \WP_Query $query
+	 *
+	 * @return string
+	 */
+	public function posts_search( $search, \WP_Query $query ) {
+		return $this->should_filter_query( $query ) ? '' : $search;
 	}
 }
