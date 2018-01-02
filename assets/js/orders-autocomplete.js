@@ -1,12 +1,12 @@
 var client = algoliasearch(aosOptions.appId, aosOptions.searchApiKey);
 var index = client.initIndex(aosOptions.ordersIndexName);
-autocomplete('#post-search-input', {hint: false, openOnFocus: true, debug: aosOptions.debug}, [
+autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
   {
     source: function(query, callback) {
       index.search({query: query, hitsPerPage: 7}).then(function(answer) {
         callback(answer.hits);
         jQuery(".wc-order-search-admin-error").hide();
-      }, function(e) {
+      }, function() {
         callback([]);
         jQuery(".wc-order-search-admin-error").hide();
         jQuery("#wpbody-content").prepend( ""
