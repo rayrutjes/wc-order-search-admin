@@ -31,7 +31,7 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
 ]).on('autocomplete:selected', function (event, suggestion) {
   window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
-jQuery('#post-search-input').focus();
+jQuery('#post-search-input').select();
 
 function getStatusLine(suggestion) {
   return '<div class="wc-osa__line">'
