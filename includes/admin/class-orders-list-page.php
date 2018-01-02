@@ -9,6 +9,7 @@
 
 namespace WC_Order_Search_Admin\Admin;
 
+use WC_Order_Search_Admin\AlgoliaSearch\AlgoliaException;
 use WC_Order_Search_Admin\AlgoliaSearch\Client;
 use WC_Order_Search_Admin\Options;
 
@@ -93,8 +94,17 @@ class Orders_List_Page {
 					'page'                 => $current_page - 1, // Algolia pages are zero indexed.
 				)
 			);
-		} catch ( \AlgoliaSearch\AlgoliaException $exception ) {
-			// Todo: display a user friendly message in the admin.
+		} catch ( AlgoliaException $exception ) {
+			add_action(
+				'admin_notices', function() use ( $exception ) {
+				?>
+				<div class="notice notice-error is-dismissible">
+					<p><?php esc_html_e( 'Unable to fetch results from Algolia. Falling back to native WordPress search.', 'wc-order-search-admin' ); ?></p>
+					<p><code><?php echo esc_html( $exception->getMessage() ); ?></code></p>
+				</div>
+				<?php
+				}
+			);
 			return;
 		}
 
