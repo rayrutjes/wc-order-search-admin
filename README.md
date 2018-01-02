@@ -3,7 +3,7 @@
 **Tags:** search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax  
 **Requires at least:** 4.6  
 **Tested up to:** 4.9  
-**Stable tag:** 1.6.0  
+**Stable tag:** 1.6.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -18,7 +18,7 @@ When you start having lots of orders in WooCommerce, searching for a specific or
 Fun fact is also that the more you have orders, the more you will actually need to search for a specific one.
 
 We have seen users wait for over a minute for WooCommerce to return the search results in the admin.
-And even after that long waiting time, given that the default search mechanism uses SQL queries, the relevancy isn't optimal and you might have to adjust your query and wait again.
+And even after that long waiting time, given that the default search mechanism uses SQL queries, the relevancy isn't optimal and you often need to adjust your query and wait again.
 
 By installing this plugin, you will be able to index all your orders into Algolia and be able to find orders at the speed of thought, right from your usual orders list in the admin screen of your WordPress website.
 
@@ -29,6 +29,12 @@ The search engine will search on the following fields:
 * Customer First Name
 * Customer Last Name
 * Customer email address
+* Billing First Name
+* Billing Last Name
+* Billing email address
+* Billing Phone number
+* Shipping First Name
+* Shipping Last Name
 * Product SKU contained in the order
 * Status of the order
 
@@ -36,7 +42,7 @@ As you start typing in the search input, you will see instant results popping up
 be able to find the relevant order in milliseconds.
 
 Also note that by leveraging Algolia as a search engine, in addition to super fast results as you type, you will
-also benefit from all the other features like typo tolerance that will make sure that if you misspell the customer name, you will still get the relevant orders displayed as part of the results.
+also benefit from all the other features like typo tolerance that will make sure that if you misspell for example the customer name, you will still get the relevant orders displayed as part of the results.
 
 ### Automatic synchronization ###
 
@@ -71,7 +77,7 @@ process.
 ### About Algolia ###
 
 This plugin relies on the Algolia service which requires you to [create an account](https://www.algolia.com/getstarted/pass?redirect=true).
-Algolia offers its Search as a Service provider on a incremental payment program, including a free plan which includes 10,000 records & 100,000 operations per month.
+Algolia offers its Search as a Service provider on a incremental payment program, including a free plan which includes 10,000 records & 100,000 indexing operations per month.
 Beyond that, make sure you [checkout the pricing](https://www.algolia.com/pricing).
 
 This plugin will create exactly one record per order to index. We index every order that is not flagged as trashed.
