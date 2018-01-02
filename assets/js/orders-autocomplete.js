@@ -1,15 +1,15 @@
 var client = algoliasearch(aosOptions.appId, aosOptions.searchApiKey);
 var index = client.initIndex(aosOptions.ordersIndexName);
-autocomplete('#post-search-input', {hint: false, openOnFocus: true, debug: aosOptions.debug}, [
+autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
   {
     source: function(query, callback) {
       index.search({query: query, hitsPerPage: 7}).then(function(answer) {
         callback(answer.hits);
         jQuery(".wc-order-search-admin-error").hide();
-      }, function(e) {
+      }, function() {
         callback([]);
         jQuery(".wc-order-search-admin-error").hide();
-        jQuery("#wpbody-content").prepend( ""
+        jQuery(".wp-header-end").after( ""
           + '<div class="wc-order-search-admin-error notice notice-error is-dismissible">'
           + '<p><b>WooCommerce Orders Search Admin:</b> An error occurred while fetching results from Algolia.</p>'
           + '<p>If you are offline, this is expected. If you are online, you might want to <a href="options-general.php?page=wc_osa_options">take a look at your configured Algolia credentials</a>.</p>'
@@ -31,7 +31,7 @@ autocomplete('#post-search-input', {hint: false, openOnFocus: true, debug: aosOp
 ]).on('autocomplete:selected', function (event, suggestion) {
   window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
-jQuery('#post-search-input').focus();
+jQuery('#post-search-input').select();
 
 function getStatusLine(suggestion) {
   return '<div class="wc-osa__line">'
