@@ -47,23 +47,31 @@ function getNumberLine(suggestion) {
 }
 
 function getCustomerLine(suggestion) {
-  if (typeof suggestion.customer === 'undefined') {
-    return 'Anonymous user';
-  }
-
   return getDisplayName(suggestion) + ' (' + getEmail(suggestion) + ')';
 }
 
 function getDisplayName(suggestion) {
-  if (typeof suggestion.customer !== 'undefined' && suggestion._highlightResult.customer.display_name.matchLevel !== 'none') {
+  if (typeof suggestion.customer !== 'undefined' && suggestion._highlightResult.customer.display_name.matchLevel === 'full') {
     return suggestion._highlightResult.customer.display_name.value;
   }
 
-  if (typeof suggestion.billing !== 'undefined' && suggestion._highlightResult.billing.display_name.matchLevel !== 'none') {
+  if (typeof suggestion.billing !== 'undefined' && suggestion._highlightResult.billing.display_name.matchLevel === 'full') {
     return suggestion._highlightResult.billing.display_name.value;
   }
 
-  if (typeof suggestion.shipping !== 'undefined' && suggestion._highlightResult.shipping.display_name.matchLevel !== 'none') {
+  if (typeof suggestion.shipping !== 'undefined' && suggestion._highlightResult.shipping.display_name.matchLevel === 'full') {
+    return suggestion._highlightResult.shipping.display_name.value;
+  }
+
+  if (typeof suggestion.customer !== 'undefined' && suggestion._highlightResult.customer.display_name.matchLevel === 'partial') {
+    return suggestion._highlightResult.customer.display_name.value;
+  }
+
+  if (typeof suggestion.billing !== 'undefined' && suggestion._highlightResult.billing.display_name.matchLevel === 'partial') {
+    return suggestion._highlightResult.billing.display_name.value;
+  }
+
+  if (typeof suggestion.shipping !== 'undefined' && suggestion._highlightResult.shipping.display_name.matchLevel === 'partial') {
     return suggestion._highlightResult.shipping.display_name.value;
   }
 
@@ -71,7 +79,7 @@ function getDisplayName(suggestion) {
     return suggestion._highlightResult.customer.display_name.value;
   }
 
-  return 'Anonymous user';
+  return suggestion._highlightResult.billing.display_name.value;
 }
 
 function getEmail(suggestion) {
@@ -87,7 +95,7 @@ function getEmail(suggestion) {
     return suggestion._highlightResult.customer.email.value;
   }
 
-  return 'Unknown email';
+  return suggestion._highlightResult.billing.email.value;
 }
 
 function getTotalsLine(suggestion) {
