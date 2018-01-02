@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.4.0...v1.5.0) (2018-01-02)
+
+
+### Features
+
+* more relevant user information displayed in autocomplete ([dc0e96f](https://github.com/rayrutjes/wc-order-search-admin/commit/dc0e96f))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.3.0...v1.4.0) (2018-01-02)
 
