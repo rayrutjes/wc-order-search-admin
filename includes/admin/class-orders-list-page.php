@@ -123,7 +123,7 @@ class Orders_List_Page {
 		// a non existing post ID.
 		// Otherwise, the query returns all the results.
 		if ( empty( $post_ids ) ) {
-			$post_ids = array( -1 );
+			$post_ids = array( 0 );
 		}
 
 		$query->set( 'posts_per_page', $posts_per_page );
