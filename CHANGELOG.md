@@ -1,3 +1,13 @@
+<a name="1.7.2"></a>
+## [1.7.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.1...v1.7.2) (2018-01-05)
+
+
+### Bug Fixes
+
+* correct Client namespace ([1ae3236](https://github.com/rayrutjes/wc-order-search-admin/commit/1ae3236))
+
+
+
 <a name="1.7.1"></a>
 ## [1.7.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.0...v1.7.1) (2018-01-05)
 
