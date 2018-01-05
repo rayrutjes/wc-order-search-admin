@@ -95,6 +95,10 @@ class Orders_List_Page {
 
 		$posts_per_page = (int) get_option( 'posts_per_page' );
 
+		if ( ! $this->options->has_algolia_account_settings() ) {
+			return;
+		}
+
 		$client = new Client( $this->options->get_algolia_app_id(), $this->options->get_algolia_search_api_key() );
 		$index  = $client->initIndex( $this->options->get_orders_index_name() );
 
