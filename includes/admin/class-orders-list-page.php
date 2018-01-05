@@ -58,11 +58,20 @@ class Orders_List_Page {
 		wp_enqueue_script( 'wc_osa_autocomplete', 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete' . $suffix . '.js', array(), false, true );
 		wp_enqueue_script( 'wc_osa_orders_search', plugin_dir_url( WC_OSA_FILE ) . 'assets/js/orders-autocomplete' . $suffix . '.js', array( 'wc_osa_algolia', 'wc_osa_autocomplete', 'jquery' ), WC_OSA_VERSION, true );
 
+		$index_name            = $this->options->get_orders_index_name();
+		$search_key            = $this->options->get_algolia_search_api_key();
+		$restricted_search_key = \AlgoliaSearch\Client::generateSecuredApiKey(
+			$search_key, array(
+				'restrictIndices' => $index_name,
+				'validUntil'      => time() + 60 * 24, // A day from now.
+			)
+		);
+
 		wp_localize_script(
 			'wc_osa_orders_search', 'aosOptions', array(
 				'appId'           => $this->options->get_algolia_app_id(),
-				'searchApiKey'    => $this->options->get_algolia_search_api_key(),
-				'ordersIndexName' => $this->options->get_orders_index_name(),
+				'searchApiKey'    => $restricted_search_key,
+				'ordersIndexName' => $index_name,
 				'debug'           => defined( 'WP_DEBUG' ) && WP_DEBUG === true,
 			)
 		);
