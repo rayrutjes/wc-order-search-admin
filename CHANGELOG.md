@@ -1,3 +1,14 @@
+<a name="1.6.2"></a>
+## [1.6.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.6.1...v1.6.2) (2018-01-05)
+
+
+### Bug Fixes
+
+* **backend-search:** avoid fatal error on some admin pages ([2ad2464](https://github.com/rayrutjes/wc-order-search-admin/commit/2ad2464))
+* **backend-search:** fix the fake post ID used to display no results ([bee8f14](https://github.com/rayrutjes/wc-order-search-admin/commit/bee8f14))
+
+
+
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.6.0...v1.6.1) (2018-01-02)
 
