@@ -38,6 +38,9 @@ class Orders_List_Page {
 	}
 
 	public function is_current_screen() {
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return false;
+		}
 		$screen = get_current_screen();
 
 		return 'edit-shop_order' === $screen->id;
