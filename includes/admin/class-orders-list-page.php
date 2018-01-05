@@ -60,7 +60,7 @@ class Orders_List_Page {
 
 		$index_name            = $this->options->get_orders_index_name();
 		$search_key            = $this->options->get_algolia_search_api_key();
-		$restricted_search_key = \AlgoliaSearch\Client::generateSecuredApiKey(
+		$restricted_search_key = Client::generateSecuredApiKey(
 			$search_key, array(
 				'restrictIndices' => $index_name,
 				'validUntil'      => time() + 60 * 24, // A day from now.
