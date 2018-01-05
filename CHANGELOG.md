@@ -1,3 +1,13 @@
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.0...v1.7.1) (2018-01-05)
+
+
+### Bug Fixes
+
+* **backend-search:** check if settings are set before ([b79eed8](https://github.com/rayrutjes/wc-order-search-admin/commit/b79eed8))
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.6.2...v1.7.0) (2018-01-05)
 
