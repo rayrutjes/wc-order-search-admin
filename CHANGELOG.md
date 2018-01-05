@@ -1,3 +1,13 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.6.2...v1.7.0) (2018-01-05)
+
+
+### Features
+
+* use secured API key in the frontend ([be4bd8b](https://github.com/rayrutjes/wc-order-search-admin/commit/be4bd8b))
+
+
+
 <a name="1.6.2"></a>
 ## [1.6.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.6.1...v1.6.2) (2018-01-05)
 
