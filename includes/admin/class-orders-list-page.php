@@ -43,7 +43,7 @@ class Orders_List_Page {
 		}
 		$screen = get_current_screen();
 
-		return 'edit-shop_order' === $screen->id;
+		return (!is_null($screen) && 'edit-shop_order' === $screen->id);
 	}
 
 	public function enqueue_scripts() {
