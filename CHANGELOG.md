@@ -1,3 +1,13 @@
+<a name="1.7.3"></a>
+## [1.7.3](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.2...v1.7.3) (2018-02-06)
+
+
+### Bug Fixes
+
+* avoid generating notices if $screen is null ([f737701](https://github.com/rayrutjes/wc-order-search-admin/commit/f737701))
+
+
+
 <a name="1.7.2"></a>
 ## [1.7.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.1...v1.7.2) (2018-01-05)
 
