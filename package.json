@@ -1,6 +1,6 @@
 {
   "name": "wc-order-search-admin",
-  "version": "1.7.3",
+  "version": "1.8.0",
   "main": "Gruntfile.js",
   "author": "Raymond RUTJES",
   "scripts": {

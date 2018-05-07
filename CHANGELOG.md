@@ -1,3 +1,13 @@
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.3...v1.8.0) (2018-05-07)
+
+
+### Features
+
+* remove phone number normalization ([7b8e2a5](https://github.com/rayrutjes/wc-order-search-admin/commit/7b8e2a5))
+
+
+
 <a name="1.7.3"></a>
 ## [1.7.3](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.2...v1.7.3) (2018-02-06)
 
