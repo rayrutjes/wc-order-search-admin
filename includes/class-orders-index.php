@@ -249,7 +249,7 @@ class Orders_Index extends Index implements RecordsProvider {
 		$record['billing'] = array(
 			'display_name' => $order->get_formatted_billing_full_name(),
 			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
-			'phone'        => $this->normalize_phone_number( $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone ),
+			'phone'        => $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone,
 		);
 
 		$record['shipping'] = array(
@@ -269,10 +269,6 @@ class Orders_Index extends Index implements RecordsProvider {
 		}
 
 		return array( $record );
-	}
-
-	private function normalize_phone_number( $phone ) {
-		return preg_replace( '/[^\d+]/', '', $phone );
 	}
 
 	/**
