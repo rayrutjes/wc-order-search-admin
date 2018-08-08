@@ -73,6 +73,15 @@ powered by the UI or by using the WP-CLI command line tool.
 The only limitation of the admin UI re-indexing is that you have to leave the page open during the re-indexing
 process.
 
+= Backend order search =
+
+By default the plugin modifies the default backend search behavior to return results from Algolia. You can disable this behavior using the `wc_osa_orders_search_should_filter_query` filter in your `functions.php` file.
+
+`function should_wc_osa_orders_filter_search( $value, WP_Query $query ) {
+    return false;
+}
+
+add_filter( 'wc_osa_orders_search_should_filter_query', 'should_wc_osa_orders_filter_search', 10, 2 );`
 
 = About Algolia =
 
