@@ -34,13 +34,13 @@ fi
 readonly PACKAGE_VERSION=$(< package.json grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
+  | gsed 's/[",]//g' \
   | tr -d '[:space:]')
 
 # Here we need to update versions in files
 readonly SEMVER_REGEX=[[:digit:]]\.[[:digit:]]\.[[:digit:]]
-sed -i "s/$SEMVER_REGEX/$PACKAGE_VERSION/g" ./wc-order-search-admin.php
-sed -i "s/\(Stable tag: \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./readme.txt
+gsed -i "s/$SEMVER_REGEX/$PACKAGE_VERSION/g" ./wc-order-search-admin.php
+gsed -i "s/\(Stable tag: \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./readme.txt
 
 if ! grunt; then
   echo "Failed to build dist files, aborting..."
