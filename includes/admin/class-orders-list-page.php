@@ -159,7 +159,8 @@ class Orders_List_Page {
 		return $this->is_current_screen()
 			&& $query->is_admin
 			&& $query->is_search()
-			&& $query->is_main_query();
+			&& $query->is_main_query()
+			&& apply_filters( 'wc_osa_enable_backend_search', true, $query );
 	}
 
 	/**
