@@ -1,3 +1,13 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.8.0...v1.9.0) (2018-08-09)
+
+
+### Features
+
+* add a filter `should_wc_osa_orders_filter_search` to disable backend (#73) ([872b517](https://github.com/rayrutjes/wc-order-search-admin/commit/872b517))
+
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.3...v1.8.0) (2018-05-07)
 
