@@ -73,6 +73,19 @@ powered by the UI or by using the WP-CLI command line tool.
 The only limitation of the admin UI re-indexing is that you have to leave the page open during the re-indexing
 process.
 
+= Backend Order Search =
+
+By default the plugin enhances the default backend search behavior by using Algolia.
+This ensures a consistency between results you see in the list and the ones coming from the autocomplete dropdown.
+If for whatever reason you want to restore the default backend search behavior, you can use the `wc_osa_enable_backend_search` filter hook.
+
+`
+function should_enable_backend_search( $value, WP_Query $query ) {
+    return false;
+}
+
+add_filter( 'wc_osa_enable_backend_search', 'should_enable_backend_search', 10, 2 );
+`
 
 = About Algolia =
 
