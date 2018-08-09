@@ -160,7 +160,7 @@ class Orders_List_Page {
 			&& $query->is_admin
 			&& $query->is_search()
 			&& $query->is_main_query()
-			&& apply_filters( 'wc_osa_orders_search_should_filter_query', true, $query );
+			&& apply_filters( 'wc_osa_enable_backend_search', true, $query );
 	}
 
 	/**
