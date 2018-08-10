@@ -21,6 +21,8 @@ yarn
 
 yarn run changelog:unreleased
 
+./bin/update-contributors.sh
+
 # Only update the package.json version
 # We need to update changelog before tagging
 # And publishing.
