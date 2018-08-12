@@ -27,15 +27,15 @@ class Options {
 	}
 
 	public function get_algolia_app_id() {
-		return get_option( 'wc_osa_alg_app_id', '' );
+		return defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ) ? WC_OSA_ALGOLIA_APPLICATION_ID : get_option( 'wc_osa_alg_app_id', '' ) ;
 	}
 
 	public function get_algolia_search_api_key() {
-		return get_option( 'wc_osa_alg_search_api_key', '' );
+		return defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ) ? WC_OSA_ALGOLIA_SEARCH_API_KEY : get_option( 'wc_osa_alg_search_api_key', '' ) ;
 	}
 
 	public function get_algolia_admin_api_key() {
-		return get_option( 'wc_osa_alg_admin_api_key', '' );
+		return defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) ? WC_OSA_ALGOLIA_ADMIN_API_KEY : get_option( 'wc_osa_alg_admin_api_key', '' ) ;
 	}
 
 	public function set_algolia_account_settings( $app_id, $search_key, $admin_key ) {
@@ -52,7 +52,7 @@ class Options {
 	}
 
 	public function get_orders_index_name() {
-		return get_option( 'wc_osa_orders_index_name', 'wc_orders' );
+		return defined( 'WC_OSA_ORDERS_INDEX_NAME' ) ? WC_OSA_ORDERS_INDEX_NAME : get_option( 'wc_osa_orders_index_name', 'wc_orders' ) ;
 	}
 
 	public function set_orders_index_name( $orders_index_name ) {
@@ -65,7 +65,7 @@ class Options {
 	 * @return int
 	 */
 	public function get_orders_to_index_per_batch_count() {
-		return (int) get_option( 'wc_osa_orders_per_batch', 500 );
+		return (int) ( defined( 'WC_OSA_ORDERS_PER_BATCH' ) ? WC_OSA_ORDERS_PER_BATCH : get_option( 'wc_osa_orders_per_batch', 500 ) );
 	}
 
 	public function set_orders_to_index_per_batch_count( $per_batch ) {
