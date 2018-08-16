@@ -60,7 +60,7 @@
 		</table>
 
 		<p class="submit">
-			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ), defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ), defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) ); ?>><?php esc_html_e( 'Save Algolia account settings', 'wc-order-search-admin' ); ?></button>
+			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ) && defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ) && defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) ); ?>><?php esc_html_e( 'Save Algolia account settings', 'wc-order-search-admin' ); ?></button>
 		</p>
 	</form>
 
@@ -94,7 +94,7 @@
 		</table>
 
 		<p class="submit">
-			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ORDERS_INDEX_NAME' ), defined( 'WC_OSA_ORDERS_PER_BATCH' ) ); ?>><?php esc_html_e( 'Save orders indexing settings', 'wc-order-search-admin' ); ?></button>
+			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ORDERS_INDEX_NAME' ) && defined( 'WC_OSA_ORDERS_PER_BATCH' ) ); ?>><?php esc_html_e( 'Save orders indexing settings', 'wc-order-search-admin' ); ?></button>
 		</p>
 	</form>
 
