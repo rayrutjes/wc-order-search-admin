@@ -211,7 +211,7 @@ class Orders_Index extends Index implements RecordsProvider {
 				'date_formatted'        => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
 				'order_total'           => (float) $order->get_total(),
 				'formatted_order_total' => $order->get_formatted_order_total(),
-				'items_count'           => $order->get_item_count(),
+				'items_count'           => (int) $order->get_item_count(),
 				'payment_method_title'  => $order->payment_method_title,
 				'shipping_method_title' => $order->shipping_method_title,
 			);
@@ -232,7 +232,7 @@ class Orders_Index extends Index implements RecordsProvider {
 				'date_formatted'        => $date_created_i18n,
 				'order_total'           => (float) $order->get_total(),
 				'formatted_order_total' => $order->get_formatted_order_total(),
-				'items_count'           => $order->get_item_count(),
+				'items_count'           => (int) $order->get_item_count(),
 				'payment_method_title'  => $order->get_payment_method_title(),
 				'shipping_method_title' => $order->get_shipping_method(),
 			);
