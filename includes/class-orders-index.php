@@ -138,12 +138,14 @@ class Orders_Index extends Index implements RecordsProvider {
 					'items.sku',
 					'billing.phone',
 					'status_name',
+					'order_total',
 				),
 				'disableTypoToleranceOnAttributes' => array(
 					'id',
 					'number',
 					'items.sku',
 					'billing.phone',
+					'order_total',
 				),
 				'customRanking'                    => array(
 					'desc(date_timestamp)',
@@ -152,6 +154,7 @@ class Orders_Index extends Index implements RecordsProvider {
 					'customer.display_name',
 					'type',
 					'items.sku',
+					'order_total',
 				),
 			)
 		);
