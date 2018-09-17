@@ -1,3 +1,15 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.9.0...v1.10.0) (2018-09-17)
+
+
+### Features
+
+* ensure `items_count` is always an integer ([2fe4110](https://github.com/rayrutjes/wc-order-search-admin/commit/2fe4110))
+* index raw orders total ([7d80272](https://github.com/rayrutjes/wc-order-search-admin/commit/7d80272))
+* make orders searchable by price ([beb08e0](https://github.com/rayrutjes/wc-order-search-admin/commit/beb08e0))
+
+
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.8.0...v1.9.0) (2018-08-09)
 
