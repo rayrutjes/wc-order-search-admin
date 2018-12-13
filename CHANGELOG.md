@@ -1,3 +1,8 @@
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.0...v1.10.1) (2018-12-13)
+
+
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.9.0...v1.10.0) (2018-09-17)
 
