@@ -145,6 +145,13 @@ WARNING: don't leave the page until the progress reaches 100%
 ![Indexing settings.](https://ps.w.org/wc-order-search-admin/assets/screenshot-4.png)
 
 
+## Upgrade Notice ##
+### 1.11.0 ###
+Make billing and shipping addresses searchable.
+Allow to set options through definition of constants.
+In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
+
+
 ## Changelog ##
 
 [See changelog for all versions](https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md).
