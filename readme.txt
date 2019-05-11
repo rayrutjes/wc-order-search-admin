@@ -90,6 +90,18 @@ function should_enable_backend_search( $value, WP_Query $query ) {
 add_filter( 'wc_osa_enable_backend_search', 'should_enable_backend_search', 10, 2 );
 `
 
+= Configuration constants =
+
+By default you can configure the plugin on the included options page, but you can also configure the plugin by using one (or more) of the following constants in your `wp-config.php`. Please note, when constants are defined the corresponding fields will be disabled on the options page.
+
+`
+define ( 'WC_OSA_ALGOLIA_APPLICATION_ID', '<value>' );
+define ( 'WC_OSA_ALGOLIA_SEARCH_API_KEY', '<value>' );
+define ( 'WC_OSA_ALGOLIA_ADMIN_API_KEY', '<value>' );
+define ( 'WC_OSA_ORDERS_INDEX_NAME', '<value>' );
+define ( 'WC_OSA_ORDERS_PER_BATCH', '<value>' );
+`
+
 = About Algolia =
 
 This plugin relies on the Algolia service which requires you to [create an account](https://www.algolia.com/getstarted/pass?redirect=true).

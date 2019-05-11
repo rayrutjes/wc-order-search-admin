@@ -28,7 +28,7 @@
 						<label><?php esc_html_e( 'Algolia Application ID:', 'wc-order-search-admin' ); ?> </label>
 					</th>
 					<td>
-						<input type="text" class="regular-text" name="app_id" value="<?php echo esc_attr( $this->options->get_algolia_app_id() ); ?>">
+						<input type="text" class="regular-text" name="app_id" value="<?php echo esc_attr( $this->options->get_algolia_app_id() ); ?>" <?php disabled( defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ) ); ?>>
 						<p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
 					</td>
 				</tr>
@@ -37,7 +37,7 @@
 						<label><?php esc_html_e( 'Algolia Search API key:', 'wc-order-search-admin' ); ?></label>
 					</th>
 					<td>
-						<input type="text" class="regular-text" name="search_api_key" value="<?php echo esc_attr( $this->options->get_algolia_search_api_key() ); ?>">
+						<input type="text" class="regular-text" name="search_api_key" value="<?php echo esc_attr( $this->options->get_algolia_search_api_key() ); ?>" <?php disabled( defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ) ); ?>>
 						<p class="description">
 							You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.
 							<br>
@@ -52,7 +52,7 @@
 						<label><?php esc_html_e( 'Algolia Admin API key:', 'wc-order-search-admin' ); ?></label>
 					</th>
 					<td>
-						<input type="password" class="regular-text" name="admin_api_key" value="<?php echo esc_attr( $this->options->get_algolia_admin_api_key() ); ?>">
+						<input type="password" class="regular-text" name="admin_api_key" value="<?php echo esc_attr( $this->options->get_algolia_admin_api_key() ); ?>" <?php disabled( defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) ); ?>>
 						<p class="description">You can grab it from your <a href="https://www.algolia.com/api-keys" target="_blank">Algolia admin panel</a>.</p>
 					</td>
 				</tr>
@@ -60,7 +60,7 @@
 		</table>
 
 		<p class="submit">
-			<button type="submit" class="button button-primary"><?php esc_html_e( 'Save Algolia account settings', 'wc-order-search-admin' ); ?></button>
+			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ) && defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ) && defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) ); ?>><?php esc_html_e( 'Save Algolia account settings', 'wc-order-search-admin' ); ?></button>
 		</p>
 	</form>
 
@@ -79,7 +79,7 @@
 					<label><?php esc_html_e( 'Orders index name in Algolia:', 'wc-order-search-admin' ); ?></label>
 				</th>
 				<td>
-					<input type="text" class="regular-text" name="orders_index_name" value="<?php echo esc_attr( $this->options->get_orders_index_name() ); ?>">
+					<input type="text" class="regular-text" name="orders_index_name" value="<?php echo esc_attr( $this->options->get_orders_index_name() ); ?>" <?php disabled( defined( 'WC_OSA_ORDERS_INDEX_NAME' ) ); ?>>
 				</td>
 			</tr>
 			<tr>
@@ -87,14 +87,14 @@
 					<label><?php esc_html_e( 'Orders to index per batch:', 'wc-order-search-admin' ); ?></label>
 				</th>
 				<td>
-					<input type="number" name="orders_per_batch"  value="<?php echo esc_attr( $this->options->get_orders_to_index_per_batch_count() ); ?>">
+					<input type="number" name="orders_per_batch"  value="<?php echo esc_attr( $this->options->get_orders_to_index_per_batch_count() ); ?>" <?php disabled( defined( 'WC_OSA_ORDERS_PER_BATCH' ) ); ?>>
 				</td>
 			</tr>
 			</tbody>
 		</table>
 
 		<p class="submit">
-			<button type="submit" class="button button-primary"><?php esc_html_e( 'Save orders indexing settings', 'wc-order-search-admin' ); ?></button>
+			<button type="submit" class="button button-primary" <?php disabled( defined( 'WC_OSA_ORDERS_INDEX_NAME' ) && defined( 'WC_OSA_ORDERS_PER_BATCH' ) ); ?>><?php esc_html_e( 'Save orders indexing settings', 'wc-order-search-admin' ); ?></button>
 		</p>
 	</form>
 
