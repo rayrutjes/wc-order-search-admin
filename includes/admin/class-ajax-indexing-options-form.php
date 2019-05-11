@@ -29,13 +29,13 @@ class Ajax_Indexing_Options_Form {
 
 	public function save_indexing_options() {
 		check_ajax_referer( 'save_indexing_options_nonce' );
-		if ( (! isset( $_POST['orders_index_name'] ) && ! defined ( 'WC_OSA_ORDERS_INDEX_NAME' ) ) || 
-			 (! isset( $_POST['orders_per_batch'] ) && ! defined ( 'WC_OSA_ORDERS_PER_BATCH' ) ) ) {
+		if ( ( ! isset( $_POST['orders_index_name'] ) && ! defined( 'WC_OSA_ORDERS_INDEX_NAME' ) ) ||
+			( ! isset( $_POST['orders_per_batch'] ) && ! defined( 'WC_OSA_ORDERS_PER_BATCH' ) ) ) {
 			wp_die( 'Hacker' );
 		}
 
 		try {
-			$this->options->set_orders_index_name( isset($_POST['orders_index_name']) ? $_POST['orders_index_name'] : '' );
+			$this->options->set_orders_index_name( isset( $_POST['orders_index_name'] ) ? $_POST['orders_index_name'] : '' );
 		} catch ( \InvalidArgumentException $exception ) {
 			wp_send_json_error(
 				array(
@@ -45,7 +45,7 @@ class Ajax_Indexing_Options_Form {
 		}
 
 		try {
-			$this->options->set_orders_to_index_per_batch_count( isset($_POST['orders_per_batch']) ? $_POST['orders_per_batch'] : 0 );
+			$this->options->set_orders_to_index_per_batch_count( isset( $_POST['orders_per_batch'] ) ? $_POST['orders_per_batch'] : 0 );
 		} catch ( \InvalidArgumentException $exception ) {
 			wp_send_json_error(
 				array(
