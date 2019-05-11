@@ -1,8 +1,8 @@
-=== WooCommerce Order Search Admin powered by Algolia ===
+=== WooCommerce Order Search Admin ===
 Contributors: rayrutjes
 Tags: search, orders, woocommerce, algolia, admin, autocomplete, orders search, search as you type, instant search, ajax search, ajax
 Requires at least: 4.6
-Tested up to: 5.0
+Tested up to: 5.2
 Requires PHP: 5.3
 Stable tag: 1.10.0
 License: GPLv2 or later
@@ -14,12 +14,12 @@ Search for WooCommerce orders in the admin at the speed of thought with Algolia.
 
 This plugin will power the WooCommerce orders search input with an autocompleted search field providing results as you type in milliseconds regardless of how much orders you have in your database.
 
-When you start having lots of orders in WooCommerce, searching for a specific order can become very slow and time consuming.
+When you start having lots of orders in WooCommerce, searching for a specific order can become very slow and time-consuming.
 
-Fun fact is also that the more you have orders, the more you will actually need to search for a specific one.
+Fun fact is also that the more you have orders, the more you will need to search for a specific one.
 
 We have seen users wait for over a minute for WooCommerce to return the search results in the admin.
-And even after that long waiting time, given that the default search mechanism uses SQL queries, the relevancy isn't optimal and you often need to adjust your query and wait again.
+And even after that long waiting time, given that the default search mechanism uses SQL queries, the relevancy isn't optimal and you often need to adjust your search query and wait again.
 
 By installing this plugin, you will be able to index all your orders into Algolia and be able to find orders at the speed of thought, right from your usual orders list in the admin screen of your WordPress website.
 
@@ -34,49 +34,51 @@ The search engine will search on the following fields:
 * Billing Last Name
 * Billing email address
 * Billing Phone number
+* Billing Address (includes postcode, country, city)
 * Shipping First Name
 * Shipping Last Name
+* Shipping Address (includes postcode, country, city)
 * Product SKU contained in the order
 * Status of the order
 
 As you start typing in the search input, you will see instant results popping up inside of a dropdown menu and you will
-be able to find the relevant order in milliseconds.
+be able to find the proper order in milliseconds.
 
 Also note that by leveraging Algolia as a search engine, in addition to super fast results as you type, you will
 also benefit from all the other features like typo tolerance that will make sure that if you misspell for example the customer name, you will still get the relevant orders displayed as part of the results.
 
 = Automatic synchronization =
 
-After you properly provided the plugin with your Algolia credentials, the plugin will take care of making sure
+After you correctly provided the plugin with your Algolia credentials, the plugin will take care of making sure
 the search index stays up to date with your WooCommerce orders.
 
 Every time an order is added, updated, trashed or deleted, it will synchronize with Algolia.
 
-**Note however, that when you first initialize the plugin, you need to index your existing orders.**
+**Note, however, that when you first initialize the plugin, you need to index your existing orders.**
 
 = WP-CLI command =
 
-The plugin also offers a [WP-CLI](http://wp-cli.org/) command to allow you to re-index your orders directly from the
+The plugin also offers a [WP-CLI](http://wp-cli.org/) command to allow you to reindex your orders directly from the
 terminal.
 
 Here is how to use it:
 
 `wp orders reindex`
 
-Please note that at no point your are forced to use the command line tool, and that the admin settings screen
-of the plugin also allows you to re-index all your orders.
+Please note that at no point you are forced to use the command line tool and that the admin settings screen
+of the plugin also allows you to reindex all your orders.
 
-This is a nice technical alternative though if you have over 50 thousands of records and you want to speed up the indexing.
+The command line approach is an excellent technical alternative though if you have over 50 thousands of records and you want to speed up the indexing.
 
 Note that there is no limit to how many orders this plugin can handle, and indexing will work with both indexing methods;
 powered by the UI or by using the WP-CLI command line tool.
 
-The only limitation of the admin UI re-indexing is that you have to leave the page open during the re-indexing
+The only limitation of the admin UI reindexing is that you have to leave the page open during the reindexing
 process.
 
 = Backend Order Search =
 
-By default the plugin enhances the default backend search behavior by using Algolia.
+By default, the plugin enhances the default backend search behavior by using Algolia.
 This ensures a consistency between results you see in the list and the ones coming from the autocomplete dropdown.
 If for whatever reason you want to restore the default backend search behavior, you can use the `wc_osa_enable_backend_search` filter hook.
 
@@ -91,14 +93,18 @@ add_filter( 'wc_osa_enable_backend_search', 'should_enable_backend_search', 10, 
 = About Algolia =
 
 This plugin relies on the Algolia service which requires you to [create an account](https://www.algolia.com/getstarted/pass?redirect=true).
-Algolia offers its Search as a Service provider on a incremental payment program, including a free plan which includes 10,000 records & 100,000 indexing operations per month.
-Beyond that, make sure you [checkout the pricing](https://www.algolia.com/pricing).
+Algolia offers its Search as a Service provider on an incremental payment program, including a free plan which includes 10,000 records & 100,000 operations per month.
+Beyond that, make sure you [check out the pricing](https://www.algolia.com/pricing).
 
-This plugin will create exactly one record per order to index. We index every order that is not flagged as trashed.
+This plugin will create precisely one record per order to index. We index every order that is not flagged as trashed.
+
+Algolia does not support this plugin.
+
+The preferred way of submitting issues or feature requests is through the [GitHub repository](https://github.com/rayrutjes/wc-order-search-admin/issues).
 
 == Installation ==
 
-The plugin has been tested with WooCommerce 2.x & 3.x
+The plugin works with WooCommerce 2.x & 3.x
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory,
 or install the plugin through the WordPress plugins screen directly.

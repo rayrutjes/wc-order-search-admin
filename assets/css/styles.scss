@@ -61,8 +61,12 @@ $blue: #00AEFF;
     font-weight: bold;
 }
 
-.wc-osa__date {
+.wc-osa__date, .wc-osa__line address {
     color: #9D9DBD;
+}
+
+.wc-osa__line address {
+    font-size: 11px;
 }
 
 .aa-suggestion mark {
