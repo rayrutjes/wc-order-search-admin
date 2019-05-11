@@ -25,7 +25,8 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
           + getCustomerLine(suggestion)
           + getPhoneLine(suggestion)
           + getTotalsLine(suggestion)
-          + getMethodsLine(suggestion);
+          + getMethodsLine(suggestion)
+          + getAddress(suggestion);
       }
     }
   }
@@ -130,4 +131,18 @@ function getMethodsLine(suggestion) {
   }
 
   return '<div class="wc-osa__line">' + html + '</div>';
+}
+
+function getAddress(suggestion) {
+    if (typeof suggestion._highlightResult.billing !== 'undefined' &&
+        typeof suggestion._highlightResult.billing.address !== 'undefined' &&
+        suggestion._highlightResult.billing.address.matchLevel !== 'none') {
+        return '<div class="wc-osa__line"><address>' + suggestion._highlightResult.billing.address.value + '</address></div>';
+    }
+    if (typeof suggestion._highlightResult.shipping !== 'undefined' &&
+        typeof suggestion._highlightResult.shipping.address !== 'undefined' &&
+        suggestion._highlightResult.shipping.address.matchLevel !== 'none') {
+        return '<div class="wc-osa__line"><address>' + suggestion._highlightResult.shipping.address.value + '</address></div>';
+    }
+    return '';
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="PHP_CodeSniffer">
- <description>The coding standard for the Algolia plugin for WordPress.</description>
+ <description>The coding standard for the WooCommerce Order Search Admin plugin for WordPress.</description>
 
  <file>wc-order-search-admin.php</file>
  <file>scoper.inc.php</file>

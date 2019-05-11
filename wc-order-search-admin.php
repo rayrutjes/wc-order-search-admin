@@ -20,7 +20,8 @@ if ( ! defined( 'WC_OSA_PATH' ) ) {
 }
 
 add_action(
-	'init', function () {
+	'init',
+	function () {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'wc-order-search-admin' );
 
 		load_textdomain( 'wc-order-search-admin', WP_LANG_DIR . '/wc-order-search-admin/wc-order-search-admin-' . $locale . '.mo' );
@@ -29,7 +30,8 @@ add_action(
 );
 
 add_filter(
-	'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
+	'plugin_action_links_' . plugin_basename( __FILE__ ),
+	function ( $links ) {
 		$links[] = '<a href="' . admin_url( 'options-general.php?page=wc_osa_options' ) . '">' . __( 'Settings', 'wc-order-search-admin' ) . '</a>';
 
 		return $links;
@@ -41,12 +43,13 @@ add_action(
 	function () {
 		if ( ! defined( 'WC_VERSION' ) ) {
 			add_action(
-				'admin_notices', function () {
-				?>
+				'admin_notices',
+				function () {
+					?>
 				<div class="notice notice-error">
 					<p><?php esc_html_e( 'WooCommerce Order Search Admin requires the WooCommerce plugin to be active.', 'wc-order-search-admin' ); ?></p>
 				</div>
-				<?php
+					<?php
 
 				}
 			);

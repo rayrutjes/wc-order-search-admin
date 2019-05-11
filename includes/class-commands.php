@@ -73,7 +73,9 @@ class Commands extends WP_CLI_Command {
 		$self = $this;
 
 		$total_records_count = $this->index->reIndex(
-			false, $per_page, function ( $records, $page, $total_pages ) use ( $self ) {
+			false,
+			$per_page,
+			function ( $records, $page, $total_pages ) use ( $self ) {
 				if ( null === $self->progress ) {
 					$self->progress = WP_CLI\Utils\make_progress_bar( __( 'Indexing WooCommerce orders', 'wc-order-search-admin' ), $total_pages );
 				}
