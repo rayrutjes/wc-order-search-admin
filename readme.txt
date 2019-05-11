@@ -92,7 +92,8 @@ add_filter( 'wc_osa_enable_backend_search', 'should_enable_backend_search', 10, 
 
 = Configuration constants =
 
-By default you can configure the plugin on the included options page, but you can also configure the plugin by using one (or more) of the following constants in your `wp-config.php`. Please note, when constants are defined the corresponding fields will be disabled on the options page.
+By default, you can configure the plugin on the included options page, but you can also configure the plugin by using one (or more) of the following constants in your `wp-config.php`.
+When you use constants, the corresponding option fields will be disabled on the options page.
 
 `
 define ( 'WC_OSA_ALGOLIA_APPLICATION_ID', '<value>' );
