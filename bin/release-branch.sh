@@ -40,8 +40,9 @@ readonly PACKAGE_VERSION=$(< package.json grep version \
   | tr -d '[:space:]')
 
 # Here we need to update versions in files
-readonly SEMVER_REGEX=[[:digit:]]\.[[:digit:]]\.[[:digit:]]
-gsed -i "s/$SEMVER_REGEX/$PACKAGE_VERSION/g" ./wc-order-search-admin.php
+readonly SEMVER_REGEX=[[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*
+gsed -i "s/\(Version:     \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./wc-order-search-admin.php
+gsed -i "s/\('WC_OSA_VERSION', '\)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./wc-order-search-admin.php
 gsed -i "s/\(Stable tag: \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./readme.txt
 
 if ! grunt; then
