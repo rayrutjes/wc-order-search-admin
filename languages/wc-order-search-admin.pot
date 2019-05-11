@@ -1,4 +1,4 @@
-# Copyright (C) 2018 Raymond Rutjes
+# Copyright (C) 2019 Raymond Rutjes
 # This file is distributed under the same license as the WooCommerce Order Search Admin powered by Algolia package.
 msgid ""
 msgstr ""
@@ -6,11 +6,11 @@ msgstr ""
 "1.10.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/wc-order-search-admin\n"
-"POT-Creation-Date: 2018-12-13 12:42:15+00:00\n"
+"POT-Creation-Date: 2019-05-11 14:47:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
@@ -26,13 +26,13 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/admin/class-ajax-algolia-account-settings-form.php:50
+#: includes/admin/class-ajax-algolia-account-settings-form.php:57
 msgid ""
 "Your Algolia account settings have been saved. You can now hit the "
 "\"re-index orders\" button."
 msgstr ""
 
-#: includes/admin/class-ajax-indexing-options-form.php:50
+#: includes/admin/class-ajax-indexing-options-form.php:59
 msgid ""
 "Your indexing options have been saved. If you changed the index name, you "
 "will need to re-index your orders."
@@ -43,7 +43,7 @@ msgstr ""
 msgid "WooCommerce Order Search Admin"
 msgstr ""
 
-#: includes/admin/class-orders-list-page.php:118
+#: includes/admin/class-orders-list-page.php:123
 msgid ""
 "Unable to fetch results from Algolia. Falling back to native WordPress "
 "search."
@@ -129,11 +129,11 @@ msgstr ""
 msgid "About to push all orders to Algolia. Please be patient..."
 msgstr ""
 
-#: includes/class-commands.php:78
+#: includes/class-commands.php:80
 msgid "Indexing WooCommerce orders"
 msgstr ""
 
-#: includes/class-commands.php:91
+#: includes/class-commands.php:93
 #. translators: 1st placeholder will contain the total number of orders indexed
 #. and second placeholder indicates the processing time in seconds.
 msgid "%1$d orders indexed in %2$d seconds!"
@@ -149,11 +149,11 @@ msgstr ""
 msgid "Setup now"
 msgstr ""
 
-#: wc-order-search-admin.php:33
+#: wc-order-search-admin.php:35
 msgid "Settings"
 msgstr ""
 
-#: wc-order-search-admin.php:47
+#: wc-order-search-admin.php:50
 msgid "WooCommerce Order Search Admin requires the WooCommerce plugin to be active."
 msgstr ""
 
