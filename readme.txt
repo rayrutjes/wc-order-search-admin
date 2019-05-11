@@ -96,11 +96,11 @@ By default, you can configure the plugin on the included options page, but you c
 When you use constants, the corresponding option fields will be disabled on the options page.
 
 `
-define ( 'WC_OSA_ALGOLIA_APPLICATION_ID', '<value>' );
-define ( 'WC_OSA_ALGOLIA_SEARCH_API_KEY', '<value>' );
-define ( 'WC_OSA_ALGOLIA_ADMIN_API_KEY', '<value>' );
-define ( 'WC_OSA_ORDERS_INDEX_NAME', '<value>' );
-define ( 'WC_OSA_ORDERS_PER_BATCH', '<value>' );
+define( 'WC_OSA_ALGOLIA_APPLICATION_ID', '<value>' );
+define( 'WC_OSA_ALGOLIA_SEARCH_API_KEY', '<value>' );
+define( 'WC_OSA_ALGOLIA_ADMIN_API_KEY', '<value>' );
+define( 'WC_OSA_ORDERS_INDEX_NAME', 'wc_orders' );
+define( 'WC_OSA_ORDERS_PER_BATCH', 200 );
 `
 
 = About Algolia =
