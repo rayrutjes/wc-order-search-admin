@@ -257,12 +257,12 @@ class Orders_Index extends Index implements RecordsProvider {
 			'display_name' => $order->get_formatted_billing_full_name(),
 			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
 			'phone'        => $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone,
-            'address'      => $order->get_formatted_billing_address(),
+			'address'      => $order->get_formatted_billing_address(),
 		);
 
 		$record['shipping'] = array(
 			'display_name' => $order->get_formatted_shipping_full_name(),
-            'address'      => $order->get_formatted_shipping_address(),
+			'address'      => $order->get_formatted_shipping_address(),
 		);
 
 		// Add items.
