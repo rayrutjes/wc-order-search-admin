@@ -1,3 +1,14 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.1...v1.11.0) (2019-05-11)
+
+
+### Features
+
+* allow setting options through PHP constants ([31d3856](https://github.com/rayrutjes/wc-order-search-admin/commit/31d3856))
+* make shipping/billing addresses searchable (#86) ([1f43b62](https://github.com/rayrutjes/wc-order-search-admin/commit/1f43b62))
+
+
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.0...v1.10.1) (2018-12-13)
 
