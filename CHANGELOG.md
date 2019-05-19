@@ -1,3 +1,13 @@
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.12.0...v1.12.1) (2019-05-19)
+
+
+### Bug Fixes
+
+* avoid a PHP warning when the country is not set ([c5f440f](https://github.com/rayrutjes/wc-order-search-admin/commit/c5f440f))
+
+
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.11.0...v1.12.0) (2019-05-19)
 
