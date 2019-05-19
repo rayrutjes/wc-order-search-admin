@@ -4,7 +4,7 @@ Tags: search, orders, woocommerce, algolia, admin, autocomplete, orders search, 
 Requires at least: 4.6
 Tested up to: 5.2
 Requires PHP: 5.3
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,10 +151,10 @@ WARNING: don't leave the page until the progress reaches 100%
 
 == Upgrade Notice ==
 
-= 1.11.0 =
-Make billing and shipping addresses searchable. Allow to set options through definition of constants. In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
-
+= 1.12.0 =
+Make all billing and shipping fields searchable. In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
 
 == Changelog ==
 
-[See changelog for all versions](https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md).
+= 1.12.0 =
+See: https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md.
