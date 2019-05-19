@@ -23,9 +23,9 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
                     + getStatusLine(suggestion)
                     + getNumberLine(suggestion)
                     + getCustomerLine(suggestion)
-                    + getPhoneLine(suggestion)
                     + getTotalsLine(suggestion)
                     + getMethodsLine(suggestion)
+                    + getShippingAndOrBillingHighlightedAttribute(suggestion, 'phone', 'Phone')
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'company', 'Company')
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'address_1', 'Address 1')
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'address_2', 'Address 2')
@@ -162,12 +162,12 @@ function getShippingAndOrBillingHighlightedAttribute(suggestion, attributeName, 
     var html = '';
     if (billingValue !== '') {
         html += '<div class="wc-osa__line wc-osa__billing_shipping">'
-            + '<span class="wc-osa__' + attributeName + '"><span class="wc-osa__title">Billed ' + title + ':</span> ' + billingValue + '</spanclass>'
+            + '<span class="wc-osa__' + attributeName + '"><span class="wc-osa__title">Billing ' + title + ':</span> ' + billingValue + '</spanclass>'
             + '</div>';
     }
     if (shippingValue !== '') {
         html += '<div class="wc-osa__line wc-osa__billing_shipping">'
-            + '<span class="wc-osa__' + attributeName + '"><span class="wc-osa__title">Shipped ' + title + ':</span> ' + shippingValue + '</span>'
+            + '<span class="wc-osa__' + attributeName + '"><span class="wc-osa__title">Shipping ' + title + ':</span> ' + shippingValue + '</span>'
             + '</div>';
     }
 
