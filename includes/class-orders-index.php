@@ -267,6 +267,8 @@ class Orders_Index extends Index implements RecordsProvider {
 			);
 		}
 
+		$billing_country   = $is_wc_3 ? $order->get_billing_country() : $order->billing_country;
+		$billing_country   = isset( WC()->countries->countries[ $billing_country ] ) ? WC()->countries->countries[ $billing_country ] : $billing_country;
 		$record['billing'] = array(
 			'display_name' => $order->get_formatted_billing_full_name(),
 			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
@@ -277,9 +279,11 @@ class Orders_Index extends Index implements RecordsProvider {
 			'city'         => $is_wc_3 ? $order->get_billing_city() : $order->billing_city,
 			'state'        => $is_wc_3 ? $order->get_billing_state() : $order->billing_state,
 			'postcode'     => $is_wc_3 ? $order->get_billing_postcode() : $order->billing_postcode,
-			'country'      => WC()->countries->countries[ $is_wc_3 ? $order->get_billing_country() : $order->billing_country ],
+			'country'      => $billing_country,
 		);
 
+		$shipping_country   = $is_wc_3 ? $order->get_shipping_country() : $order->shipping_country;
+		$shipping_country   = isset( WC()->countries->countries[ $shipping_country ] ) ? WC()->countries->countries[ $shipping_country ] : $shipping_country;
 		$record['shipping'] = array(
 			'display_name' => $order->get_formatted_shipping_full_name(),
 			'company'      => $is_wc_3 ? $order->get_shipping_company() : $order->shipping_company,
@@ -288,7 +292,7 @@ class Orders_Index extends Index implements RecordsProvider {
 			'city'         => $is_wc_3 ? $order->get_shipping_city() : $order->shipping_city,
 			'state'        => $is_wc_3 ? $order->get_shipping_state() : $order->shipping_state,
 			'postcode'     => $is_wc_3 ? $order->get_shipping_postcode() : $order->shipping_postcode,
-			'country'      => WC()->countries->countries[ $is_wc_3 ? $order->get_shipping_country() : $order->shipping_country ],
+			'country'      => $shipping_country,
 		);
 
 		// Add items.
