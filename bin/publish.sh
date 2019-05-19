@@ -19,7 +19,7 @@ readonly PACKAGE_VERSION=$(< package.json grep version \
   | gsed 's/[",]//g' \
   | tr -d '[:space:]')
 
-git tag "v$PACKAGE_VERSION"
+git tag "$PACKAGE_VERSION"
 git push --tags
 
 ./bin/sync-wp-org.sh \
