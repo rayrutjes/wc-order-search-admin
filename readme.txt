@@ -34,10 +34,22 @@ The search engine will search on the following fields:
 * Billing Last Name
 * Billing email address
 * Billing Phone number
-* Billing Address (includes postcode, country, city)
+* Billing Company
+* Billing Address 1
+* Billing Address 2
+* Billing City
+* Billing State
+* Billing Postcode
+* Billing Country
 * Shipping First Name
 * Shipping Last Name
-* Shipping Address (includes postcode, country, city)
+* Shipping Company
+* Shipping Address 1
+* Shipping Address 2
+* Shipping City
+* Shipping State
+* Shipping Postcode
+* Shipping Country
 * Product SKU contained in the order
 * Status of the order
 
