@@ -159,10 +159,10 @@ WARNING: don't leave the page until the progress reaches 100%
 
 ## Upgrade Notice ##
 
-### 1.12.0 ###
+### 1.12.1 ###
 Make all billing and shipping fields searchable. In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
 
 ## Changelog ##
 
-### 1.12.0 ###
-See: https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md.
+### 1.12.1 ###
+See: [CHANGELOG](https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md)
