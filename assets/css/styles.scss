@@ -65,8 +65,9 @@ $blue: #00AEFF;
     color: #9D9DBD;
 }
 
-.wc-osa__line address {
+.wc-osa__line.wc-osa__billing_shipping {
     font-size: 11px;
+    font-style: italic;
 }
 
 .aa-suggestion mark {
