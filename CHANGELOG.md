@@ -1,5 +1,5 @@
 <a name="1.12.1"></a>
-## [1.12.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.12.0...v1.12.1) (2019-05-19)
+## [1.12.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.12.0...1.12.1) (2019-05-19)
 
 
 ### Bug Fixes
