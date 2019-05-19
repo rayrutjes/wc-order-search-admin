@@ -1,3 +1,13 @@
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.11.0...v1.12.0) (2019-05-19)
+
+
+### Features
+
+* index all address fields (#90) ([d47d4b3](https://github.com/rayrutjes/wc-order-search-admin/commit/d47d4b3))
+
+
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.1...v1.11.0) (2019-05-11)
 

@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 5.2  
 **Requires PHP:** 5.3  
-**Stable tag:** 1.11.0  
+**Stable tag:** 1.12.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -34,10 +34,22 @@ The search engine will search on the following fields:
 * Billing Last Name
 * Billing email address
 * Billing Phone number
-* Billing Address (includes postcode, country, city)
+* Billing Company
+* Billing Address 1
+* Billing Address 2
+* Billing City
+* Billing State
+* Billing Postcode
+* Billing Country
 * Shipping First Name
 * Shipping Last Name
-* Shipping Address (includes postcode, country, city)
+* Shipping Company
+* Shipping Address 1
+* Shipping Address 2
+* Shipping City
+* Shipping State
+* Shipping Postcode
+* Shipping Country
 * Product SKU contained in the order
 * Status of the order
 
@@ -146,10 +158,9 @@ WARNING: don't leave the page until the progress reaches 100%
 
 
 ## Upgrade Notice ##
+
 ### 1.11.0 ###
-Make billing and shipping addresses searchable.
-Allow to set options through definition of constants.
-In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
+Make billing and shipping addresses searchable. Allow to set options through definition of constants. In order to make the billing and shipping addresses searchable you need to reindex your data from `Settings -> WooCommerce Order Search Admin -> Re-index orders`.
 
 
 ## Changelog ##
