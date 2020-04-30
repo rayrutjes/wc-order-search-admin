@@ -26,7 +26,7 @@ npm run changelog:unreleased
 # Only update the package.json version
 # We need to update changelog before tagging
 # And publishing.
-npm version --no-git-tag-version
+yarn version --no-git-tag-version
 
 if ! npm run changelog; then
   echo "Failed to update changelog, aborting..."
