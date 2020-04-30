@@ -12,4 +12,4 @@ build/
 .php_cs.cache
 git
 svn
-package-lock.json
+yarn.lock
