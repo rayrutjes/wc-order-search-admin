@@ -19,7 +19,7 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
         displayKey: 'number',
         templates: {
             suggestion: function (suggestion) {
-                return ""
+                return '<a href="post.php?post=' + suggestion.objectID + '&action=edit">'
                     + getStatusLine(suggestion)
                     + getNumberLine(suggestion)
                     + getCustomerLine(suggestion)
@@ -33,12 +33,19 @@ autocomplete('#post-search-input', {hint: false, debug: aosOptions.debug}, [
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'state', 'State')
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'postcode', 'Postcode')
                     + getShippingAndOrBillingHighlightedAttribute(suggestion, 'country', 'Country')
-                    ;
+                    + "</a>";
 
             }
         }
     }
-]).on('autocomplete:selected', function (event, suggestion) {
+]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+	if (context.selectionMethod === 'click') {
+		// If the link is clicked, we let the browser do it's job so that users can open in a new tab if they wish.
+		// We also prevent event from bubbling up so the dropdown stays open in case user actually choses to open
+		// the order in a new tab.
+		event.preventDefault();
+		return;
+	}
     window.location.href = "post.php?post=" + suggestion.objectID + "&action=edit";
 });
 jQuery('#post-search-input').select();
