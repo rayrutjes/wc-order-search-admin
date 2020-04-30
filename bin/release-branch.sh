@@ -17,18 +17,18 @@ if ! git diff-index --quiet HEAD --; then
   exit 1
 fi
 
-yarn
+npm install
 
-yarn run changelog:unreleased
+npm run changelog:unreleased
 
 ./bin/update-contributors.sh
 
 # Only update the package.json version
 # We need to update changelog before tagging
 # And publishing.
-yarn version --no-git-tag-version
+npm version --no-git-tag-version
 
-if ! yarn run changelog; then
+if ! npm run changelog; then
   echo "Failed to update changelog, aborting..."
   exit 1
 fi
