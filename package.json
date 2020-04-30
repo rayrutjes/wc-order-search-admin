@@ -5,7 +5,8 @@
   "author": "Raymond RUTJES",
   "scripts": {
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file",
-    "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased"
+    "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased",
+    "githubcontrib": "githubcontrib"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.6",
