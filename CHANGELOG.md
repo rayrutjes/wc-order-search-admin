@@ -1,3 +1,12 @@
+# [1.13.0](https://github.com/rayrutjes/wc-order-search-admin/compare/1.12.1...1.13.0) (2020-04-30)
+
+
+### Features
+
+* **autocomplete:** allow opening orders in a new tab ([b8cd511](https://github.com/rayrutjes/wc-order-search-admin/commit/b8cd5110be24e60d6001962fccf669995d7d8474))
+
+
+
 <a name="1.12.1"></a>
 ## [1.12.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.12.0...1.12.1) (2019-05-19)
 
