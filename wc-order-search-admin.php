@@ -8,6 +8,8 @@
  * Author URI:  https://github.com/rayrutjes/
  * Version:     1.13.0
  * Domain Path: /languages.
+ * WC requires at least: 2.2
+ * WC tested up to: 4.3
  */
 define( 'WC_OSA_VERSION', '1.13.0' );
 
