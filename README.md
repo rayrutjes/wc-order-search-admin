@@ -164,5 +164,5 @@ Make all billing and shipping fields searchable. In order to make the billing an
 
 ## Changelog ##
 
-### 1.12.1 ###
+### 1.13.1 ###
 See: [CHANGELOG](https://github.com/rayrutjes/wc-order-search-admin/blob/master/CHANGELOG.md)
