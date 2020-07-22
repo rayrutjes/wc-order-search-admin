@@ -6,12 +6,12 @@
  * Description: Search for WooCommerce orders in the admin at the speed of thought with Algolia.
  * Author:      Raymond Rutjes
  * Author URI:  https://github.com/rayrutjes/
- * Version:     1.13.0
+ * Version:     1.13.1
  * Domain Path: /languages.
  * WC requires at least: 2.2
  * WC tested up to: 4.3
  */
-define( 'WC_OSA_VERSION', '1.13.0' );
+define( 'WC_OSA_VERSION', '1.13.1' );
 
 if ( ! defined( 'WC_OSA_FILE' ) ) {
 	define( 'WC_OSA_FILE', __FILE__ );
