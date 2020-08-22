@@ -1,3 +1,7 @@
+## [1.13.2](https://github.com/rayrutjes/wc-order-search-admin/compare/1.13.1...1.13.2) (2020-08-22)
+
+
+
 ## [1.13.1](https://github.com/rayrutjes/wc-order-search-admin/compare/1.13.0...1.13.1) (2020-07-22)
 
 
