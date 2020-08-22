@@ -9,7 +9,7 @@
     "githubcontrib": "githubcontrib"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "^9.8.6",
     "conventional-changelog-cli": "^2.1.0",
     "github-contributors-list": "^1.2.4",
     "grunt": "~1.1.0",
