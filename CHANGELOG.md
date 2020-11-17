@@ -1,3 +1,98 @@
+## [1.13.2](https://github.com/rayrutjes/wc-order-search-admin/compare/1.13.1...1.13.2) (2020-08-22)
+
+
+
+## [1.13.1](https://github.com/rayrutjes/wc-order-search-admin/compare/1.13.0...1.13.1) (2020-07-22)
+
+
+
+# [1.13.0](https://github.com/rayrutjes/wc-order-search-admin/compare/1.12.1...1.13.0) (2020-04-30)
+
+
+### Features
+
+* **autocomplete:** allow opening orders in a new tab ([b8cd511](https://github.com/rayrutjes/wc-order-search-admin/commit/b8cd5110be24e60d6001962fccf669995d7d8474))
+
+
+
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.12.0...1.12.1) (2019-05-19)
+
+
+### Bug Fixes
+
+* avoid a PHP warning when the country is not set ([c5f440f](https://github.com/rayrutjes/wc-order-search-admin/commit/c5f440f))
+
+
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.11.0...v1.12.0) (2019-05-19)
+
+
+### Features
+
+* index all address fields (#90) ([d47d4b3](https://github.com/rayrutjes/wc-order-search-admin/commit/d47d4b3))
+
+
+
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.1...v1.11.0) (2019-05-11)
+
+
+### Features
+
+* allow setting options through PHP constants ([31d3856](https://github.com/rayrutjes/wc-order-search-admin/commit/31d3856))
+* make shipping/billing addresses searchable (#86) ([1f43b62](https://github.com/rayrutjes/wc-order-search-admin/commit/1f43b62))
+
+
+
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.10.0...v1.10.1) (2018-12-13)
+
+
+
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.9.0...v1.10.0) (2018-09-17)
+
+
+### Features
+
+* ensure `items_count` is always an integer ([2fe4110](https://github.com/rayrutjes/wc-order-search-admin/commit/2fe4110))
+* index raw orders total ([7d80272](https://github.com/rayrutjes/wc-order-search-admin/commit/7d80272))
+* make orders searchable by price ([beb08e0](https://github.com/rayrutjes/wc-order-search-admin/commit/beb08e0))
+
+
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.8.0...v1.9.0) (2018-08-09)
+
+
+### Features
+
+* add a filter `should_wc_osa_orders_filter_search` to disable backend (#73) ([872b517](https://github.com/rayrutjes/wc-order-search-admin/commit/872b517))
+
+
+
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.3...v1.8.0) (2018-05-07)
+
+
+### Features
+
+* remove phone number normalization ([7b8e2a5](https://github.com/rayrutjes/wc-order-search-admin/commit/7b8e2a5))
+
+
+
+<a name="1.7.3"></a>
+## [1.7.3](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.2...v1.7.3) (2018-02-06)
+
+
+### Bug Fixes
+
+* avoid generating notices if $screen is null ([f737701](https://github.com/rayrutjes/wc-order-search-admin/commit/f737701))
+
+
+
 <a name="1.7.2"></a>
 ## [1.7.2](https://github.com/rayrutjes/wc-order-search-admin/compare/v1.7.1...v1.7.2) (2018-01-05)
 

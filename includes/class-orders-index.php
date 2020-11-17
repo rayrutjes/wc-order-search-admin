@@ -133,17 +133,35 @@ class Orders_Index extends Index implements RecordsProvider {
 					'customer.display_name',
 					'customer.email',
 					'billing.display_name',
-					'billing.email',
 					'shipping.display_name',
-					'items.sku',
+					'billing.email',
 					'billing.phone',
+					'billing.company',
+					'shipping.company',
+					'billing.address_1',
+					'shipping.address_1',
+					'billing.address_2',
+					'shipping.address_2',
+					'billing.city',
+					'shipping.city',
+					'billing.state',
+					'shipping.state',
+					'billing.postcode',
+					'shipping.postcode',
+					'billing.country',
+					'shipping.country',
+					'items.sku',
 					'status_name',
+					'order_total',
 				),
 				'disableTypoToleranceOnAttributes' => array(
 					'id',
 					'number',
 					'items.sku',
 					'billing.phone',
+					'order_total',
+					'billing.postcode',
+					'shipping.postcode',
 				),
 				'customRanking'                    => array(
 					'desc(date_timestamp)',
@@ -152,6 +170,7 @@ class Orders_Index extends Index implements RecordsProvider {
 					'customer.display_name',
 					'type',
 					'items.sku',
+					'order_total',
 				),
 			)
 		);
@@ -209,8 +228,9 @@ class Orders_Index extends Index implements RecordsProvider {
 				'status_name'           => wc_get_order_status_name( $order->get_status() ),
 				'date_timestamp'        => strtotime( $order->order_date ),
 				'date_formatted'        => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ),
+				'order_total'           => (float) $order->get_total(),
 				'formatted_order_total' => $order->get_formatted_order_total(),
-				'items_count'           => $order->get_item_count(),
+				'items_count'           => (int) $order->get_item_count(),
 				'payment_method_title'  => $order->payment_method_title,
 				'shipping_method_title' => $order->shipping_method_title,
 			);
@@ -229,8 +249,9 @@ class Orders_Index extends Index implements RecordsProvider {
 				'status_name'           => wc_get_order_status_name( $order->get_status() ),
 				'date_timestamp'        => $date_created_timestamp,
 				'date_formatted'        => $date_created_i18n,
+				'order_total'           => (float) $order->get_total(),
 				'formatted_order_total' => $order->get_formatted_order_total(),
-				'items_count'           => $order->get_item_count(),
+				'items_count'           => (int) $order->get_item_count(),
 				'payment_method_title'  => $order->get_payment_method_title(),
 				'shipping_method_title' => $order->get_shipping_method(),
 			);
@@ -246,14 +267,32 @@ class Orders_Index extends Index implements RecordsProvider {
 			);
 		}
 
+		$billing_country   = $is_wc_3 ? $order->get_billing_country() : $order->billing_country;
+		$billing_country   = isset( WC()->countries->countries[ $billing_country ] ) ? WC()->countries->countries[ $billing_country ] : $billing_country;
 		$record['billing'] = array(
 			'display_name' => $order->get_formatted_billing_full_name(),
 			'email'        => $is_wc_3 ? $order->get_billing_email() : $order->billing_email,
-			'phone'        => $this->normalize_phone_number( $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone ),
+			'phone'        => $is_wc_3 ? $order->get_billing_phone() : $order->billing_phone,
+			'company'      => $is_wc_3 ? $order->get_billing_company() : $order->billing_company,
+			'address_1'    => $is_wc_3 ? $order->get_billing_address_1() : $order->billing_address_1,
+			'address_2'    => $is_wc_3 ? $order->get_billing_address_2() : $order->billing_address_2,
+			'city'         => $is_wc_3 ? $order->get_billing_city() : $order->billing_city,
+			'state'        => $is_wc_3 ? $order->get_billing_state() : $order->billing_state,
+			'postcode'     => $is_wc_3 ? $order->get_billing_postcode() : $order->billing_postcode,
+			'country'      => $billing_country,
 		);
 
+		$shipping_country   = $is_wc_3 ? $order->get_shipping_country() : $order->shipping_country;
+		$shipping_country   = isset( WC()->countries->countries[ $shipping_country ] ) ? WC()->countries->countries[ $shipping_country ] : $shipping_country;
 		$record['shipping'] = array(
 			'display_name' => $order->get_formatted_shipping_full_name(),
+			'company'      => $is_wc_3 ? $order->get_shipping_company() : $order->shipping_company,
+			'address_1'    => $is_wc_3 ? $order->get_shipping_address_1() : $order->shipping_address_1,
+			'address_2'    => $is_wc_3 ? $order->get_shipping_address_2() : $order->shipping_address_2,
+			'city'         => $is_wc_3 ? $order->get_shipping_city() : $order->shipping_city,
+			'state'        => $is_wc_3 ? $order->get_shipping_state() : $order->shipping_state,
+			'postcode'     => $is_wc_3 ? $order->get_shipping_postcode() : $order->shipping_postcode,
+			'country'      => $shipping_country,
 		);
 
 		// Add items.
@@ -269,10 +308,6 @@ class Orders_Index extends Index implements RecordsProvider {
 		}
 
 		return array( $record );
-	}
-
-	private function normalize_phone_number( $phone ) {
-		return preg_replace( '/[^\d+]/', '', $phone );
 	}
 
 	/**

@@ -17,16 +17,18 @@ if ! git diff-index --quiet HEAD --; then
   exit 1
 fi
 
-yarn
+npm install
 
-yarn run changelog:unreleased
+npm run changelog:unreleased
+
+./bin/update-contributors.sh
 
 # Only update the package.json version
 # We need to update changelog before tagging
 # And publishing.
 yarn version --no-git-tag-version
 
-if ! yarn run changelog; then
+if ! npm run changelog; then
   echo "Failed to update changelog, aborting..."
   exit 1
 fi
@@ -34,13 +36,14 @@ fi
 readonly PACKAGE_VERSION=$(< package.json grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
+  | gsed 's/[",]//g' \
   | tr -d '[:space:]')
 
 # Here we need to update versions in files
-readonly SEMVER_REGEX=[[:digit:]]\.[[:digit:]]\.[[:digit:]]
-sed -i "s/$SEMVER_REGEX/$PACKAGE_VERSION/g" ./wc-order-search-admin.php
-sed -i "s/\(Stable tag: \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./readme.txt
+readonly SEMVER_REGEX=[[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*
+gsed -i "s/\(Version:     \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./wc-order-search-admin.php
+gsed -i "s/\('WC_OSA_VERSION', '\)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./wc-order-search-admin.php
+gsed -i "s/\(Stable tag: \)$SEMVER_REGEX/\1$PACKAGE_VERSION/" ./readme.txt
 
 if ! grunt; then
   echo "Failed to build dist files, aborting..."

@@ -44,6 +44,11 @@ $blue: #00AEFF;
         display: table;
         clear: both;
     }
+
+	a {
+		text-decoration: none;
+		color: #444;
+	}
 }
 
 .aa-suggestion.aa-cursor {
@@ -61,8 +66,13 @@ $blue: #00AEFF;
     font-weight: bold;
 }
 
-.wc-osa__date {
+.wc-osa__date, .wc-osa__line address {
     color: #9D9DBD;
+}
+
+.wc-osa__line.wc-osa__billing_shipping {
+    font-size: 11px;
+    font-style: italic;
 }
 
 .aa-suggestion mark {

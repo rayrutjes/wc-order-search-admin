@@ -43,7 +43,7 @@ class Orders_List_Page {
 		}
 		$screen = get_current_screen();
 
-		return (!is_null($screen) && 'edit-shop_order' === $screen->id);
+		return ( ! is_null( $screen ) && 'edit-shop_order' === $screen->id );
 	}
 
 	public function enqueue_scripts() {
@@ -61,14 +61,17 @@ class Orders_List_Page {
 		$index_name            = $this->options->get_orders_index_name();
 		$search_key            = $this->options->get_algolia_search_api_key();
 		$restricted_search_key = Client::generateSecuredApiKey(
-			$search_key, array(
+			$search_key,
+			array(
 				'restrictIndices' => $index_name,
 				'validUntil'      => time() + 60 * 24, // A day from now.
 			)
 		);
 
 		wp_localize_script(
-			'wc_osa_orders_search', 'aosOptions', array(
+			'wc_osa_orders_search',
+			'aosOptions',
+			array(
 				'appId'           => $this->options->get_algolia_app_id(),
 				'searchApiKey'    => $restricted_search_key,
 				'ordersIndexName' => $index_name,
@@ -104,7 +107,8 @@ class Orders_List_Page {
 
 		try {
 			$results = $index->search(
-				$query->query['s'], array(
+				$query->query['s'],
+				array(
 					'attributesToRetrieve' => 'id',
 					'hitsPerPage'          => $posts_per_page,
 					'page'                 => $current_page - 1, // Algolia pages are zero indexed.
@@ -112,13 +116,14 @@ class Orders_List_Page {
 			);
 		} catch ( AlgoliaException $exception ) {
 			add_action(
-				'admin_notices', function() use ( $exception ) {
-				?>
+				'admin_notices',
+				function() use ( $exception ) {
+					?>
 				<div class="notice notice-error is-dismissible">
 					<p><?php esc_html_e( 'Unable to fetch results from Algolia. Falling back to native WordPress search.', 'wc-order-search-admin' ); ?></p>
 					<p><code><?php echo esc_html( $exception->getMessage() ); ?></code></p>
 				</div>
-				<?php
+					<?php
 				}
 			);
 			return;
@@ -159,7 +164,8 @@ class Orders_List_Page {
 		return $this->is_current_screen()
 			&& $query->is_admin
 			&& $query->is_search()
-			&& $query->is_main_query();
+			&& $query->is_main_query()
+			&& apply_filters( 'wc_osa_enable_backend_search', true, $query );
 	}
 
 	/**

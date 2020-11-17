@@ -16,10 +16,10 @@ fi
 readonly PACKAGE_VERSION=$(< package.json grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
+  | gsed 's/[",]//g' \
   | tr -d '[:space:]')
 
-git tag "v$PACKAGE_VERSION"
+git tag "$PACKAGE_VERSION"
 git push --tags
 
 ./bin/sync-wp-org.sh \

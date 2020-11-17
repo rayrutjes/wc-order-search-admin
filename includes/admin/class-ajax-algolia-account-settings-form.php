@@ -31,12 +31,19 @@ class Ajax_Algolia_Account_Settings_Form {
 
 	public function save_algolia_account_settings() {
 		check_ajax_referer( 'save_algolia_account_settings_nonce' );
-		if ( ! isset( $_POST['app_id'] ) || ! isset( $_POST['search_api_key'] ) || ! isset( $_POST['admin_api_key'] ) ) {
+		if ( ( ! isset( $_POST['app_id'] ) && ! defined( 'WC_OSA_ALGOLIA_APPLICATION_ID' ) ) ||
+			( ! isset( $_POST['search_api_key'] ) && ! defined( 'WC_OSA_ALGOLIA_SEARCH_API_KEY' ) ) ||
+			( ! isset( $_POST['admin_api_key'] ) && ! defined( 'WC_OSA_ALGOLIA_ADMIN_API_KEY' ) )
+			) {
 			wp_die( 'Hacker' );
 		}
 
 		try {
-			$this->options->set_algolia_account_settings( $_POST['app_id'], $_POST['search_api_key'], $_POST['admin_api_key'] );
+			$this->options->set_algolia_account_settings(
+				isset( $_POST['app_id'] ) ? $_POST['app_id'] : '',
+				isset( $_POST['search_api_key'] ) ? $_POST['search_api_key'] : '',
+				isset( $_POST['admin_api_key'] ) ? $_POST['admin_api_key'] : ''
+			);
 		} catch ( \InvalidArgumentException $exception ) {
 			wp_send_json_error(
 				array(
