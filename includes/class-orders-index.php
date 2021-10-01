@@ -298,7 +298,11 @@ class Orders_Index extends Index implements RecordsProvider {
 		// Add items.
 		$record['items'] = array();
 		foreach ( $order->get_items() as $item_id => $item ) {
-			$product           = $order->get_product_from_item( $item );
+			if ( version_compare( WC_VERSION, '4.4.0', '>=' ) ) {
+				$product = $item->get_product();
+			} else {
+				$product = $order->get_product_from_item( $item );
+			}
 			$record['items'][] = array(
 				'id'   => (int) $item_id,
 				'name' => apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false ),
